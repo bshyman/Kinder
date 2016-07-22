@@ -28,7 +28,7 @@ gem 'redis', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 # Track test coverage
 gem 'simplecov', :require => false, :group => :test
-
+gem 'faker', github: 'stympy/faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
+  gem 'launchy'
 end
 
 group :development do
