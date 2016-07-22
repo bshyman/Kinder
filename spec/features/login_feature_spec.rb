@@ -15,7 +15,7 @@ feature "Login feature" do
     fill_in('Username', :with => 'vi')
     fill_in('Password', :with => '12345678')
     click_button('Login')
-    expect(page).to have_current_path root_path
+    expect(page).to have_content "Dashboard"
   end
 
    scenario "user can go to the homepage, click logout" do

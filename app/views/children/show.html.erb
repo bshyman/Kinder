@@ -1,0 +1,8 @@
+<div>
+   <ul>
+    <li>Name: <%= @child.name %></li>
+    <li>Parent: <%= User.find(params[:user_id]).username %></li>
+    <li>Allergies : <%= @child.allergies %></li>
+    <li>Birthday: <%= @child.birthday %></li>
+  </ul>
+</div>

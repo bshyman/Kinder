@@ -2,7 +2,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'users#new'
 
+<<<<<<< HEAD
   get '/kinders/reset' => 'kinders#reset_kinders', as:"reset_kinders"
+=======
+  resources :users, only: [:new, :create] do
+    resources :playdates
+    resources :children
+  end
+
+>>>>>>> cd40b6bcd10cd1ebe9e615eacdf8615a9ab62c74
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
