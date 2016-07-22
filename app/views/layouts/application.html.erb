@@ -9,10 +9,16 @@
   </head>
 
   <body>
-  <%= link_to "Login", login_path %> | <%= link_to "Register", new_user_path %> | <%= link_to "Logout", logout_path %>
-  <p><% if flash[:notice] %>
-    <%= flash[:notice]%>
-  <% end %></p>
+    <% if logged_in? %>
+      <%= link_to "Logout", logout_path %>
+    <% else %>
+      <%= link_to "Login", login_path %> | <%= link_to "Register", new_user_path %>
+    <% end %>
+  <p>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </p>
   <%= yield %>
   </body>
 </html>

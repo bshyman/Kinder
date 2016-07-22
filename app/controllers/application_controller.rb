@@ -4,4 +4,6 @@ class ApplicationController < ActionController::Base
   include SessionHelper
   def index
   end
+
+
 end
