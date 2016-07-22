@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20160722153525) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.string   "friendable_type"
+    t.integer  "friendable_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "blocker_id"
+    t.integer  "status"
+  end
+
   create_table "playdates", force: :cascade do |t|
     t.string   "title",       null: false
     t.string   "description", null: false
@@ -41,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160722153525) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer  "zipcode"
     t.string   "username",        null: false
     t.string   "email",           null: false
     t.string   "password_digest", null: false

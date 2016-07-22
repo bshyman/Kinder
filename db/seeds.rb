@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com")
 
 User.create!(username:"benji", password:"1234", email: "bshyman@gmail.com")
@@ -19,3 +20,4 @@ Playdate.create!(title: "beach Day!", description: "Picnic at the beach, bring y
 Attendee.create!(guest_id:1, playdate_id: 1, response: true)
 Attendee.create!(guest_id:2, playdate_id: 2, response: true)
 Attendee.create!(guest_id:1, playdate_id: 3, response: nil)
+
