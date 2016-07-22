@@ -12,4 +12,7 @@ User.create!(username:"benji", password:"1234", email: "bshyman@gmail.com")
 
 Playdate.create!(title: "Brunch at Benjis", description: "Let's eat brunch and drink bloddy mary's while the kids play", location:"123 Main St. Chicago, Il", date:"2016-07-28" ,host_id: 2)
 
+Playdate.create!(title: "Bubble tea with the kiddos", description: "Get dem bubbles", location:"Kung Fu Tea", date:"2016-07-27" ,host_id: 1)
+
 Attendee.create!(guest_id:1, playdate_id: 1, response: true)
+Attendee.create!(guest_id:2, playdate_id: 2, response: true)
