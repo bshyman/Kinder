@@ -4,7 +4,7 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <% if current_user %>
-              <li><%= link_to 'Dashboard' %></li>
+              <li><%= link_to 'Dashboard', user_playdates_path(current_user.id) %></li>
               <li><%= link_to 'Mom Finder' %></li>
               <li><%= link_to 'Playdates' %></li>
               <li><%= link_to 'Profile' %></li>

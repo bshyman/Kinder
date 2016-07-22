@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'users#new'
+    root 'sessions#new'
+
 
   get '/kinders/reset' => 'kinders#reset_kinders', as:"reset_kinders"
   get '/login' => 'sessions#new'
