@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Register' do
+feature 'Register feature' do
   scenario 'user clicks register link and sees registration' do
     visit '/'
     click_link "Register"
@@ -16,6 +16,5 @@ feature 'Register' do
     fill_in('Password confirmation', :with => 'password')
     click_button "Register!"
     expect(page).to have_content "Dashboard"
-    save_and_open_page
   end
 end

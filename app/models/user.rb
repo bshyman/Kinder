@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  has_friendship
   has_many :reviews, foreign_key: :reviewer_id
   has_many :comments, foreign_key: :commenter_id
   has_many :hosting, foreign_key: :host_id, class_name: :Playdate
@@ -7,6 +8,15 @@ class User < ActiveRecord::Base
   has_many :attending, through: :attendees, source: :playdate
   has_many :children, foreign_key: :parent_id
   validates :username, presence: true, uniqueness: true
+
+  def users_in_proximity
+    users = User.where(zipcode: self.zipcode)
+    users.to_a
+    users -= [self]
+    users -= self.blocked_friends
+    users -= self.pending_friends
+    users
+  end
 
   def all_playdates
     all_playdates = self.attending_playdates + self.hosting

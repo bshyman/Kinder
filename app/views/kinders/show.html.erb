@@ -1,0 +1,5 @@
+<%= @user.id %>
+<%= @user.username %>
+
+<%= link_to "left", swipe_left_path(@user.id) %>
+<%= link_to "right", swipe_right_path(@user.id) %>
