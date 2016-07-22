@@ -1,25 +1,29 @@
-<header class="header">
-  <%=link_to 'Kinder', root_path %>
-  <input class="menu-btn" type="checkbox" id="menu-btn" />
-  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-  <ul class="menu">
-    <% if current_user %>
-      <li><%= link_to 'Dashboard' %></li>
-      <li><%= link_to 'Mom Finder' %></li>
-      <li><%= link_to 'Playdates' %></li>
-      <li><%= link_to 'Profile' %></li>
-      <li><%= link_to 'Messages' %></li>
-      <li><%= link_to 'Connections' %></li>
-      <li><%= link_to 'About', about_path %></li>
-      <li><%= link_to 'Contact', contact_path %></li>
-      <li><%= link_to 'Logout', logout_path  %></li>
-    <% else %>
-      <li><%= link_to 'Login', login_path %></li>
-      <li><%= link_to 'About', about_path %></li>
-      <li><%= link_to 'Contact', contact_path %></li>
-    <% end %>
-  </ul>
-</header>
+
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <% if current_user %>
+              <li><%= link_to 'Dashboard' %></li>
+              <li><%= link_to 'Mom Finder' %></li>
+              <li><%= link_to 'Playdates' %></li>
+              <li><%= link_to 'Profile' %></li>
+              <li><%= link_to 'Messages' %></li>
+              <li><%= link_to 'Connections' %></li>
+              <li><%= link_to 'About', about_path %></li>
+              <li><%= link_to 'Contact', contact_path %></li>
+              <li><%= link_to 'Logout', logout_path  %></li>
+            <% else %>
+              <li><%= link_to 'Login', login_path %></li>
+              <li><%= link_to 'About', about_path %></li>
+              <li><%= link_to 'Contact', contact_path %></li>
+            <% end %>
+        </ul>
+    </div>
+
+
+
+
 
 
 <!-- http://kmturley.blogspot.com/2014/06/responsive-mobile-dropdown-navigation.html -->

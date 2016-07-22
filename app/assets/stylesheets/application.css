@@ -14,4 +14,6 @@
  *= require_self
  */
 
-
+#logo{
+  text-align: center;
+}
