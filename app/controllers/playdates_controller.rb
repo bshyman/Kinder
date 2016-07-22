@@ -2,9 +2,13 @@ class PlaydatesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    restricted_access(@user)
-    @attending = User.find(params[:user_id]).all_playdates
-    @pending = User.find(params[:user_id]).pending_playdates
+    if logged_in?
+      restricted_access(@user)
+      @attending = User.find(params[:user_id]).all_playdates
+      @pending = User.find(params[:user_id]).pending_playdates
+    else
+      redirect_to root_path
+    end
   end
 
   def new
