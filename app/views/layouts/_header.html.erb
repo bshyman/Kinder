@@ -4,12 +4,12 @@
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu">
     <% if current_user %>
-      <li><%= link_to 'Dashboard', dashboard_path(current_user) %></li>
-      <li><%= link_to 'Mom Finder', finder_path(current_user) %></li>
-      <li><%= link_to 'Playdates', playdates_path(current_user) %></li>
-      <li><%= link_to 'Profile', user_path(current_user) %></li>
-      <li><%= link_to 'Messages', messages_path(current_user) %></li>
-      <li><%= link_to 'Connections', connections_path(current_user) %></li>
+      <li><%= link_to 'Dashboard' %></li>
+      <li><%= link_to 'Mom Finder' %></li>
+      <li><%= link_to 'Playdates' %></li>
+      <li><%= link_to 'Profile' %></li>
+      <li><%= link_to 'Messages' %></li>
+      <li><%= link_to 'Connections' %></li>
       <li><%= link_to 'About', about_path %></li>
       <li><%= link_to 'Contact', contact_path %></li>
       <li><%= link_to 'Logout', logout_path  %></li>
