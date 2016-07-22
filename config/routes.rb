@@ -2,15 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'users#new'
 
-<<<<<<< HEAD
   get '/kinders/reset' => 'kinders#reset_kinders', as:"reset_kinders"
-=======
-  resources :users, only: [:new, :create] do
-    resources :playdates
-    resources :children
-  end
-
->>>>>>> cd40b6bcd10cd1ebe9e615eacdf8615a9ab62c74
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
@@ -18,7 +10,11 @@ Rails.application.routes.draw do
   get '/kinders/:id/reject_user' => 'kinders#reject_user', as: "swipe_left"
   get '/kinders/:id/accept_user' => 'kinders#accept_user', as: "swipe_right"
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    resources :playdates
+    resources :children
+  end
+
   resources :kinders, only:[:index, :show]
 
 end

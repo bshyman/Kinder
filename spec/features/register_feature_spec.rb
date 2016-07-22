@@ -16,6 +16,5 @@ feature 'Register feature' do
     fill_in('Password confirmation', :with => 'password')
     click_button "Register!"
     expect(page).to have_content "Dashboard"
-    save_and_open_page
   end
 end

@@ -212,8 +212,8 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.2)
-  has_friendship
   faker!
+  has_friendship
   jbuilder (~> 2.5)
   jquery-rails
   launchy

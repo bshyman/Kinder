@@ -7,6 +7,9 @@ class KindersController < ApplicationController
       if current_user.blocked_friends.empty?
         flash[:notice] = "There are no more new parents in the area. Please come back at a later date."
       end
+      if !current_user.zipcode
+        flash[:zipcode] = "You need to enter zipcode to begin exploring"
+      end
       render 'no_kinders'
     else
       redirect_to kinder_path(kinder.sample.id)

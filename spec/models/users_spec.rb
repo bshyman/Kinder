@@ -1,7 +1,7 @@
 describe User do
-  let!(:user) { User.create!(username:"vi", password: "1234", zipcode:60614) }
-  let!(:user2) { User.create!(username:"aman", password: "1234", zipcode:60614) }
-  let!(:user3) { User.create!(username:"benji", password:"1234", zipcode:60614) }
+  let!(:user) { User.create!(username:"vi", password: "1234", zipcode:60614, email:"vi@g.com") }
+  let!(:user2) { User.create!(username:"aman", password: "1234", zipcode:60614, email:"vi@g.com") }
+  let!(:user3) { User.create!(username:"benji", password:"1234", zipcode:60614, email:"vi@g.com") }
   describe "Virtual Attributes" do
     it "shows users in the same zipcode who are not blocked" do
       user.friend_request(user3)

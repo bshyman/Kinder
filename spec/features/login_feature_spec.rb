@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "Login feature" do
-  before(:each) { User.create!(username:"vi", password:"12345678") }
+  before(:each) { User.create!(username:"vi", password:"12345678", zipcode:60614, email:"wut@gmail.com") }
 
   scenario 'user clicks login link and sees login' do
     visit '/'

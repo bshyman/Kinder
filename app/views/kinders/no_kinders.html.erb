@@ -2,4 +2,8 @@
   <%= flash[:notice] %>
 <% end %>
 
+<% if flash[:zipcode] %>
+  <%= flash[:zipcode] %>
+<% end %>
+
 <p> You have reached the end of possible kinders within your preferences. <%= link_to "Click here", reset_kinders_path %> to see reset kinders.</p>

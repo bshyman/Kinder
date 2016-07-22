@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe KindersController do
-  let! (:user) { User.create!(username:"vi", password: "1234", zipcode:60614) }
-  let! (:user2) { User.create!(username:"aman", password: "1234", zipcode:60614) }
+  let! (:user) { User.create!(username:"vi", password: "1234", zipcode:60614, email:"vi@g.com") }
+  let! (:user2) { User.create!(username:"aman", password: "1234", zipcode:60614, email:"amanda.g.com") }
   let (:session) { {user_id: user.id} }
 
   it "has a method that can reject user" do
