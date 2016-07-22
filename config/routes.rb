@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resources :users, only: [:new, :create] do
+    resources :playdates
     resources :children
   end
 
