@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature "Login" do
-  before(:each) { User.create!(username:"vi", password:"12345678") }
+feature "Login feature" do
+  before(:each) { User.create!(username:"vi", password:"12345678", zipcode:60614, email:"wut@gmail.com") }
 
   scenario 'user clicks login link and sees login' do
     visit '/'
@@ -15,7 +15,7 @@ feature "Login" do
     fill_in('Username', :with => 'vi')
     fill_in('Password', :with => '12345678')
     click_button('Login')
-    expect(page).to have_current_path root_path
+    expect(page).to have_content "Dashboard"
   end
 
    scenario "user can go to the homepage, click logout" do

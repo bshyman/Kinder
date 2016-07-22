@@ -10,14 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721232921) do
+ActiveRecord::Schema.define(version: 20160722153525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "attendees", force: :cascade do |t|
+    t.integer "guest_id"
+    t.integer "playdate_id"
+    t.boolean "response"
+  end
+
+  create_table "children", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "parent_id",  null: false
+    t.string   "allergies"
+    t.date     "birthday"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.string   "friendable_type"
+    t.integer  "friendable_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "blocker_id"
+    t.integer  "status"
+  end
+
+  create_table "playdates", force: :cascade do |t|
+    t.string   "title",       null: false
+    t.string   "description", null: false
+    t.string   "location",    null: false
+    t.integer  "host_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.date     "date"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
+    t.integer  "zipcode"
+    t.string   "username",        null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
