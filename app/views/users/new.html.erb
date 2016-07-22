@@ -1,0 +1,32 @@
+<div id="user-form-container">
+
+<h4>Registration</h2>
+
+  <%= form_for @user do |f| %>
+	  <% if @user.errors.any? %>
+		  <ul>
+	    <% @user.errors.full_messages.each do |error| %>
+		    <li><%= error %></li>
+	    <% end %>
+	  </ul>
+	  <% end %>
+	  <div>
+	    <%= f.label :username %>
+	    <%= f.text_field :username %>
+	  </div><br>
+
+	  <div>
+	    <%= f.label :password %>
+	    <%= f.password_field :password %>
+	  </div><br>
+
+	  <div>
+	    <%= f.label :password_confirmation %>
+	    <%= f.password_field :password_confirmation %>
+	  </div><br>
+
+	  <div>
+	    <button type="submit" name="Register!">Register!</button>
+	  </div>
+  <% end %>
+</div>
