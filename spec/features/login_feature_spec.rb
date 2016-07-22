@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Login" do
+feature "Login feature" do
   before(:each) { User.create!(username:"vi", password:"12345678") }
 
   scenario 'user clicks login link and sees login' do

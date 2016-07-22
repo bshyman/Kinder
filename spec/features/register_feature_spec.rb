@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Register' do
+feature 'Register feature' do
   scenario 'user clicks register link and sees registration' do
     visit '/'
     click_link "Register"

@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
 
   def users_in_proximity
     users = User.where(zipcode: self.zipcode)
-    users.delete(self)
+    users.to_a
+    users -= [self]
     users -= self.blocked_friends
+    users -= self.pending_friends
     users
   end
 
