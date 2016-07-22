@@ -29,4 +29,18 @@ class User < ActiveRecord::Base
     pending_playdates
   end
 
+  def create_invite(invitee, playdate)
+    Attendee.create(guest_id: invitee.id, playdate_id: playdate.id, response: nil)
+  end
+
+  def accept_invite(playdate)
+    @attendee = self.attendees.pending.find_by(playdate_id: playdate.id)
+    @attendee.response = true
+  end
+
+  def decline_invite(playdate)
+    @attendee = self.attendees.pending.find_by(playdate_id: playdate.id)
+    @attendee.response = false
+  end
+
 end
