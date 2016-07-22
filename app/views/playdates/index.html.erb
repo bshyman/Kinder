@@ -1,8 +1,19 @@
 <h2>Playdates</h2>
 
+<div class="pending-playdates">
+  <h4>Pending Playdates</h4>
+  <% @pending.each do |pending| %>
+   <%= render partial: 'playdate', locals: {playdate: pending} %>
+  <% end %>
+  <%= link_to 'See All Pending Playdates', root_path %>
+</div>
+
 <div class="scheduled-playdates">
   <h4>Scheduled Playdates</h4>
-  <%= render @playdates %>
+  <% @attending.each do |attending| %>
+   <%= render partial: 'playdate', locals: {playdate: attending} %>
+  <% end %>
   <%= link_to 'See All Playdates', root_path %>
 </div>
+
 

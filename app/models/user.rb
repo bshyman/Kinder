@@ -8,9 +8,25 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
 
   def all_playdates
-    attending = self.attending
-    hosting = self.hosting
-    all_playdates = attending + hosting
+    all_playdates = self.attending_playdates + self.hosting
+  end
+
+  def attending_playdates
+    attending = self.attendees.accepted
+    attending_playdates = []
+    attending.each do |a|
+      attending_playdates << Playdate.find(a.playdate_id)
+    end
+    attending_playdates
+  end
+
+  def pending_playdates
+    pending = self.attendees.pending
+    pending_playdates = []
+    pending.each do |a|
+      pending_playdates << Playdate.find(a.playdate_id)
+    end
+    pending_playdates
   end
 
 end

@@ -1,7 +1,8 @@
 class PlaydatesController < ApplicationController
 
   def index
-    @playdates = User.find(params[:user_id]).all_playdates
+    @attending = User.find(params[:user_id]).attending_playdates
+    @pending = User.find(params[:user_id]).pending_playdates
   end
 
 end
