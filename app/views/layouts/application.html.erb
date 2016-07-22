@@ -9,7 +9,9 @@
   </head>
 
   <body>
+    <%= link_to 'Home', root_path %>
     <% if logged_in? %>
+     <%= link_to "Logged in as #{current_user.id}", user_path(current_user.id) %>
       <%= link_to "Logout", logout_path %>
     <% else %>
       <%= link_to "Login", login_path %> | <%= link_to "Register", new_user_path %>

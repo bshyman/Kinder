@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :hosting, foreign_key: :host_id, class_name: :Playdate
   has_many :attendees, foreign_key: :guest_id
   has_many :attending, through: :attendees, source: :playdate
-  has_many :children
+  has_many :children, foreign_key: :parent_id
   validates :username, presence: true, uniqueness: true
 
   def all_playdates
