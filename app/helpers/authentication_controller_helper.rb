@@ -13,4 +13,10 @@ module AuthenticationControllerHelper
     redirect_to no_access_path unless logged_in?
   end
 
+  def find_and_ensure_user(id)
+    user = User.find_by(id: id)
+    redirect_to no_access_path if user.nil?
+    user
+  end
+
 end
