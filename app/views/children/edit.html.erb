@@ -1,0 +1,15 @@
+<%= form_for @child, url: {action: 'update'} do |f| %>
+<div class='form-group col-xs-6'>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class='form-group col-xs-6'>
+    <%= f.label :allergies%>
+    <%= f.text_field :allergies, class: "form-control" %>
+  </div>
+  <div class='form-group  col-xs-6'>
+    <%= f.label :birthday %>
+    <%= f.date_select :birthday, :order => [:month, :day, :year], :start_year => 2000, end_year: Time.now.year %>
+  </div>
+  <%= f.submit 'Update Child Info', class: 'btn btn-default' %>
+<% end %>

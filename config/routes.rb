@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create] do
     resources :playdates
+    resources :children
   end
 
   get '/login' => 'sessions#new'

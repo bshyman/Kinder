@@ -3,13 +3,16 @@
   <head>
     <title>Kinder</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
   <%= link_to "Login", login_path %> | <%= link_to "Register", new_user_path %> | <%= link_to "Logout", logout_path %>
-    <%= yield %>
+  <p><% if flash[:notice] %>
+    <%= flash[:notice]%>
+  <% end %></p>
+  <%= yield %>
   </body>
 </html>
