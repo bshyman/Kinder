@@ -1,0 +1,23 @@
+<div id="user-form-container">
+  <h4>Login</h2>
+  <% if @error %>
+	  <%= @error %>
+  <% end %>
+
+  <%= form_for @user, url: login_path, method: :post do |f|%>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <button type="submit" name="Login">Login</button>
+  </div>
+
+  <% end %>
+</div>
