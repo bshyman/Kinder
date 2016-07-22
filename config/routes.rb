@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/404' => 'sessions#forbidden', as: "no_access"
+  get '/about', to: 'pages#about'
+  get '/contact', to: 'pages#contact'
 end
