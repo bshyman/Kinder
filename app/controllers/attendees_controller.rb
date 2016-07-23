@@ -7,9 +7,12 @@ class AttendeesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @guest = User.find(guest_params[:guest_id])
-    @playdate = Playdate.find(params[:playdate_id])
-    @user.create_invite(@guest, @playdate)
+    @invite = @user.create_invite(guest_params[:guest_id], params[:playdate_id])
+    if @invite.save
+      redirect_to user_playdates_path(@user)
+    else
+      render 'new'
+    end
   end
 
   private

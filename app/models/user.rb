@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
     pending_playdates
   end
 
-  def create_invite(invitee, playdate)
-    Attendee.create(guest_id: invitee.id, playdate_id: playdate.id, response: nil)
+  def create_invite(guest_id, playdate_id)
+    Attendee.new(guest_id: guest_id, playdate_id: playdate_id, response: nil)
   end
 
   def accept_invite(playdate)
