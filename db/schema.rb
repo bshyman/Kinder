@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(version: 20160722153525) do
     t.string   "username",        null: false
     t.string   "email",           null: false
     t.string   "password_digest", null: false
+    t.boolean  "vaccinate"
+    t.string   "religion"
+    t.string   "parenting_style"
+    t.string   "date_night"
+    t.string   "shopping_prefs"
+    t.string   "fav_activities"
+    t.string   "music"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

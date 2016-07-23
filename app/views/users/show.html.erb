@@ -1,0 +1,34 @@
+<h2>Profile Page for <%= @user.username %> </h2>
+
+<% if @user.children.any? %>
+  <% @user.children.each do |child| %>
+  <ul> Children:
+    <li><%= link_to child.name, user_child_path(child.parent.id,child.id) %></li>
+  </ul>
+  <% end %>
+<% end %>
+
+<div class='survey'>
+
+  <%= render 'profile' %>
+  <%= render 'survey' %>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div>
+  <% if logged_in? && authorized?(@user) %>
+    <%= link_to 'Edit Profile', edit_user_path(@user.id) %>
+    <%= link_to 'Delete Account', user_path(@user.id), method: 'DELETE' %>
+    <%= link_to 'Add Child', new_user_child_path(@user.id) %>
+  <% end %>
+</div>

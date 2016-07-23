@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root 'sessions#new'
 
 
+
   get '/kinders/reset' => 'kinders#reset_kinders', as:"reset_kinders"
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -13,7 +14,8 @@ Rails.application.routes.draw do
   get '/kinders/:id/reject_user' => 'kinders#reject_user', as: "swipe_left"
   get '/kinders/:id/accept_user' => 'kinders#accept_user', as: "swipe_right"
 
-  resources :users, only: [:new, :create] do
+
+  resources :users, except: [:index] do
     resources :playdates
     resources :children
   end
@@ -21,3 +23,5 @@ Rails.application.routes.draw do
   resources :kinders, only:[:index, :show]
 
 end
+
+
