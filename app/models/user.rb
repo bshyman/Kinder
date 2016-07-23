@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     users
   end
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   def all_playdates
     all_playdates = self.attending_playdates + self.hosting
   end

@@ -4,6 +4,14 @@
 
 <%= form_for @user do |f| %>
   <p>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
       <%= f.label :zipcode %>
       <%= f.text_field :zipcode %>
   </p>
