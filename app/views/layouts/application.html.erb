@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kinder</title>
+    <%= favicon_link_tag 'kinder-favicon.png' %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-
       <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -16,8 +19,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="/js/application.js"></script>
   </head>
-
-  <body>
+  <body style="font-size:14px">
     <i id="menu-toggle" class="fa fa-bars" aria-hidden="false"></i>
     <div id="wrapper">
     <div id="logo">
@@ -44,5 +46,9 @@
           $("#wrapper").toggleClass("toggled");
       });
     </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>

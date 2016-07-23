@@ -15,11 +15,5 @@
 //= require turbolinks
 //= require_tree .
 //= require_tree ./channels
-$("#nav-close").on("click", function(){closeNav()});
 
-function closeNav() {
-  // document.getElementById("sidebar-wrapper").style.width= "0";
-  // document.getElementById("page-content-wrapper").style.marginLeft = "0";
-  document.getElementById("sidebar-wrapper").toggleClass('fa-minus');
-}
 
