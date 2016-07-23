@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     resources :playdates
     resources :children
   end
-
+  mount ActionCable.server => '/cable'
+  resources :chats, param: :id
+  resources :messages
   resources :kinders, only:[:index, :show]
 
 end

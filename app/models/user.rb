@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :attendees, foreign_key: :guest_id
   has_many :attending, through: :attendees, source: :playdate
   has_many :children
+  has_many :messages
+  has_many :chats, through: :messages
   validates :username, presence: true, uniqueness: true
 
   def users_in_proximity
