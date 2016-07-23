@@ -1,7 +1,10 @@
 <h2>Dashboard</h2>
 
-<%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %>
-
+<% if @user.friends.empty? %>
+  <p>Start Kindering or Add Connections Directly to Schedule Playdates!</p>
+<% else %>
+  <%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %>
+<% end %>
 <div class="connections">
   <h4>Recent Connections</h4>
   <% @user.friends.each do |friend| %>
