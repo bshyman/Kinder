@@ -34,7 +34,19 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-  end 
+    if logged_in?
+      @user = User.find(params[:user_id])
+      if current_user.id == @user.id
+        @attending = User.find(params[:user_id]).all_playdates
+        @pending = User.find(params[:user_id]).pending_playdates
+        render 'dashboard'
+      else
+        redirect_to no_access_path
+      end
+    else
+      redirect_to login_path
+    end
+  end
 
   private
   def user_params
