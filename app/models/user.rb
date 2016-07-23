@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :attending, through: :attendees, source: :playdate
   has_many :children, foreign_key: :parent_id
   validates :username, presence: true, uniqueness: true
+  serialize :music
 
   def users_in_proximity
     users = User.where(zipcode: self.zipcode)
