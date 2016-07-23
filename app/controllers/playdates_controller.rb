@@ -26,6 +26,17 @@ class PlaydatesController < ApplicationController
     end
   end
 
+  def show
+    @playdate = Playdate.find(params[:id])
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @playdate = Playdate.find(params[:id])
+    @playdate.destroy
+    redirect_to user_playdates_path(@user)
+  end
+
   private
   def playdate_params
     params.require(:playdate).permit(:title, :description, :date,:location).merge(host_id: current_user.id)
