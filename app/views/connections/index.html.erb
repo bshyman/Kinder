@@ -1,5 +1,9 @@
-<ul>
-  <% @connections.each do |user| %>
-    <li><%= user.username %></li>
-  <% end %>
-</ul>
+<% if @connections %>
+  <ul>
+    <% @connections.each do |user| %>
+      <li><%= user.username %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have no connections yet. You can start by looking through <%= link_to "kinders" %> to make connections and schedule playdates.<p>
+<% end %>
