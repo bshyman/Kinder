@@ -3,8 +3,7 @@
   <% if @error %>
 	  <%= @error %>
   <% end %>
-
-  <%= form_for @user, url: login_path, method: :post do |f|%>
+  <%= form_for User.new, url: login_path, method: :post do |f|%>
   <div>
     <%= f.label :username %>
     <%= f.text_field :username %>
