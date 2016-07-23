@@ -1,11 +1,16 @@
 <h2>Dashboard</h2>
 
-<%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %>
+<% if @user.friends.empty? %>
+  <p>Start Kindering or Add Connections Directly to Schedule Playdates!</p>
+<% else %>
+  <button><%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %></button>
+<% end %>
+  <button><%= link_to 'Start Kinder!', kinders_path %></button>
 
 <div class="connections">
   <h4>Recent Connections</h4>
-  <% @user.friends.each do |friend| %>
-    <%= friend.username %>
+  <% @user.friends.take(3).each do |friend| %>
+    <%= link_to friend.username, user_path(friend) %>
   <% end %>
 </div>
 
@@ -14,7 +19,7 @@
   <% @pending.each do |pending| %>
    <%= render partial: 'playdates/playdate', locals: {playdate: pending} %>
   <% end %>
-  <%= link_to 'See All Pending Playdates', root_path %>
+  <%= link_to 'See All Pending Playdates'%>
 </div>
 
 <div class="scheduled-playdates">
@@ -22,5 +27,5 @@
   <% @attending.each do |attending| %>
    <%= render partial: 'playdates/playdate', locals: {playdate: attending} %>
   <% end %>
-  <%= link_to 'See All Playdates', root_path %>
+  <%= link_to 'See All Playdates'%>
 </div>
