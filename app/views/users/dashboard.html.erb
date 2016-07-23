@@ -5,6 +5,8 @@
 <% else %>
   <%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %>
 <% end %>
+  <%= link_to 'Start Kinder!', kinders_path %>
+
 <div class="connections">
   <h4>Recent Connections</h4>
   <% @user.friends.each do |friend| %>
