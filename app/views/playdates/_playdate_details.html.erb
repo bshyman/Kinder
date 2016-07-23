@@ -1,6 +1,6 @@
 <div class="playdate_details">
   <h4><%= playdate.title %></h4>
-  <p>Date and Time: <%= playdate.date.strftime("%B, %dth") %>  <%# playdate.time.strftime("%H:%m%P") %></p>
+  <p>Date and Time: <%= playdate.date.strftime("%B, %dth") %>  <%= playdate.time.strftime("%H:%m%P") %></p>
   <p>Description: <%= playdate.description %></p>
   <p>Attending:
     <ul>
