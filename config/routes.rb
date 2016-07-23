@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :attendees, only: [:new, :create]
     end
     resources :children
+    resources :connections, only:[:index]
   end
   mount ActionCable.server => '/cable'
   resources :chats, param: :id
