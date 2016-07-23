@@ -7,7 +7,7 @@
               <li><%= link_to 'Dashboard', dashboard_path(current_user.id) %></li>
               <li><%= link_to 'Kinder', kinders_path %></li>
               <li><%= link_to 'Playdates', user_playdates_path(current_user.id) %></li>
-              <li><%= link_to 'Profile', user(current_user.id) %></li>
+              <li><%= link_to 'Profile', user_path(current_user.id) %></li>
               <li><%= link_to 'Messages', chats_path %></li>
               <li><%= link_to 'Connections', user_connections_path(current_user.id) %></li>
               <li><%= link_to 'About', about_path %></li>
