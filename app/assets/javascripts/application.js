@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require_tree ./channels
 $("#nav-close").on("click", function(){closeNav()});
 
 function closeNav() {
