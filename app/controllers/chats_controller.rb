@@ -2,7 +2,6 @@ class ChatsController < ApplicationController
   def index
     @chat = Chat.new
     @chats = Chat.all
-    p @chats
   end
 
   def new
@@ -16,7 +15,6 @@ class ChatsController < ApplicationController
     @chat = Chat.new(chat_params)
     if @chat.save
       respond_to do |format|
-        p @chat
         format.html { redirect_to @chat }
         format.js
       end
