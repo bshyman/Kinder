@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/kinders/:id/reject_user' => 'kinders#reject_user', as: "swipe_left"
   get '/kinders/:id/accept_user' => 'kinders#accept_user', as: "swipe_right"
 
+
   resources :users, except: [:index] do
     resources :playdates
     resources :children

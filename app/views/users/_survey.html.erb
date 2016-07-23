@@ -1,10 +1,12 @@
+<% if flash[:welcome_notice] %>
+  <%= flash[:welcome_notice]%>
+<% end %>
+
 <%= form_for @user do |f| %>
 <p>
-Vaccinate?
-
+  Vaccinate?
   <%= f.radio_button :vaccinate, "Yes" %>
   <%= f.label :Yes %>
-
   <%= f.radio_button :vaccinate, "No" %>
   <%= f.label :No %>
 </p>
@@ -15,16 +17,12 @@ Vaccinate?
 </p>
 <p>
   Parenting Approach:
-
   <%= f.radio_button :parenting_style, "Figure_It_Out_As_We_Go" %>
   <%= f.label "Figure_It_Out_As_We_Go" %>
-
   <%= f.radio_button :parenting_style, "Whatever_The_Book_Says" %>
   <%= f.label "Whatever_The_Book_Says" %>
-
   <%= f.radio_button :parenting_style, "Whatever_The_Kardashians_are_doing" %>
   <%= f.label "Whatever_The_Kardashians_are_doing" %>
-
   <%= f.radio_button :parenting_style, "I_Do_What_My_Mom_Tells_Me_To" %>
   <%= f.label "I_Do_What_My_Mom_Tells_Me_To" %>
 </p>
@@ -36,11 +34,10 @@ Ideal Date Night:
   "Hotdogs And Horror Movie",
   "Frozen Pizza And Blaze One",
   "Dive Bar And Shitty Garage Band",
-  "Go Out? We Have Kids",
+  "Cant Go Out We Have Kids",
      ], :prompt => 'Select One' %>
 <p>
   I Like To Shop At:
-
   <%= f.radio_button :shopping_prefs, "Jack And Jill" %>
     <%= f.label "Jack And Jill" %>
   <%= f.radio_button :shopping_prefs, "Carter's" %>
@@ -58,11 +55,6 @@ Ideal Date Night:
   <%= f.label :fav_activities %>
   <%= f.text_area :fav_activities %>
 </p>
-
-
-
-
-
 <p>
   Musical Preferences:
 <%= check_box_tag(:Hip_Hop) %>
@@ -91,16 +83,7 @@ Ideal Date Night:
 <%= label_tag(:IndieRock) %>
 <%= check_box_tag(:Ska_and_punk) %>
 <%= label_tag(:Ska_and_punk) %>
-
 </p>
-
-
-
-
-
-
-
-
 
 <%= f.submit 'Save' %>
 
