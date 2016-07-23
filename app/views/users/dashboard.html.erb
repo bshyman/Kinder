@@ -1,6 +1,6 @@
 <h2>Dashboard</h2>
 
-<%= link_to 'Schedule New Playdate', new_user_playdate_path %>
+<%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %>
 
 <div class="connections">
   <h4>Recent Connections</h4>
@@ -12,7 +12,7 @@
 <div class="pending-playdates">
   <h4>Pending Playdates</h4>
   <% @pending.each do |pending| %>
-   <%= render partial: 'playdate', locals: {playdate: pending} %>
+   <%= render partial: 'playdates/playdate', locals: {playdate: pending} %>
   <% end %>
   <%= link_to 'See All Pending Playdates', root_path %>
 </div>
@@ -20,7 +20,7 @@
 <div class="scheduled-playdates">
   <h4>Scheduled Playdates</h4>
   <% @attending.each do |attending| %>
-   <%= render partial: 'playdate', locals: {playdate: attending} %>
+   <%= render partial: 'playdates/playdate', locals: {playdate: attending} %>
   <% end %>
   <%= link_to 'See All Playdates', root_path %>
 </div>
