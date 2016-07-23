@@ -1,0 +1,17 @@
+<div class="row col-md-8 col-md-offset-2" id="chat-title">
+  <h1>chats</h1>
+</div>
+
+<div class="row col-md-8 col-md-offset-2" id="chats">
+  <%= render partial: 'chat_form', locals: {chat: @chat} %>
+  <div id="chat-errors">
+
+  </div>
+    <ul id="chat-index">
+  <% if @chats.any? %>
+      <%= render @chats %>
+  <%else %>
+    </ul>
+    <p>Be the first one to make a chat!</p>
+  <% end %>
+</div>
