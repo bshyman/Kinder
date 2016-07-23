@@ -42,7 +42,7 @@ class PlaydatesController < ApplicationController
 
   private
   def playdate_params
-    params.require(:playdate).permit(:title, :description, :date,:location).merge(host_id: current_user.id)
+    params.require(:playdate).permit(:title, :time, :description, :date,:location).merge(host_id: current_user.id)
   end
 
 end

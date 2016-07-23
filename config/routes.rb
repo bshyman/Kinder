@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get '/contact', to: 'pages#contact'
   get '/kinders/:id/reject_user' => 'kinders#reject_user', as: "swipe_left"
   get '/kinders/:id/accept_user' => 'kinders#accept_user', as: "swipe_right"
-  get '/users/:user_id/playdates/:playdate_id/attendees' => 'attendees#decline_invite', as: "decline_invite"
+  get '/users/:user_id/playdates/:playdate_id/attendees/decline' => 'attendees#decline_invite', as: "decline_invite"
+   get '/users/:user_id/playdates/:playdate_id/attendees/accept' => 'attendees#accept_invite', as: "accept_invite"
   get '/users/:user_id/dashboard' => 'users#dashboard', as: "dashboard"
 
   resources :users, except: [:index] do
