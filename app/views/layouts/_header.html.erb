@@ -4,9 +4,9 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <% if current_user %>
-              <li><%= link_to 'Dashboard', user_playdates_path(current_user.id) %></li>
+              <li><%= link_to 'Dashboard', dashboard_path(current_user.id) %></li>
               <li><%= link_to 'Kinder', kinders_path %></li>
-              <li><%= link_to 'Playdates' %></li>
+              <li><%= link_to 'Playdates', user_playdates_path(current_user.id) %></li>
               <li><%= link_to 'Profile' %></li>
               <li><%= link_to 'Messages' %></li>
               <li><%= link_to 'Connections' %></li>
