@@ -1,1 +1,5 @@
-index.html.erb
+<ul>
+  <% @connections.each do |user| %>
+    <li><%= user.username %></li>
+  <% end %>
+</ul>
