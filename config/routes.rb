@@ -19,3 +19,5 @@ Rails.application.routes.draw do
   resources :kinders, only:[:index, :show]
 
 end
+
+

@@ -1,0 +1,132 @@
+<%= form_for @user do |f| %>
+<p>
+Vaccinate?
+
+  <%= f.radio_button :vaccinate, "Yes" %>
+  <%= f.label :Yes %>
+
+  <%= f.radio_button :vaccinate, "No" %>
+  <%= f.label :No %>
+</p>
+<p>
+  Thoughts on
+  <%= f.label :religion %>
+  <%= f.text_field :religion %>
+</p>
+<p>
+  Parenting Approach:
+
+  <%= f.radio_button :parenting_style, "Figure_It_Out_As_We_Go" %>
+  <%= f.label "Figure_It_Out_As_We_Go" %>
+
+  <%= f.radio_button :parenting_style, "Whatever_The_Book_Says" %>
+  <%= f.label "Whatever_The_Book_Says" %>
+
+  <%= f.radio_button :parenting_style, "Whatever_The_Kardashians_are_doing" %>
+  <%= f.label "Whatever_The_Kardashians_are_doing" %>
+
+  <%= f.radio_button :parenting_style, "I_Do_What_My_Mom_Tells_Me_To" %>
+  <%= f.label "I_Do_What_My_Mom_Tells_Me_To" %>
+</p>
+<p>
+Ideal Date Night:
+  <%= f.select :date_night, [
+  "Turn up at the club",
+  "Romantic Dinner And Drama Movie",
+  "Hotdogs And Horror Movie",
+  "Frozen Pizza And Blaze One",
+  "Dive Bar And Shitty Garage Band",
+  "Go Out? We Have Kids",
+     ], :prompt => 'Select One' %>
+<p>
+  I Like To Shop At:
+
+  <%= f.radio_button :shopping_prefs, "Jack And Jill" %>
+    <%= f.label "Jack And Jill" %>
+  <%= f.radio_button :shopping_prefs, "Carter's" %>
+    <%= f.label :Carters %>
+  <%= f.radio_button :shopping_prefs, "Walmart" %>
+    <%= f.label :Walmart %>
+  <%= f.radio_button :shopping_prefs, "I_Make_My_Own_Clothes" %>
+    <%= f.label :I_Make_My_Own_Clothes %>
+  <%= f.radio_button :shopping_prefs, "Target" %>
+    <%= f.label :Target %>
+  <%= f.radio_button :shopping_prefs, "Thrift_it!" %>
+    <%= f.label :Thrift_it! %>
+</p>
+<p>
+  <%= f.label :fav_activities %>
+  <%= f.text_area :fav_activities %>
+</p>
+
+
+
+
+
+<p>
+  Musical Preferences:
+<%= check_box_tag(:Hip_Hop) %>
+<%= label_tag(:Hip_Hop) %>
+<%= check_box_tag(:RandBandSoul) %>
+<%= label_tag(:RandBandSoul) %>
+<%= check_box_tag(:Jam_bands) %>
+<%= label_tag(:Jam_bands) %>
+<%= check_box_tag(:HouseandTechno) %>
+<%= label_tag(:HouseandTechno) %>
+<%= check_box_tag(:Classical_and_jazz) %>
+<%= label_tag(:Classical_and_jazz) %>
+<%= check_box_tag(:Ambient_andDrone_andSynth) %>
+<%= label_tag(:Ambient_andDrone_andSynth) %>
+<%= check_box_tag(:Metal_and_Hardcore) %>
+<%= label_tag(:Metal_and_Hardcore) %>
+<%= check_box_tag(:Pop_Country) %>
+<%= label_tag(:Pop_Country) %>
+<%= check_box_tag(:Disney_radio) %>
+<%= label_tag(:Disney_radio) %>
+<%= check_box_tag(:Gospel) %>
+<%= label_tag(:Gospel) %>
+<%= check_box_tag(:Classic_rock) %>
+<%= label_tag(:Classic_rock) %>
+<%= check_box_tag(:IndieRock) %>
+<%= label_tag(:IndieRock) %>
+<%= check_box_tag(:Ska_and_punk) %>
+<%= label_tag(:Ska_and_punk) %>
+
+</p>
+
+
+
+
+
+
+
+
+
+<%= f.submit 'Save' %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% end %>
