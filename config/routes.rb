@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/playdates/:playdate_id/attendees/decline' => 'attendees#decline_invite', as: "decline_invite"
    get '/users/:user_id/playdates/:playdate_id/attendees/accept' => 'attendees#accept_invite', as: "accept_invite"
   get '/users/:user_id/dashboard' => 'users#dashboard', as: "dashboard"
+  post '/connections/search' => 'connections#search', as: "search"
 
   resources :users, except: [:index] do
     resources :playdates do
