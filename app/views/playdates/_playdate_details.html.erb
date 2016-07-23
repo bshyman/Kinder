@@ -1,10 +1,17 @@
 <div class="playdate_details">
-  <h4><%= playdate.title %></h4>
+  <h4><%= playdate.title %> hosted by <%= playdate.host.username %></h4>
   <p>Date and Time: <%= playdate.date.strftime("%B, %dth") %>  <%= playdate.time.strftime("%H:%m%P") %></p>
   <p>Description: <%= playdate.description %></p>
   <p>Attending:
     <ul>
-      <% playdate.guests.each do |g| %>
+      <% playdate.attending_guests.each do |g| %>
+        <li><%= g.username %></li>
+      <% end %>
+    </ul>
+  </p>
+  <p>Pending:
+    <ul>
+      <% playdate.pending_guests.each do |g| %>
         <li><%= g.username %></li>
       <% end %>
     </ul>
