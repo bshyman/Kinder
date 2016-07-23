@@ -14,6 +14,11 @@
   <% if playdate.host.id == current_user.id %>
     <%= link_to 'Cancel Playdate', user_playdate_path, method: :delete %>
   <% else %>
-    <%= link_to 'No Longer Attending', decline_invite_path(current_user.id, playdate.id) %>
+    <% if current_user.attending_playdates.include?(playdate) %>
+      <%= link_to 'Decline Invite', decline_invite_path(current_user.id, playdate.id) %>
+    <% else %>
+      <%= link_to 'Decline Invite', decline_invite_path(current_user.id, playdate.id) %>
+      <%= link_to 'Accept Invite', accept_invite_path(current_user.id, playdate.id) %>
+    <% end %>
   <% end %>
 </div>
