@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160723022838) do
 
   # These are extensions that must be enabled in order to support this database
@@ -27,7 +26,6 @@ ActiveRecord::Schema.define(version: 20160723022838) do
     t.boolean  "named",      default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.string   "id"
   end
 
   create_table "children", force: :cascade do |t|
@@ -73,8 +71,6 @@ ActiveRecord::Schema.define(version: 20160723022838) do
     t.string   "username",        null: false
     t.string   "email",           null: false
     t.string   "password_digest", null: false
-<<<<<<< HEAD
-=======
     t.boolean  "vaccinate"
     t.string   "religion"
     t.string   "parenting_style"
@@ -82,7 +78,6 @@ ActiveRecord::Schema.define(version: 20160723022838) do
     t.string   "shopping_prefs"
     t.string   "fav_activities"
     t.string   "music"
->>>>>>> 4e86d8f0747bdb73e5f4ed2a0b4ad148b36be418
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

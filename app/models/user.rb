@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
     users -= [self]
     users -= self.blocked_friends
     users -= self.pending_friends
+    users -= self.friends
     users
   end
 
