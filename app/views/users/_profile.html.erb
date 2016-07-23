@@ -1,1 +1,30 @@
-Here's a Partial to show my profile!
+<% if flash[:notice]%>
+  <%= flash[:notice] %>
+<% end %>
+<div class='profile-show'>
+   <ul>
+    <% if @user.zipcode || @user.zipcode == "" %>
+      <li>Zipcode: <%= @user.zipcode %></li>
+    <% end %>
+    <% if @user.vaccinate %>
+      <li>Vaccinate: <%= vaccinate?(@user) %></li>
+    <% end %>
+
+    <li>Parenting Style: <%= @user.parenting_style %></li>
+    <li>Ideal Date Night: <%= @user.date_night %></li>
+    <li>I shop at: <%= @user.shopping_prefs %></li>
+
+    <% if @user.religion || @user.religion == "" %>
+      <li>Thoughts On Religion: <%= @user.religion %></li>
+    <% end %>
+    <% if @user.fav_activities || @user.religion == "" %>
+        <li>Favorite Activities: <%= @user.fav_activities %></li>
+    <% end %>
+    <% if @user.music %>
+        <li>Music Preferences: <%= format_music_choices(@user) %></li>
+    <% end %>
+
+
+
+  </ul>
+</div>

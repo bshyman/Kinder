@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :chats, through: :messages
   has_many :children, foreign_key: :parent_id, dependent: :destroy
   validates :username, presence: true, uniqueness: true
+  serialize :music
 
   def users_in_proximity
     users = User.where(zipcode: self.zipcode)
