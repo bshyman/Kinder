@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root 'sessions#new'
 
 
+
   get '/kinders/reset' => 'kinders#reset_kinders', as:"reset_kinders"
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -12,9 +13,13 @@ Rails.application.routes.draw do
   get '/contact', to: 'pages#contact'
   get '/kinders/:id/reject_user' => 'kinders#reject_user', as: "swipe_left"
   get '/kinders/:id/accept_user' => 'kinders#accept_user', as: "swipe_right"
+  get '/users/:user_id/playdates/:playdate_id/attendees' => 'attendees#decline_invite', as: "decline_invite"
+  get '/users/:user_id/dashboard' => 'users#dashboard', as: "dashboard"
 
-  resources :users, only: [:new, :create] do
-    resources :playdates
+  resources :users, except: [:index] do
+    resources :playdates do
+      resources :attendees, only: [:new, :create]
+    end
     resources :children
   end
   mount ActionCable.server => '/cable'

@@ -20,7 +20,11 @@
   <body>
     <i id="menu-toggle" class="fa fa-bars" aria-hidden="false"></i>
     <div id="wrapper">
-    <div id="logo"><%=link_to "LOGO", root_path %></div>
+    <div id="logo">
+      <%= link_to root_path do %>
+        <%= image_tag "kinder-icon.png", :size => "100x100"%>
+      <% end %>
+    </div>
       <%= render "/layouts/header" %>
         <div id="page-content-wrapper">
           <div class="container-fluid">
