@@ -1,8 +1,13 @@
 <div>
    <ul>
     <li>Name: <%= @child.name %></li>
-    <li>Parent: <%= User.find(params[:user_id]).username %></li>
+    <li>Parent: <%= @child.parent.username %></li>
     <li>Allergies : <%= @child.allergies %></li>
     <li>Birthday: <%= @child.birthday %></li>
   </ul>
 </div>
+
+<%= link_to 'Edit Child Info', edit_user_child_path(@child.parent.id, @child.id) %>
+
+<%= link_to 'Delete Child', user_child_path(@child.parent.id, @child.id), method: 'DELETE' %>
+

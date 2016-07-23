@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :hosting, foreign_key: :host_id, class_name: :Playdate, dependent: :destroy
   has_many :attendees, foreign_key: :guest_id, dependent: :destroy
   has_many :attending, through: :attendees, source: :playdate
-  has_many :children, dependent: :destroy
+  has_many :children, foreign_key: :parent_id, dependent: :destroy
   validates :username, presence: true, uniqueness: true
 
   def users_in_proximity
