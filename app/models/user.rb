@@ -2,11 +2,14 @@ class User < ActiveRecord::Base
   has_secure_password
   has_friendship
   has_many :reviews, foreign_key: :reviewer_id
+  # wtf is comments?
   has_many :comments, foreign_key: :commenter_id
-  has_many :hosting, foreign_key: :host_id, class_name: :Playdate
-  has_many :attendees, foreign_key: :guest_id
+  has_many :hosting, foreign_key: :host_id, class_name: :Playdate, dependent: :destroy
+  has_many :attendees, foreign_key: :guest_id, dependent: :destroy
   has_many :attending, through: :attendees, source: :playdate
-  has_many :children, foreign_key: :parent_id
+  has_many :messages
+  has_many :chats, through: :messages
+  has_many :children, foreign_key: :parent_id, dependent: :destroy
   validates :username, presence: true, uniqueness: true
   serialize :music
 
@@ -16,6 +19,7 @@ class User < ActiveRecord::Base
     users -= [self]
     users -= self.blocked_friends
     users -= self.pending_friends
+    users -= self.friends
     users
   end
 
@@ -41,18 +45,18 @@ class User < ActiveRecord::Base
     pending_playdates
   end
 
-  def create_invite(invitee, playdate)
-    Attendee.create(guest_id: invitee.id, playdate_id: playdate.id, response: nil)
+  def create_invite(guest_id, playdate_id)
+    Attendee.new(guest_id: guest_id, playdate_id: playdate_id, response: nil)
   end
 
   def accept_invite(playdate)
-    @attendee = self.attendees.pending.find_by(playdate_id: playdate.id)
-    @attendee.response = true
+    @attendee = self.attendees.find_by(playdate_id: playdate.id)
+    @attendee.update(response: true)
   end
 
   def decline_invite(playdate)
-    @attendee = self.attendees.pending.find_by(playdate_id: playdate.id)
-    @attendee.response = false
+    @attendee = self.attendees.find_by(playdate_id: playdate.id)
+    @attendee.update(response: false)
   end
 
 end

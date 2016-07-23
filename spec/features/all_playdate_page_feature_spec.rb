@@ -4,14 +4,14 @@ feature "Playdate feature" do
 
   scenario "see scheduled playdates" do
     user = User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com", zipcode:60614)
-    playdate = Playdate.create!(title: "Brunch at Benjis", description: "Let's eat brunch and drink bloddy mary's while the kids play", location:"123 Main St. Chicago, Il", date:"2016-07-28" ,host_id: user.id)
+    playdate = Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Brunch at Benjis", description: "Let's eat brunch and drink bloddy mary's while the kids play", location:"123 Main St. Chicago, Il", date:"2016-07-28" ,host_id: user.id)
     Attendee.create!(guest_id: user.id, playdate_id: playdate.id, response: true)
     visit '/'
     click_link "Login"
     fill_in('Username', :with => 'amanda')
     fill_in('Password', :with => '1234')
     click_button('Login')
-    expect(page).to have_content "July, 28th | Brunch at Benjis"
+    expect(page).to have_content "Brunch at Benjis"
   end
 
   scenario "click on a link to view all playdates" do
@@ -27,7 +27,7 @@ feature "Playdate feature" do
   scenario "see pending playdates" do
     user = User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com", zipcode:60614)
     user2 = User.create!(username:"benji", password:"1234", email: "bshyman@gmail.com", zipcode:60614)
-    playdate = Playdate.create!(title: "beach Day!", description: "Picnic at the beach, bring your pets!", location:"Montrose Beach", date:"2016-08-27" ,host_id: user2.id)
+    playdate = Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "beach Day!", description: "Picnic at the beach, bring your pets!", location:"Montrose Beach", date:"2016-08-27" ,host_id: user2.id)
     Attendee.create!(guest_id: user.id, playdate_id: playdate.id, response: nil)
     visit '/'
     click_link "Login"
@@ -35,7 +35,7 @@ feature "Playdate feature" do
     fill_in('Password', :with => '1234')
     click_button('Login')
     within("div.pending-playdates > div.playdate-listing") do
-      expect(page).to have_content "August, 27th | beach Day!"
+      expect(page).to have_content "beach Day!"
     end
   end
 
@@ -49,5 +49,3 @@ feature "Playdate feature" do
     find_link("See All Pending Playdates").visible?
   end
 end
-
-

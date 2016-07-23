@@ -7,8 +7,10 @@
  body {
     overflow-x: hidden;
  }
+
 #menu-toggle {
     margin: 20px;
+    z-index: 3;
 }
 /* Toggle Styles */
 
@@ -31,7 +33,7 @@
 }
 
 #sidebar-wrapper {
-    z-index: 1000;
+    z-index: -1;
     position: fixed;
     left: 150px;
     width: 0;

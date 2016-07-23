@@ -1,0 +1,10 @@
+<h4>Select Invitee</h4>
+<div class="possible-invitees">
+  <%= form_for @attendee, url: user_playdate_attendees_path, method: :post do |f| %>
+    <% @user.friends.each do |friend| %>
+       <input type="checkbox" name="attending[guest_id]" value="<%= friend.id %>"><%= friend.username %><br />
+    <% end %>
+  <%= f.submit 'Invite!' %>
+  <% end %>
+  </form>
+</div>

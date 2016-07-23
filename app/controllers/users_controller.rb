@@ -34,6 +34,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashboard
+    if logged_in?
+        @user =  User.find(current_user.id)
+        @attending = User.find(current_user.id).all_playdates
+        @pending = User.find(current_user.id).pending_playdates
+        render 'dashboard'
+    else
+      redirect_to login_path
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :password, :zipcode,:email, :password_confirmation, :vaccinate, :religion, :parenting_style, :date_night, :shopping_prefs, :fav_activities, :music => [])

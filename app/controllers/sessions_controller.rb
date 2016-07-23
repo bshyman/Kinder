@@ -1,14 +1,19 @@
 class SessionsController < ApplicationController
 
   def new
-    @user = User.new
+    if !logged_in?
+      @user = User.new
+      render 'new'
+    else
+      redirect_to dashboard_path(current_user.id)
+    end
   end
 
   def create
     @user = User.find_by(username: login_params[:username])
     if @user && @user.authenticate(login_params[:password])
       session[:user_id] = @user.id
-      redirect_to user_playdates_path(@user.id)
+      redirect_to dashboard_path(@user.id)
     else
       @error = "Invalid username or password"
       render 'new'
