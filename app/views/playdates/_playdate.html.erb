@@ -1,3 +1,4 @@
 <div class="playdate-listing">
-  <%= playdate.date.strftime("%B, %dth") %> | <%= playdate.title%>
+  <p><%= playdate.date.strftime("%B, %dth") %>  <%# playdate.time.strftime("%H:%m%P") %></p>
+  <p><%= link_to playdate.title, user_playdate_path(current_user.id, playdate.id)%></p>
 </div>
