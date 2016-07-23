@@ -8,7 +8,7 @@ class PlaydatesController < ApplicationController
       @attending = User.find(params[:user_id]).all_playdates
       @pending = User.find(params[:user_id]).pending_playdates
     else
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 
