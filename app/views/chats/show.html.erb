@@ -1,0 +1,16 @@
+<div class="row col-md-8 col-md-offset-2">
+  <h1><%= @chat.identifier %></h1>
+
+<div class="panel panel-default">
+  <% if @chat.messages.any? %>
+    <div class="panel-body" id="messages">
+      <%= render partial: 'messages/message', collection: @chat.messages%>
+    </div>
+  <%else%>
+    <div class="panel-body hidden" id="messages">
+    </div>
+  <%end%>
+</div>
+
+  <%= render partial: 'messages/message_form', locals: {message: @message, chat: @chat}%>
+</div>

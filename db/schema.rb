@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20160723022838) do
     t.boolean "response"
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.string   "identifier"
+    t.boolean  "named",      default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "children", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "parent_id",  null: false
@@ -38,6 +45,14 @@ ActiveRecord::Schema.define(version: 20160723022838) do
     t.datetime "updated_at"
     t.integer  "blocker_id"
     t.integer  "status"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "chat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "playdates", force: :cascade do |t|

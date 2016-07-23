@@ -7,6 +7,7 @@
     <title>Kinder</title>
     <%= favicon_link_tag 'kinder-favicon.png' %>
     <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
       <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -16,8 +17,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-      <script src="/js/application.js"></script>
-
+    <script src="/js/application.js"></script>
   </head>
   <body style="font-size:14px">
     <i id="menu-toggle" class="fa fa-bars" aria-hidden="false"></i>

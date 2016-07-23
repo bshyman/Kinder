@@ -1,14 +1,17 @@
 class PlaydatesController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
     if logged_in?
-      restricted_access(@user)
       @user = User.find(params[:user_id])
-      @attending = User.find(params[:user_id]).all_playdates
-      @pending = User.find(params[:user_id]).pending_playdates
+      if current_user.id == @user.id
+        @attending = User.find(params[:user_id]).all_playdates
+        @pending = User.find(params[:user_id]).pending_playdates
+        render 'index'
+      else
+        redirect_to no_access_path
+      end
     else
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 
