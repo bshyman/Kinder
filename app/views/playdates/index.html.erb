@@ -2,6 +2,13 @@
 
 <%= link_to 'Schedule New Playdate', new_user_playdate_path %>
 
+<div class="connections">
+  <h4>Recent Connections</h4>
+  <% @user.friends.each do |friend| %>
+    <%= friend.username %>
+  <% end %>
+</div>
+
 <div class="pending-playdates">
   <h4>Pending Playdates</h4>
   <% @pending.each do |pending| %>
@@ -17,5 +24,3 @@
   <% end %>
   <%= link_to 'See All Playdates', root_path %>
 </div>
-
-

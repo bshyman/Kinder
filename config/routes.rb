@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get '/kinders/:id/accept_user' => 'kinders#accept_user', as: "swipe_right"
 
   resources :users, only: [:new, :create] do
-    resources :playdates
+    resources :playdates do
+      resources :attendees, only: [:new, :create]
+    end
     resources :children
   end
 
