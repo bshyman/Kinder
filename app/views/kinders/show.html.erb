@@ -1,5 +1,6 @@
-<%= @user.id %>
-<%= @user.username %>
+<h2><%= @user.first_name =></h2>
 
-<%= link_to "left", swipe_left_path(@user.id) %>
-<%= link_to "right", swipe_right_path(@user.id) %>
+<%= render 'users/profile' %>
+
+<%= link_to "Pass", swipe_left_path(@user.id) %>
+<%= link_to "Connect", swipe_right_path(@user.id) %>
