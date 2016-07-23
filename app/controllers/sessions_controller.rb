@@ -1,7 +1,12 @@
 class SessionsController < ApplicationController
 
   def new
-    @user = User.new
+    if !logged_in?
+      @user = User.new
+      render 'new'
+    else
+      redirect_to dashboard_path(current_user.id)
+    end
   end
 
   def create
