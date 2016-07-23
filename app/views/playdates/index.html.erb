@@ -12,8 +12,8 @@
 
 <div class="scheduled-playdates">
   <h4>Scheduled Playdates</h4>
-  <% @attending.each do |attending| %>
-   <%= render partial: 'playdate', locals: {playdate: attending} %>
-  <% end %>
+    <% @attending.each do |attending| %>
+     <%= render partial: 'playdate', locals: {playdate: attending} %>
+    <% end %>
   <%= link_to 'See All Playdates' %>
 </div>
