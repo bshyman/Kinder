@@ -1,14 +1,14 @@
-<form name="search-bar" action="/connections/search" method= "POST">
+<!-- <form name="search-bar" action="/connections/search" method= "POST"> -->
 
-  <input name="utf8" type="hidden" value="✓">
-  <input type="hidden" name="authenticity_token" value="MHgv+SHjlG9Gga4DLOONCB+pJxlp4x0mZnSax2vAlD1cBp/PdOlnu01Nua5z7k2Lxd6Ori2yFsvr+FwaC8YbGw==">
+<%= form_tag('/connections/search') do -%>
 
   <input type="text" name="search[search_term]"  placeholder="Search by Email">
 
   <input type="submit">
 
-</form>
+<% end %>
+<!-- </form> -->
 
 <% if flash[:no_result] %>
-<%= flash[:no_result] %>
+  <%= flash[:no_result] %>
 <% end %>

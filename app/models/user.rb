@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :chats, through: :messages
   has_many :children, foreign_key: :parent_id, dependent: :destroy
-  
+
   validates :username, presence: true, uniqueness: true
   serialize :music
 
@@ -68,6 +68,15 @@ class User < ActiveRecord::Base
   def decline_invite(playdate)
     @attendee = self.attendees.find_by(playdate_id: playdate.id)
     @attendee.update(response: false)
+  end
+
+  def pending_direct_add
+    requests = self.friendships.where(direct_add: true, status: "pending")
+    direct = []
+    requests.each do |f|
+      direct << User.find(f.friend_id)
+    end
+    direct
   end
 
 end
