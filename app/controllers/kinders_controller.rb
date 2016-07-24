@@ -36,7 +36,7 @@ class KindersController < ApplicationController
     @accepted_user = User.find(params[:id])
     if @accepted_user.pending_friends.include?(current_user)
       current_user.accept_request(@accepted_user)
-      flash[:notice] = "You've made a connection! Click on the 'Schedule Playdate' button to set up a playdate."
+      flash[:notice] = "You've made a connection! Click on the 'Schedule Playdate' button to set up a playdate or 'Send Message' to discuss your preferred times and locations."
       if request.xhr?
         render user_path(@accepted_user.id), layout:false
       else

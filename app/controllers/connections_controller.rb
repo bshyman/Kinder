@@ -20,9 +20,10 @@ class ConnectionsController < ApplicationController
   def direct
     @other_user = User.find(params[:id])
     current_user.friend_request(@other_user)
-    current_user.friendships.last.update(direct_add: true)
+    current_user.friendships.last.update!(direct_add: true)
+    @other_user.friendships.last.update!(direct_add: true)
     flash[:request_sent] = "Your request has been sent to #{@other_user.username}"
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   def search_params

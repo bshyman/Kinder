@@ -20,7 +20,7 @@
     <% elsif logged_in? %>
       <% if @user.friends.include?(current_user) %>
         <%= link_to 'Send Message' %>
-      <% else %>
+      <% elsif @user.friendships.include?(current_user) %>
         <%= link_to 'Add Friend', direct_add_path(@user) %>
       <% end %>
     <% else %>

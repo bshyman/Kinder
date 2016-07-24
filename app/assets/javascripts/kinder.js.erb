@@ -1,0 +1,35 @@
+//reload this script every time the page changes
+$('script').each(function() {
+    if ($(this).attr('src') !== 'assets/js/kinder.js.erb') {
+        var old_src = $(this).attr('src');
+        $(this).attr('src', '');
+        setTimeout(function(){ $(this).attr('src', old_src + '?'+new Date()); }, 250);
+    }
+});
+
+
+$(document).ready(function() {
+  var xDown = 0;
+  var yDown = 0;
+  var xUp = 0;
+  var yUp = 0;
+  var pixelDifference = 30;
+  $("#swiping_container")
+    .on('mousedown touchstart', function (e) {
+        xDown = e.pageX;
+        yDown = e.pageY;
+    })
+    .on('mouseup touchend',function (e) {
+        xUp = e.pageX;
+        yUp = e.pageY;
+        if (xDown+pixelDifference <= xUp) {
+          //swiping right
+          console.log("right!");
+          window.location = $("#connect").attr("href");
+        } else if (xDown-pixelDifference >= xUp) {
+          //swiping left
+          console.log("left!");
+          window.location = $("#pass").attr('href');
+        }
+    });
+});

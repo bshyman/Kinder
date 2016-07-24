@@ -15,7 +15,7 @@
     <% end %>
   <% end %>
   <% if !@user.pending_direct_add.empty? %>
-    <h4>Pending Connections</h4>
+    <h4>Requested Connections</h4>
     <% @user.pending_direct_add.each do |friend| %>
       <%= link_to friend.username, user_path(friend) %>
     <% end %>
