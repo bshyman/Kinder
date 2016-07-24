@@ -16,3 +16,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 coverage
+
+
+#Secret API keys and stuff
+/.env
+.env
