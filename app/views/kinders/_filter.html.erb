@@ -1,0 +1,13 @@
+<%= form_for :filter, method: 'get' do |f| %>
+Gender:
+  <%= f.select :gender, [
+  "Male", "Female", "Non-Binary"
+  ], :name => :gender %>
+Vaccination:
+  <%= f.select :vaccinate, [
+    "Yes", "No"
+    ], :name => :vaccinate %>
+
+  <%= f.submit 'Filter Results' %>
+
+<% end %>

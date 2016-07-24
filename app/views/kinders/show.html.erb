@@ -1,3 +1,4 @@
+<%= render 'filter' %>
 
 <h2><%= @user.first_name %></h2>
 
@@ -7,4 +8,5 @@
 
 <%= link_to "Pass", swipe_left_path(@user.id), id:"pass" %>
 <%= link_to "Connect", swipe_right_path(@user.id), id:"connect" %>
+
 
