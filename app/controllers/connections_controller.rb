@@ -7,8 +7,6 @@ class ConnectionsController < ApplicationController
 
   def search
     @user = User.find_by(email: search_params[:search_term])
-    p "USER!!!!!!!!!!!!!!!"
-    p @user
     if @user
       redirect_to user_path(@user)
     else
