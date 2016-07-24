@@ -1,5 +1,5 @@
 <h2>Dashboard</h2>
-
+<p>You are logged in as <%= @user.username %></p>
 <% if @user.friends.empty? %>
   <p>Start Kindering or Add Connections Directly to Schedule Playdates!</p>
 <% else %>
@@ -8,14 +8,18 @@
   <button><%= link_to 'Start Kinder!', kinders_path %></button>
 
 <div class="connections">
-  <h4>Recent Connections</h4>
+  <% if !@user.friends.empty? %>
+    <h4>Recent Connections</h4>
     <% @user.friends.take(3).each do |friend| %>
       <%= link_to friend.username, user_path(friend) %>
     <% end %>
-  <h4>Pending Connections</h4>
+  <% end %>
+  <% if !@user.pending_direct_add.empty? %>
+    <h4>Pending Connections</h4>
     <% @user.pending_direct_add.each do |friend| %>
       <%= link_to friend.username, user_path(friend) %>
     <% end %>
+  <% end %>
 </div>
 
 <div class="pending-playdates">

@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   end
 
   def pending_direct_add
-    requests = self.friendships.where(direct_add: true, status: "pending")
+    requests = self.friendships.where(direct_add: true, status: "requested")
     direct = []
     requests.each do |f|
       direct << User.find(f.friend_id)
