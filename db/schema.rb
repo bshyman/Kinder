@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160723022838) do
     t.string   "shopping_prefs"
     t.string   "fav_activities"
     t.string   "music"
+    t.string   "avatar"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

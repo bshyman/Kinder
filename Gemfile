@@ -28,7 +28,8 @@ gem 'redis', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 # Track test coverage
 gem 'simplecov', :require => false, :group => :test
-
+#file_upload
+gem 'carrierwave'
 # connections
 gem 'has_friendship'
 gem 'faker', github: 'stympy/faker'
