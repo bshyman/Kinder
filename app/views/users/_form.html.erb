@@ -77,10 +77,17 @@
   <div>
     <!-- http://stackoverflow.com/questions/10972300/in-rails-with-check-box-tag-how-do-i-keep-the-checkboxes-checked-after-submitt -->
     Musical Preferences:
-    <% @music_genres.each do |g|  %>
-      <%= f.label :music, g %>
-      <%= check_box_tag "user[music][]", g, @user.music.include?(g) %>
-  <% end %>
+    <% if @user.music %>
+      <% @music_genres.each do |g|  %>
+        <%= f.label :music, g %>
+        <%= check_box_tag "user[music][]", g, @user.music.include?(g) %>
+      <% end %>
+    <% else %>
+      <% @music_genres.each do |g|  %>
+        <%= f.label :music, g %>
+        <%= check_box_tag "user[music][]", g %>
+      <% end %>
+    <% end %>
 
   </div>
 
