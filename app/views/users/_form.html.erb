@@ -1,3 +1,10 @@
+<div class='errors'>
+<% if @errors && @errors.any? %>
+  <% @errors.each do |error| %>
+      <%= error %>
+    <% end %>
+<% end %>
+</div>
 <% if flash[:welcome_notice] %>
   <%= flash[:welcome_notice]%>
 <% end %>
@@ -9,7 +16,11 @@
 <% end %>
 
 <%= form_for @user do |f| %>
-<!-- blurrrb, limit 140 characters. gender -->
+
+  <div>
+    <%= f.file_field :avatar %>
+  </div>
+
   <div>
       <%= f.label :zipcode %>
       <%= f.text_field :zipcode %>
@@ -18,6 +29,17 @@
       <%= f.label :radius, 'Radius in miles (1-10)'%>
       <%= number_field_tag 'user[radius]', @user.radius ||= 10, min: 1, max: 10 %>
   </div>
+
+  <div>
+  <%# f.select :gender %>
+    Gender:
+    <%= f.select :gender, [
+      'Male',
+      'Female',
+      'Non-binary'
+      ] %>
+  </div>
+
   <div>
     Vaccinate?
     <%# f.radio_button :vaccinate, "Yes" %>
@@ -56,17 +78,18 @@
 
   </div>
   <div>
-  Ideal Date Night:
+  Ideal Kidless Night:
     <%= f.select :date_night, [
     "Turn Up At The Club",
     "Romantic Dinner And Drama Movie",
     "Hotdogs And Horror Movie",
     "Frozen Pizza And Blaze One",
     "Dive Bar And Shitty Garage Band",
-    "Cant Go Out We Have Kids",
+    "Can't Go Out, We Have Kids",
+    "Netflix And Chill"
        ], :prompt => 'Select One' %>
   <div>
-    I Like To Shop At:
+    I Buy My Kids' Clothes At:
       <%= f.select :shopping_prefs, [
     "Jack And Jill",
     "Carter's",
@@ -76,26 +99,31 @@
     "Thrift It!"
         ], :prompt => 'Select One' %>
 
-  </div>
+  </div><br>
   <div>
     <%= f.label :fav_activities %>
-    <%= f.text_area :fav_activities %>
+    <%= f.text_area :fav_activities, rows: "1", cols: "40" %>
   </div>
   <div>
     <!-- http://stackoverflow.com/questions/10972300/in-rails-with-check-box-tag-how-do-i-keep-the-checkboxes-checked-after-submitt -->
     Musical Preferences:
-    <% if @user.music %>
+    <% if @user.music  %>
       <% @music_genres.each do |g|  %>
         <%= f.label :music, g %>
         <%= check_box_tag "user[music][]", g, @user.music.include?(g) %>
       <% end %>
-    <% else %>
+    <% else @user.music %>
       <% @music_genres.each do |g|  %>
         <%= f.label :music, g %>
         <%= check_box_tag "user[music][]", g %>
       <% end %>
     <% end %>
 
+  </div>
+
+  <div>
+    About Me:
+    <%= f.text_area :bio, rows: "2", cols: "50" %>
   </div>
 
   <%= f.submit 'Save' %>

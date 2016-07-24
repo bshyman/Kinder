@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   serialize :music
+  validates :bio, length: {maximum: 300,
+                  too_long: "must be limited to %{count} characters"}
 
   def users_in_proximity
     api = ZipcodeAPI.new

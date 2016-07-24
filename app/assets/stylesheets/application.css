@@ -22,3 +22,8 @@
 .profile-pic {
   border-radius: 60%;
 }
+
+.errors {
+  color: red;
+  font-size: 1.8em;
+}
