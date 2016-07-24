@@ -1,9 +1,20 @@
+<div class='errors'>
+<% if @user.errors.any? %>
+<% @user.errors.full_messages.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+</div>
 <% if flash[:welcome_notice] %>
   <%= flash[:welcome_notice]%>
 <% end %>
 
 <%= form_for @user do |f| %>
-<!-- blurrrb, limit 140 characters. gender -->
+
+  <div>
+    <%= f.file_field :avatar %>
+  </div>
+
   <div>
       <%= f.label :zipcode %>
       <%= f.text_field :zipcode %>
@@ -90,12 +101,12 @@
   <div>
     <!-- http://stackoverflow.com/questions/10972300/in-rails-with-check-box-tag-how-do-i-keep-the-checkboxes-checked-after-submitt -->
     Musical Preferences:
-    <% if @user.music %>
+    <% if @user.music  %>
       <% @music_genres.each do |g|  %>
         <%= f.label :music, g %>
         <%= check_box_tag "user[music][]", g, @user.music.include?(g) %>
       <% end %>
-    <% else %>
+    <% else @user.music %>
       <% @music_genres.each do |g|  %>
         <%= f.label :music, g %>
         <%= check_box_tag "user[music][]", g %>

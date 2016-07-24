@@ -15,9 +15,11 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :chats, through: :messages
   has_many :children, foreign_key: :parent_id, dependent: :destroy
-  
+
   validates :username, presence: true, uniqueness: true
   serialize :music
+  validates :bio, length: {maximum: 300,
+                  too_long: "must be limited to %{count} characters"}
 
   def users_in_proximity
     api = ZipcodeAPI.new
