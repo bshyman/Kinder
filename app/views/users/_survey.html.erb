@@ -3,23 +3,27 @@
 <% end %>
 
 <%= form_for @user do |f| %>
-  <p>
+  <div>
       <%= f.label :zipcode %>
       <%= f.text_field :zipcode %>
-  </p>
-  <p>
+  </div>
+  <div>
+      <%= f.label :radius, 'Radius in miles (1-10)'%>
+      <%= number_field_tag 'user[radius]', nil, min: 1, max: 10 %>
+  </div>
+  <div>
     Vaccinate?
     <%= f.radio_button :vaccinate, "Yes" %>
     <%= f.label :Yes %>
     <%= f.radio_button :vaccinate, "No" %>
     <%= f.label :No %>
-  </p>
-  <p>
+  </div>
+  <div>
     Thoughts on
     <%= f.label :religion %>
     <%= f.text_field :religion %>
-  </p>
-  <p>
+  </div>
+  <div>
     Parenting Approach:
     <%= f.select :parenting_style, [
       "Figure It Out As We Go",
@@ -29,8 +33,8 @@
       "Some Of This, Some Of That"
       ], :prompt => 'Select One' %>
 
-  </p>
-  <p>
+  </div>
+  <div>
   Ideal Date Night:
     <%= f.select :date_night, [
     "Turn Up At The Club",
@@ -40,7 +44,7 @@
     "Dive Bar And Shitty Garage Band",
     "Cant Go Out We Have Kids",
        ], :prompt => 'Select One' %>
-  <p>
+  <div>
     I Like To Shop At:
       <%= f.select :shopping_prefs, [
     "Jack And Jill",
@@ -51,12 +55,12 @@
     "Thrift It!"
         ], :prompt => 'Select One' %>
 
-  </p>
-  <p>
+  </div>
+  <div>
     <%= f.label :fav_activities %>
     <%= f.text_area :fav_activities %>
-  </p>
-  <p>
+  </div>
+  <div>
     Musical Preferences:
     <%= f.label :music, "Hip Hop" %>
     <%# check_box :music, "Hip Hop" %>
@@ -85,7 +89,7 @@
     <%= check_box_tag 'user[music][]', "Indie Rock" %>
     <%= f.label :music, "Ska And Punk" %>
     <%= check_box_tag 'user[music][]', "Ska And Punk" %>
-  </p>
+  </div>
 
   <%= f.submit 'Save' %>
 <% end %>

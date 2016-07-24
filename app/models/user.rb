@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   serialize :music
 
   def users_in_proximity
-    users =  User.where("zipcode IN (?)", self.nearby_zipcodes.map(&:to_i))
+    api = ZipcodeAPI.new
+    nearby = api.get_nearby_zipcodes(self.zipcode, 10)
+    users =  User.where("zipcode IN (?)", nearby.map(&:to_i))
     p "PRINTINGGGGGGGGG"
     p users
     users.to_a
@@ -28,10 +30,10 @@ class User < ActiveRecord::Base
     users
   end
 
-  def nearby_zipcodes
-    api = ZipcodeAPI.new
-    nearby = api.get_nearby_zipcodes(self.zipcode, 10)
-  end
+  # def nearby_zipcodes
+  #   api = ZipcodeAPI.new
+  #   nearby = api.get_nearby_zipcodes(self.zipcode, 10)
+  # end
 
   def all_playdates
     all_playdates = self.attending_playdates + self.hosting

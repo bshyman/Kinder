@@ -3,8 +3,10 @@
 <% end %>
 <div class='profile-show'>
    <ul>
-    <% if @user.zipcode || @user.zipcode == "" %>
-      <li>Zipcode: <%= @user.zipcode %></li>
+    <% if authorized?(@user) %>
+      <% if @user.zipcode || @user.zipcode == "" %>
+        <li>Zipcode: <%= @user.zipcode %></li>
+      <% end %>
     <% end %>
     <% if @user.vaccinate %>
       <li>Vaccinate: <%= vaccinate?(@user) %></li>
