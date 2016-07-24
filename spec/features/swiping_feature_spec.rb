@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 feature 'Swiping feature' do
-  let! (:user) { User.create!(username:"vi", password: "1234", zipcode:60614, email:"vi@g.com") }
-  let! (:user2) { User.create!(username:"aman", password: "1234", zipcode:60614, email:"a.g.com") }
+  let! (:user) { User.create!(username:"vi", password: "1234", zipcode: 60614, email:"vi@g.com") }
+  let! (:user2) { User.create!(username:"aman", password: "1234", zipcode: 60614, email:"a.g.com") }
 
   before(:each) do
     visit login_path

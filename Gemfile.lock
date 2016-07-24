@@ -99,6 +99,9 @@ GEM
     has_friendship (1.0.2)
       rails (>= 4.0.0, < 5.1.0)
       stateful_enum
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     ipaddress (0.8.3)
     jbuilder (2.6.0)
@@ -126,6 +129,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    multi_xml (0.5.5)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -241,6 +245,7 @@ DEPENDENCIES
   faker!
   fog-aws
   has_friendship
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
   launchy
