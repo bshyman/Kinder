@@ -11,25 +11,25 @@ feature 'Swiping feature' do
     click_button('Login')
   end
 
-  scenario 'going to kinder brings you to another user"s picture & survey' do
+  xscenario 'going to kinder brings you to another user"s picture & survey' do
     visit kinders_path
     expect(page).to have_current_path kinder_path(user2.id)
   end
 
-  scenario 'clicking a button goes to another user' do
+  xscenario 'clicking a button goes to another user' do
     visit kinders_path
     user4 = User.create!(username:"leleand", password:"1234", zipcode:60614, email:"l@g.com")
     click_link "left"
     expect(page).to have_current_path kinder_path(user4.id)
   end
 
-  scenario 'The end page is shown when you have gone through all possible kinders' do
+  xscenario 'The end page is shown when you have gone through all possible kinders' do
     visit kinders_path
     click_link "left"
     expect(page).to have_content ("You have reached the end of possible kinders within your preferences.")
   end
 
-  scenario 'You can reset kinders and start over' do
+  xscenario 'You can reset kinders and start over' do
     visit kinders_path
     click_link "left"
     click_link "Click here"

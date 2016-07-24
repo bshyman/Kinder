@@ -29,8 +29,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
+      @errors = @user.errors.full_messages
       @music_genres = ['Hip Hop',"R&B/Soul","Jam Bands", 'House And Techno', "Classical And Jazz", "Ambient And Drone Synth","Ambient And Drone Synth" , "Metal And Hardcore", "Pop Country",  "Disney Radio", "Gospel", "Classic Rock", "Indie Rock", "Ska And Punk"]
-      @errors = @user.errors
       render 'edit'
     end
   end
@@ -48,6 +48,10 @@ class UsersController < ApplicationController
 
   private
   def user_params
+<<<<<<< HEAD
     params.require(:user).permit(:username, :password, :zipcode, :radius, :email, :password_confirmation, :vaccinate, :religion, :parenting_style, :date_night, :shopping_prefs, :fav_activities, :gender, :bio, :music => [])
+=======
+    params.require(:user).permit(:username, :password, :zipcode, :radius, :email, :password_confirmation, :vaccinate, :religion, :parenting_style, :date_night, :shopping_prefs, :fav_activities, :music => []).merge(zipcode: 60654, radius: 10)
+>>>>>>> 1020d0e243c970a4e21b8120c780b7dbde24e98e
   end
 end

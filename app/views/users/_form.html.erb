@@ -1,12 +1,18 @@
 <div class='errors'>
-<% if @user.errors.any? %>
-<% @user.errors.full_messages.each do |error| %>
+<% if @errors.any? %>
+<% @errors.each do |error| %>
     <%= error %>
   <% end %>
 <% end %>
 </div>
 <% if flash[:welcome_notice] %>
   <%= flash[:welcome_notice]%>
+<% end %>
+
+<% if @errors %>
+  <% @errors.each do |e| %>
+    <%= e %>
+  <% end %>
 <% end %>
 
 <%= form_for @user do |f| %>

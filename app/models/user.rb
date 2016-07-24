@@ -33,10 +33,9 @@ class User < ActiveRecord::Base
     users
   end
 
-  # def nearby_zipcodes
-  #   api = ZipcodeAPI.new
-  #   nearby = api.get_nearby_zipcodes(self.zipcode, 10)
-  # end
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 
   def all_playdates
     all_playdates = self.attending_playdates + self.hosting
