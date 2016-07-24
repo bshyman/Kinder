@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com", zipcode: 60616)
 User.create!(username:"benji", password:"1234", email: "bshyman@gmail.com", zipcode: 60616)
 User.create!(username:"vi", password:"1234", email: "vi@gmail.com", zipcode: 60616)
 User.create!(username:"leland", password:"1234", email: "leland@gmail.com", zipcode: 60616)
+User.create!(username:"test_zip", password:"1234", email: "test@gmail.com", zipcode: 60607)
 
 Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Brunch at Benjis", description: "Let's eat brunch and drink bloddy mary's while the kids play", location:"123 Main St. Chicago, Il", date:"2016-07-28" ,host_id: 2)
 Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Bubble tea with the kiddos", description: "Get dem bubbles", location:"Kung Fu Tea", date:"2016-07-27" ,host_id: 1)

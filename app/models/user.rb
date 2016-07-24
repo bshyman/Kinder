@@ -1,3 +1,6 @@
+require 'httparty'
+require 'zipcodeapi'
+
 class User < ActiveRecord::Base
   has_secure_password
   has_friendship
@@ -14,13 +17,20 @@ class User < ActiveRecord::Base
   serialize :music
 
   def users_in_proximity
-    users = User.where(zipcode: self.zipcode)
+    users =  User.where("zipcode IN (?)", self.nearby_zipcodes.map(&:to_i))
+    p "PRINTINGGGGGGGGG"
+    p users
     users.to_a
     users -= [self]
     users -= self.blocked_friends
     users -= self.pending_friends
     users -= self.friends
     users
+  end
+
+  def nearby_zipcodes
+    api = ZipcodeAPI.new
+    nearby = api.get_nearby_zipcodes(self.zipcode, 10)
   end
 
   def all_playdates
