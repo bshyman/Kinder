@@ -2,7 +2,8 @@ console.log("hello??");
 
 $(document).ready(function() {
 	console.log("hello");
-	$("dev.swiping_container").on("clck", function(e) {
+	$("div.swiping_container").on("click", function(e) {
+		console.log(e.target);
 		console.log("leeeeeft");
 	});
 
