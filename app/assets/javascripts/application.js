@@ -14,11 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$("#nav-close").on("click", function(){closeNav()});
+//= require_tree ./channels
 
-function closeNav() {
-  // document.getElementById("sidebar-wrapper").style.width= "0";
-  // document.getElementById("page-content-wrapper").style.marginLeft = "0";
-  document.getElementById("sidebar-wrapper").toggleClass('fa-minus');
-}
 
