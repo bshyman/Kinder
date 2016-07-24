@@ -1,14 +1,11 @@
 class ChatsController < ApplicationController
   def index
-    @chats = Chat.all
+    @chats = current_user.subscriptions
     @chat = Chat.new
   end
 
   def new
-    if request.referrer.split("/").last == "chats"
-      flash[:notice] = nil
-    end
-    @chat = chat.new
+    @chat = Chat.new
   end
 
    def create

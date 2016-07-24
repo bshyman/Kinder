@@ -1,4 +1,4 @@
 class Subscription < ActiveRecord::Base
-  belongs_to :chats
-  belongs_to :users
+  belongs_to :chat
+  belongs_to :user
 end
