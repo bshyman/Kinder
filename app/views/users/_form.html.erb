@@ -1,8 +1,8 @@
 <div class='errors'>
-<% if @errors.any? %>
-<% @errors.each do |error| %>
-    <%= error %>
-  <% end %>
+<% if @errors && @errors.any? %>
+  <% @errors.each do |error| %>
+      <%= error %>
+    <% end %>
 <% end %>
 </div>
 <% if flash[:welcome_notice] %>
