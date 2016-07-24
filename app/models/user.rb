@@ -1,3 +1,6 @@
+require 'httparty'
+require 'zipcodeapi'
+
 class User < ActiveRecord::Base
   has_secure_password
   has_friendship
@@ -10,11 +13,14 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :chats, through: :messages
   has_many :children, foreign_key: :parent_id, dependent: :destroy
+
   validates :username, presence: true, uniqueness: true
   serialize :music
 
   def users_in_proximity
-    users = User.where(zipcode: self.zipcode)
+    api = ZipcodeAPI.new
+    nearby = api.get_nearby_zipcodes(self.zipcode, self.radius)
+    users =  User.where("zipcode IN (?)", nearby.map(&:to_i))
     users.to_a
     users -= [self]
     users -= self.blocked_friends

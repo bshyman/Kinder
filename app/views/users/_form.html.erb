@@ -1,0 +1,95 @@
+<% if flash[:welcome_notice] %>
+  <%= flash[:welcome_notice]%>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <div>
+      <%= f.label :zipcode %>
+      <%= f.text_field :zipcode %>
+  </div>
+  <div>
+      <%= f.label :radius, 'Radius in miles (1-10)'%>
+      <%= number_field_tag 'user[radius]', @user.radius, min: 1, max: 10 %>
+  </div>
+  <div>
+    Vaccinate?
+    <%# f.radio_button :vaccinate, "Yes" %>
+    <% if @user.vaccinate %>
+      <%= f.label 'Yes' %>
+      <%= radio_button_tag 'user[vaccinate]', true, true %>
+    <% else %>
+      <%= f.label 'Yes' %>
+      <%= radio_button_tag 'user[vaccinate]', true%>
+    <% end %>
+    <!-- <%= f.label :Yes %> -->
+    <%# f.radio_button :vaccinate, "No" %>
+    <% if !@user.vaccinate %>
+      <%= f.label 'No' %>
+      <%= radio_button_tag 'user[vaccinate]', false, true %>
+    <% else %>
+      <%= f.label 'No' %>
+      <%= radio_button_tag 'user[vaccinate]', false%>
+    <% end %>
+    <!-- <%= f.label :No %> -->
+  </div>
+  <div>
+    Thoughts on
+    <%= f.label :religion %>
+    <%= f.text_field :religion %>
+  </div>
+  <div>
+    Parenting Approach:
+    <%= f.select :parenting_style, [
+      "Figure It Out As We Go",
+      "Carefully Research Everything",
+      "Whatever The Kardashians Are Doing",
+      "I Do What My Mom Tells Me To",
+      "Some Of This, Some Of That"
+      ], :prompt => 'Select One' %>
+
+  </div>
+  <div>
+  Ideal Date Night:
+    <%= f.select :date_night, [
+    "Turn Up At The Club",
+    "Romantic Dinner And Drama Movie",
+    "Hotdogs And Horror Movie",
+    "Frozen Pizza And Blaze One",
+    "Dive Bar And Shitty Garage Band",
+    "Cant Go Out We Have Kids",
+       ], :prompt => 'Select One' %>
+  <div>
+    I Like To Shop At:
+      <%= f.select :shopping_prefs, [
+    "Jack And Jill",
+    "Carter's",
+    "Walmart",
+    "I Make My Own Clothes",
+    "Target",
+    "Thrift It!"
+        ], :prompt => 'Select One' %>
+
+  </div>
+  <div>
+    <%= f.label :fav_activities %>
+    <%= f.text_area :fav_activities %>
+  </div>
+  <div>
+    <!-- http://stackoverflow.com/questions/10972300/in-rails-with-check-box-tag-how-do-i-keep-the-checkboxes-checked-after-submitt -->
+    Musical Preferences:
+    <% if @user.music %>
+      <% @music_genres.each do |g|  %>
+        <%= f.label :music, g %>
+        <%= check_box_tag "user[music][]", g, @user.music.include?(g) %>
+      <% end %>
+    <% else %>
+      <% @music_genres.each do |g|  %>
+        <%= f.label :music, g %>
+        <%= check_box_tag "user[music][]", g %>
+      <% end %>
+    <% end %>
+
+  </div>
+
+  <%= f.submit 'Save' %>
+<% end %>

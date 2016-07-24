@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @music_genres = ['Hip Hop',"R&B/Soul","Jam Bands", 'House And Techno', "Classical And Jazz", "Ambient And Drone Synth","Ambient And Drone Synth" , "Metal And Hardcore", "Pop Country",  "Disney Radio", "Gospel", "Classic Rock", "Indie Rock", "Ska And Punk"]
   end
 
   def update

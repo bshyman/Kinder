@@ -5,6 +5,6 @@
 	<%= render 'users/profile' %>
 </div>
 
-<%= link_to "Pass", swipe_left_path(@user.id) %>
-<%= link_to "Connect", swipe_right_path(@user.id) %>
+<%= link_to "Pass", swipe_left_path(@user.id), id:"pass" %>
+<%= link_to "Connect", swipe_right_path(@user.id), id:"connect" %>
 

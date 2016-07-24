@@ -15,9 +15,11 @@ $(document).ready(function() {
         if (xDown+pixelDifference <= xUp) {
           //swiping right
             console.log("right!");
+            $("#connect").trigger('click');
         } else if (xDown-pixelDifference >= xUp) {
           //swiping left
             console.log("left!");
+            $("#pass").trigger('click');
         }
     });
 });
