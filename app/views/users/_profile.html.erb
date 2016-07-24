@@ -5,6 +5,8 @@
 <div class='profile-show'>
    <ul>
     <p>
+      <%= image_tag @user.avatar.url if @user.avatar? %>
+
       <%= image_tag @user.avatar, size: '150' %>
     </p>
     <% if @user.zipcode || @user.zipcode == "" %>
