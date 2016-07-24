@@ -25,8 +25,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    p "PERMITTTTTED:"
-    p user_params
     if @user.update(user_params)
       redirect_to @user
     else
@@ -35,7 +33,6 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-
     if logged_in?
         @user =  User.find(current_user.id)
         @attending = User.find(current_user.id).all_playdates
@@ -48,7 +45,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-
     params.require(:user).permit(:username, :password, :zipcode,:email, :password_confirmation, :vaccinate, :religion, :parenting_style, :date_night, :shopping_prefs, :fav_activities, :avatar, :music => [])
   end
 end
