@@ -3,13 +3,14 @@
 <% end %>
 
 <%= form_for @user do |f| %>
+<!-- blurrrb, limit 140 characters. gender -->
   <div>
       <%= f.label :zipcode %>
       <%= f.text_field :zipcode %>
   </div>
   <div>
       <%= f.label :radius, 'Radius in miles (1-10)'%>
-      <%= number_field_tag 'user[radius]', @user.radius, min: 1, max: 10 %>
+      <%= number_field_tag 'user[radius]', @user.radius ||= 10, min: 1, max: 10 %>
   </div>
   <div>
     Vaccinate?

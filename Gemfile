@@ -28,12 +28,15 @@ gem 'redis', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 # Track test coverage
 gem 'simplecov', :require => false, :group => :test
-
-# connections
 gem 'has_friendship'
 gem 'faker', github: 'stympy/faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+#file_upload
+gem 'carrierwave'
+gem 'fog-aws'
+# connections
+
 # Use HTTParty to make API get requests
 gem 'httparty'
 

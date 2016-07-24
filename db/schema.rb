@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20160724045532) do
     t.datetime "updated_at",                  null: false
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "avatar"
     t.integer  "radius",          default: 5
   end
 

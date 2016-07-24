@@ -4,6 +4,8 @@ require 'zipcodeapi'
 class User < ActiveRecord::Base
   has_secure_password
   has_friendship
+  mount_uploader :avatar, AvatarUploader
+
   has_many :reviews, foreign_key: :reviewer_id
   # wtf is comments?
   has_many :comments, foreign_key: :commenter_id
@@ -69,4 +71,17 @@ class User < ActiveRecord::Base
     @attendee.update(response: false)
   end
 
+  def zipcode_nil
+    self.zipcode = nil
+  end
+
+  def zipcode_default
+    self.zipcode = 60654
+  end
+
+  def radius_nil
+  end
+
+  def radius_default
+  end
 end
