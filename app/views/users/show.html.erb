@@ -9,20 +9,8 @@
 <% end %>
 
 <div class='survey'>
-
   <%= render 'profile' %>
-
-
 </div>
-
-
-
-
-
-
-
-
-
 
 <div>
   <% if logged_in? && authorized?(@user) %>
@@ -30,9 +18,16 @@
       <%= link_to 'Delete Account', user_path(@user.id), method: 'DELETE' %>
       <%= link_to 'Add Child', new_user_child_path(@user.id) %>
     <% elsif logged_in? %>
-      <%= link_to 'Add Friend' %>
-      <%= link_to 'Send Message' %>
+      <% if @user.friends.include?(current_user) %>
+        <%= link_to 'Send Message' %>
+      <% else %>
+        <%= link_to 'Add Friend', direct_add_path(@user) %>
+      <% end %>
     <% else %>
       <% render 'no_access' %>
+  <% end %>
+
+  <% if flash[:request_sent] %>
+    <%= flash[:request_sent] %>
   <% end %>
 </div>

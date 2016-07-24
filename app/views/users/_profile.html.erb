@@ -3,10 +3,15 @@
 <% end %>
 <div class='profile-show'>
    <ul>
-    <% if @user.zipcode || @user.zipcode == "" %>
-      <li>Zipcode: <%= @user.zipcode %></li>
+    <% if authorized?(@user) %>
+      <% if @user.zipcode || @user.zipcode == "" %>
+        <li>Zipcode: <%= @user.zipcode %></li>
+      <% end %>
+      <% if @user.radius || @user.radius == "" %>
+        <li>Radius Preference: <%= @user.radius %></li>
+      <% end %>
     <% end %>
-    <% if @user.vaccinate %>
+    <% if !@user.vaccinate = nil %>
       <li>Vaccinate: <%= vaccinate?(@user) %></li>
     <% end %>
 
