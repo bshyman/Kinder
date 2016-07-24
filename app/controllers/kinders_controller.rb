@@ -25,7 +25,11 @@ class KindersController < ApplicationController
     current_user.friend_request(@rejected_user)
     current_user.accept_request(@rejected_user)
     current_user.block_friend(@rejected_user)
-    redirect_to kinders_path
+    if request.xhr?
+
+    else
+      redirect_to kinders_path
+    end
   end
 
   def accept_user
@@ -33,10 +37,18 @@ class KindersController < ApplicationController
     if @accepted_user.pending_friends.include?(current_user)
       current_user.accept_request(@accepted_user)
       flash[:notice] = "You've made a connection! Click on the 'Schedule Playdate' button to set up a playdate."
-      redirect_to user_path(@accepted_user.id)
+      if request.xhr?
+        render user_path(@accepted_user.id), layout:false
+      else
+        redirect_to user_path(@accepted_user.id)
+      end
     else
       current_user.friend_request(@accepted_user)
-      redirect_to kinders_path
+      if request.xhr?
+        render "index", layout:false
+      else
+        redirect_to kinders_path
+      end
     end
   end
 
