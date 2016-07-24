@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20160724045532) do
     t.string   "fav_activities"
     t.string   "music"
     t.string   "avatar"
+    t.string   "bio"
+    t.string   "gender"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "radius",          default: 5
