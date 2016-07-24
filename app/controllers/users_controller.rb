@@ -48,10 +48,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-<<<<<<< HEAD
-    params.require(:user).permit(:username, :password, :zipcode, :radius, :email, :password_confirmation, :vaccinate, :religion, :parenting_style, :date_night, :shopping_prefs, :fav_activities, :gender, :bio, :music => [])
-=======
     params.require(:user).permit(:username, :password, :zipcode, :radius, :email, :password_confirmation, :vaccinate, :religion, :parenting_style, :date_night, :shopping_prefs, :fav_activities, :music => []).merge(zipcode: 60654, radius: 10)
->>>>>>> 1020d0e243c970a4e21b8120c780b7dbde24e98e
   end
 end
