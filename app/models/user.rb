@@ -71,17 +71,4 @@ class User < ActiveRecord::Base
     @attendee.update(response: false)
   end
 
-  def zipcode_nil
-    self.zipcode = nil
-  end
-
-  def zipcode_default
-    self.zipcode = 60654
-  end
-
-  def radius_nil
-  end
-
-  def radius_default
-  end
 end
