@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(version: 20160724062345) do
 
   create_table "users", force: :cascade do |t|
     t.integer  "zipcode"
-    t.string   "username",                    null: false
-    t.string   "email",                       null: false
-    t.string   "password_digest",             null: false
+    t.string   "username",                     null: false
+    t.string   "email",                        null: false
+    t.string   "password_digest",              null: false
     t.boolean  "vaccinate"
     t.string   "religion"
     t.string   "parenting_style"
@@ -79,14 +79,14 @@ ActiveRecord::Schema.define(version: 20160724062345) do
     t.string   "shopping_prefs"
     t.string   "fav_activities"
     t.string   "music"
+    t.string   "avatar"
     t.string   "bio"
     t.string   "gender"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "avatar"
-    t.integer  "radius",          default: 5
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "radius",          default: 10
   end
 
 end
