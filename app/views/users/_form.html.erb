@@ -13,10 +13,24 @@
   </div>
   <div>
     Vaccinate?
-    <%= f.radio_button :vaccinate, "Yes" %>
-    <%= f.label :Yes %>
-    <%= f.radio_button :vaccinate, "No" %>
-    <%= f.label :No %>
+    <%# f.radio_button :vaccinate, "Yes" %>
+    <% if @user.vaccinate %>
+      <%= f.label 'Yes' %>
+      <%= radio_button_tag 'user[vaccinate]', true, true %>
+    <% else %>
+      <%= f.label 'Yes' %>
+      <%= radio_button_tag 'user[vaccinate]', true%>
+    <% end %>
+    <!-- <%= f.label :Yes %> -->
+    <%# f.radio_button :vaccinate, "No" %>
+    <% if !@user.vaccinate %>
+      <%= f.label 'No' %>
+      <%= radio_button_tag 'user[vaccinate]', false, true %>
+    <% else %>
+      <%= f.label 'No' %>
+      <%= radio_button_tag 'user[vaccinate]', false%>
+    <% end %>
+    <!-- <%= f.label :No %> -->
   </div>
   <div>
     Thoughts on
@@ -61,6 +75,7 @@
     <%= f.text_area :fav_activities %>
   </div>
   <div>
+    <!-- http://stackoverflow.com/questions/10972300/in-rails-with-check-box-tag-how-do-i-keep-the-checkboxes-checked-after-submitt -->
     Musical Preferences:
     <% @music_genres.each do |g|  %>
       <%= f.label :music, g %>

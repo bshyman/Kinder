@@ -11,7 +11,7 @@
         <li>Radius Preference: <%= @user.radius %></li>
       <% end %>
     <% end %>
-    <% if @user.vaccinate %>
+    <% if !@user.vaccinate = nil %>
       <li>Vaccinate: <%= vaccinate?(@user) %></li>
     <% end %>
 
