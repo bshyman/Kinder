@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :chats, through: :messages
   has_many :children, foreign_key: :parent_id, dependent: :destroy
-  
+
   validates :username, presence: true, uniqueness: true
   serialize :music
 
@@ -72,4 +72,17 @@ class User < ActiveRecord::Base
     @attendee.update(response: false)
   end
 
+  def zipcode_nil
+    self.zipcode = nil
+  end
+
+  def zipcode_default
+    self.zipcode = 60654
+  end
+
+  def radius_nil
+  end
+
+  def radius_default
+  end
 end
