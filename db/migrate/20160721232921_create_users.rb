@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :shopping_prefs
       t.string :fav_activities
       t.string :music
+      t.string :avatar
       t.timestamps(null:false)
     end
   end

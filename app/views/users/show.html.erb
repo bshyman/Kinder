@@ -1,4 +1,4 @@
-<h2>Profile Page for <%= @user.username %> </h2>
+<h2>Welcome <%= @user.full_name %>!</h2>
 
 <% if @user.children.any? %>
   <% @user.children.each do |child| %>

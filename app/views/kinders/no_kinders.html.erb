@@ -1,9 +1,9 @@
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
-
 <% if flash[:zipcode] %>
   <%= flash[:zipcode] %>
+<% elsif flash[:notice] %>
+  <%= flash[:notice] %>
+<% else %>
+  <p> You have reached the end of possible kinders within your preferences. <%= link_to "Click here", reset_kinders_path %> to reset your kinders and see the kinders that you swiped left.</p>
 <% end %>
 
-<p> You have reached the end of possible kinders within your preferences. <%= link_to "Click here", reset_kinders_path %> to see kinders that you swiped left.</p>
+

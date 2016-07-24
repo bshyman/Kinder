@@ -1,14 +1,20 @@
+
 <% if flash[:notice]%>
   <%= flash[:notice] %>
 <% end %>
 <div class='profile-show'>
    <ul>
+    <p>
+      <%= image_tag @user.avatar.url, size: '150', class: 'profile-pic'  if @user.avatar?%>
+
+    </p>
+
     <% if authorized?(@user) %>
       <% if @user.zipcode || @user.zipcode == "" %>
         <li>Zipcode: <%= @user.zipcode %></li>
       <% end %>
       <% if @user.radius || @user.radius == "" %>
-        <li>Radius Preference: <%= @user.radius %></li>
+        <li>Radius Preference: <%= @user.radius %> miles</li>
       <% end %>
     <% end %>
     <% if !@user.vaccinate = nil %>
