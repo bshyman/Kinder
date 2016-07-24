@@ -12,7 +12,9 @@
     <p><%= link_to "Send New Message", new_user_chat_path(current_user.id) %></p>
     <ul>
       <% current_user.friends.each do |friend| %>
-        <li><%= link_to friend.username  %></li>
+        <li>
+          <%= link_to friend.username, user_chats_path(current_user, :friend => friend.id), method: :post %>
+        </li>
       <% end %>
     </ul>
   <% else %>
