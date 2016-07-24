@@ -32,7 +32,6 @@ gem 'has_friendship'
 gem 'faker', github: 'stympy/faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-<<<<<<< HEAD
 #file_upload
 gem 'carrierwave'
 gem 'fog-aws'
