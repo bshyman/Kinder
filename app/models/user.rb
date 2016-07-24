@@ -18,10 +18,8 @@ class User < ActiveRecord::Base
 
   def users_in_proximity
     api = ZipcodeAPI.new
-    nearby = api.get_nearby_zipcodes(self.zipcode, 10)
+    nearby = api.get_nearby_zipcodes(self.zipcode, self.radius)
     users =  User.where("zipcode IN (?)", nearby.map(&:to_i))
-    p "PRINTINGGGGGGGGG"
-    p users
     users.to_a
     users -= [self]
     users -= self.blocked_friends
