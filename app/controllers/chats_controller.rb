@@ -1,7 +1,7 @@
 class ChatsController < ApplicationController
   def index
-    @chat = Chat.new
     @chats = Chat.all
+    @chat = Chat.new
   end
 
   def new

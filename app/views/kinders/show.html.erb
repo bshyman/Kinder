@@ -1,7 +1,10 @@
+
 <h2><%= @user.first_name %></h2>
-<div class="swiping_container">
+
+<div id="swiping_container">
 	<%= render 'users/profile' %>
 </div>
 
 <%= link_to "Pass", swipe_left_path(@user.id) %>
 <%= link_to "Connect", swipe_right_path(@user.id) %>
+
