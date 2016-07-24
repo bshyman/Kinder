@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724062345) do
+ActiveRecord::Schema.define(version: 20160724221549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,11 +67,16 @@ ActiveRecord::Schema.define(version: 20160724062345) do
     t.time     "time"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "chat_id"
+    t.integer "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.integer  "zipcode"
-    t.string   "username",                     null: false
-    t.string   "email",                        null: false
-    t.string   "password_digest",              null: false
+    t.string   "username",                    null: false
+    t.string   "email",                       null: false
+    t.string   "password_digest",             null: false
     t.boolean  "vaccinate"
     t.string   "religion"
     t.string   "parenting_style"
@@ -80,13 +85,11 @@ ActiveRecord::Schema.define(version: 20160724062345) do
     t.string   "fav_activities"
     t.string   "music"
     t.string   "avatar"
-    t.string   "bio"
-    t.string   "gender"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "radius",          default: 5
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "radius",          default: 10
   end
 
 end
