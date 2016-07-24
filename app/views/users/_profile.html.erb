@@ -1,4 +1,7 @@
 
+
+
+
 <% if flash[:notice]%>
   <%= flash[:notice] %>
 <% end %>
@@ -8,6 +11,7 @@
       <%= image_tag @user.avatar.url, size: '150', class: 'profile-pic'  if @user.avatar?%>
 
     </p>
+    <%= @user.gender %>
 
     <% if authorized?(@user) %>
       <% if @user.zipcode || @user.zipcode == "" %>
@@ -31,10 +35,13 @@
     <% if @user.fav_activities || @user.religion == "" %>
         <li>Favorite Activities: <%= @user.fav_activities %></li>
     <% end %>
-    <% if @user.music %>
+    <% if @user.music != nil %>
         <li>Music Preferences: <%= format_music_choices(@user) %></li>
     <% end %>
 
+    <% if @user.bio || @user.bio == "" %>
+      <%= @user.bio %>
+    <% end %>
 
 
   </ul>

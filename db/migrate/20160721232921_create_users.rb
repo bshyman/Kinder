@@ -13,6 +13,8 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :fav_activities
       t.string :music
       t.string :avatar
+      t.string :bio
+      t.string :gender
       t.timestamps(null:false)
     end
   end
