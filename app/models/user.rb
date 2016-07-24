@@ -73,4 +73,13 @@ class User < ActiveRecord::Base
     @attendee.update(response: false)
   end
 
+  def pending_direct_add
+    requests = self.friendships.where(direct_add: true, status: "requested")
+    direct = []
+    requests.each do |f|
+      direct << User.find(f.friend_id)
+    end
+    direct
+  end
+
 end
