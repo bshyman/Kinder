@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/users/:user_id/dashboard' => 'users#dashboard', as: "dashboard"
   post '/connections/search' => 'connections#search', as: "search"
   get '/users/:id/add' => 'connections#direct', as: "direct_add"
+  get '/users/:id/accept' => 'connections#direct_accept', as: "direct_accept"
+  get '/users/:id/decline' => 'connections#direct_decline', as: "direct_decline"
 
   resources :users, except: [:index] do
     resources :playdates do
