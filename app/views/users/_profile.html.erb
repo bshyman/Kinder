@@ -4,9 +4,14 @@
 <% end %>
 <div class='profile-show'>
    <ul>
+    <p>
+      <%= image_tag @user.avatar, size: '150' %>
+    </p>
     <% if @user.zipcode || @user.zipcode == "" %>
       <li>Zipcode: <%= @user.zipcode %></li>
     <% end %>
+
+
     <% if @user.vaccinate %>
       <li>Vaccinate: <%= vaccinate?(@user) %></li>
     <% end %>

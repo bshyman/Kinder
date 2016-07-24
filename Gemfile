@@ -29,12 +29,12 @@ gem 'bcrypt', '~> 3.1.7'
 # Track test coverage
 gem 'simplecov', :require => false, :group => :test
 #file_upload
-gem 'carrierwave'
-# connections
 gem 'has_friendship'
 gem 'faker', github: 'stympy/faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'carrierwave'
+# connections
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
