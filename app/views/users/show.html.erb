@@ -20,10 +20,14 @@
     <% elsif logged_in? %>
       <% if @user.friends.include?(current_user) %>
         <%= link_to 'Send Message' %>
-      <% else %>
-        <%= link_to 'Add Friend' %>
+      <% elsif @user.friendships.include?(current_user) %>
+        <%= link_to 'Add Friend', direct_add_path(@user) %>
       <% end %>
     <% else %>
       <% render 'no_access' %>
+  <% end %>
+
+  <% if flash[:request_sent] %>
+    <%= flash[:request_sent] %>
   <% end %>
 </div>
