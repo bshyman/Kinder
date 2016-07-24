@@ -2,6 +2,12 @@
   <%= flash[:welcome_notice]%>
 <% end %>
 
+<% if @errors %>
+  <% @errors.each do |e| %>
+    <%= e %>
+  <% end %>
+<% end %>
+
 <%= form_for @user do |f| %>
 <!-- blurrrb, limit 140 characters. gender -->
   <div>
