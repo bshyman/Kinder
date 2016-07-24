@@ -4,6 +4,8 @@ require 'zipcodeapi'
 class User < ActiveRecord::Base
   has_secure_password
   has_friendship
+  mount_uploader :avatar, AvatarUploader
+
   has_many :reviews, foreign_key: :reviewer_id
   # wtf is comments?
   has_many :comments, foreign_key: :commenter_id
