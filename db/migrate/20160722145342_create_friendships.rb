@@ -13,3 +13,4 @@ class CreateFriendships < ActiveRecord::Migration
     drop_table :friendships
   end
 end
+

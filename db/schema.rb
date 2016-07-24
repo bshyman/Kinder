@@ -78,9 +78,11 @@ ActiveRecord::Schema.define(version: 20160724045532) do
     t.string   "shopping_prefs"
     t.string   "fav_activities"
     t.string   "music"
-    t.string   "avatar"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "avatar"
     t.integer  "radius",          default: 5
   end
 

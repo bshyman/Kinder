@@ -1,17 +1,21 @@
 <div class="row col-md-8 col-md-offset-2" id="chat-title">
-  <h1>chats</h1>
+  <h1>Messages</h1>
 </div>
 
 <div class="row col-md-8 col-md-offset-2" id="chats">
-  <%= render partial: 'chat_form', locals: {chat: @chat} %>
-  <div id="chat-errors">
-
-  </div>
-    <ul id="chat-index">
   <% if @chats.any? %>
+    <ul id="chat-index">
       <%= render @chats %>
-  <%else %>
     </ul>
-    <p>Be the first one to make a chat!</p>
+  <% end %>
+  <% if current_user.friends %>
+    <p>Click on your connection's name to start messaging.</p>
+    <ul>
+      <% current_user.friends.each do |friend| %>
+        <li><%= link_to friend.username  %></li>
+      <% end %>
+    </ul>
+  <% else %>
+   <p>Make some connections before you start messaging</p>
   <% end %>
 </div>

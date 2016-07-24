@@ -3,7 +3,7 @@
 <%= render 'search_bar' %>
 
 <% if @connections.empty? %>
-  <p>You have no connections yet. You can start by looking through <%= link_to "kinders" %> to make connections and schedule playdates.<p>
+  <p>You have no connections yet. You can start by looking through <%= link_to "kinders", kinders_path %> to make connections and schedule playdates.<p>
 <% else %>
   <ul>
     <% @connections.each do |user| %>
