@@ -15,8 +15,24 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
-  <nav>
+  <nav class="orange darken-3">
     <a href="#" class="brand-logo center"><%= image_tag "kinder-icon.png", :size => "50x50"%> Kinder</a>
+    <!-- nav bar menu for web -->
+    <ul class="hide-on-med-and-down">
+    <% if current_user %>
+      <li><%= link_to 'Dashboard', dashboard_path(current_user.id), class: "waves-effect"  %></li>
+      <li><%= link_to 'Kinder', kinders_path, class: "waves-effect"  %></li>
+      <li><%= link_to 'Messages', user_chats_path(current_user.id), class: "waves-effect" %></li>
+      <li><%= link_to 'Connections', user_connections_path(current_user.id), class: "waves-effect" %></li>
+          </ul>
+    <ul class="right hide-on-med-and-down">
+      <li><%= link_to 'Logout', logout_path, class: "waves-effect"  %></li>
+      <% else %>
+      <li><%= link_to 'Login', login_path, class: "waves-effect" %></li>
+      <li><%= link_to 'Register', new_user_path, class: "waves-effect" %></li>
+      <% end %>
+    </ul>
+    <!-- Side bar menu for mobile -->
     <ul id="slide-out" class="side-nav">
       <% if current_user %>
       <li><%= link_to 'Dashboard', dashboard_path(current_user.id), class: "waves-effect"  %></li>
