@@ -12,15 +12,6 @@ feature "View playdate feature" do
     expect(page).to have_content "Brunch at Benjis"
   end
 
-  scenario "click on a link to view all playdates" do
-    user = User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com", zipcode:60614)
-    visit '/login'
-    fill_in('Username', :with => 'amanda')
-    fill_in('Password', :with => '1234')
-    click_button('Login')
-    expect(find_link("See All Playdates").visible?).to eq true
-  end
-
   scenario "see pending playdates" do
     user = User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com", zipcode:60614)
     user2 = User.create!(username:"benji", password:"1234", email: "bshyman@gmail.com", zipcode:60614)
@@ -35,12 +26,4 @@ feature "View playdate feature" do
     end
   end
 
-  scenario "click on a link to view all playdates" do
-    user = User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com", zipcode:60614)
-    visit '/'
-    fill_in('Username', :with => 'amanda')
-    fill_in('Password', :with => '1234')
-    click_button('Login')
-    expect(find_link("See All Pending Playdates").visible?).to eq true
-  end
 end
