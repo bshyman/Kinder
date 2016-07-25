@@ -1,128 +1,144 @@
 <div class='errors'>
-<% if @errors && @errors.any? %>
-  <% @errors.each do |error| %>
-      <%= error %>
-    <% end %>
-<% end %>
+  <% if @errors && @errors.any? %>
+    <% @errors.each do |error| %>
+        <%= error %>
+      <% end %>
+  <% end %>
 </div>
 <% if flash[:welcome_notice] %>
   <%= flash[:welcome_notice]%>
 <% end %>
 
-<% if @errors %>
-  <% @errors.each do |e| %>
-    <%= e %>
-  <% end %>
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card-panel blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">Profile</span>
+          <%= form_for @user do |f| %>
+
+          <div>
+            <div class="file-field input-field">
+              <div class="btn col s6">
+                <span>Profile Pic: </span>
+                <%= f.file_field :avatar %>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div>
+          Zipcode: <% f.label :zipcode %>
+          <%= f.text_field :zipcode, class: 'materialize-textarea center input-field col s6' %>
+          </div><br>
+          <div>
+
+            <p class="range-field">
+              Radius (in miles):
+              <input type="range" name='user[radius]' id="radius" min="0" max="50" />
+            </p>
+          </div>
+
+          <div>
+            <select name='user[gender]'>
+              <option value="" disabled selected>Gender</option>
+              <option name="user[:gender]" id="male" />Male</option>
+              <option name="user[:gender]" id="female" />Female</option>
+              <option name="user[:gender]" id="non-binary" />Non-Binary</option>
+            </select>
+          </div>
+
+          <div>
+            <span>Vaccinate?</span>
+              <input class="with-gap" name="user[vaccinate]" type="radio" id="yes" />
+              <label for="yes">Yes</label>
+
+              <input class="with-gap" name="user[vaccinate]" type="radio" id="no" />
+              <label for="no">No</label>
+          </div>
+
+          <div>
+            Thoughts on Religion:
+            <%= f.text_field :religion %>
+          </div>
+
+
+          <div class="input-field col s12">
+            <select name='user[parenting_style]'>
+              <option value="" disabled selected>Parenting Approach:</option>
+              <option value="Figure It Out As We Go">Figure It Out As We Go</option>
+              <option value="Carefully Research Everything">Carefully Research Everything</option>
+              <option value="Whatever The Kardashians Are Doing">Whatever The Kardashians Are Doing</option>
+              <option value="I Do What My Mom Tells Me To">I Do What My Mom Tells Me To</option>
+              <option value="Some Of This, Some Of That">Some Of This, Some Of That</option>
+            </select>
+          </div>
+
+          <div class="input-field col s12">
+            <select name="user[date_night]">
+              <option value="" disabled selected>Ideal Kidless Night:</option>
+              <option value="Turn Up At The Club">Turn Up At The Club</option>
+              <option value="Romantic Dinner And Drama Movie">Romantic Dinner And Drama Movie</option>
+              <option value="Hotdogs And Horror Movie">Hotdogs And Horror Movie</option>
+              <option value="Frozen Pizza And Blaze One">Frozen Pizza And Blaze One</option>
+              <option value="Dive Bar And Shitty Garage Band">Dive Bar And Shitty Garage Band</option>
+              <option value="Can't Go Out, We Have Kids">Can't Go Out, We Have Kids</option>
+              <option value="Netflix And Chill">Netflix And Chill</option>
+            </select>
+          </div>
+
+          <div class="input-field col s12">
+            <select name='user[shopping_prefs]'>
+              <option value="" disabled selected>I Buy My Kids' Clothes At:</option>
+              <option value="Jack And Jill">Jack And Jill</option>
+              <option value="Carter's">Carter's</option>
+              <option value="Walmart">Walmart</option>
+              <option value="I Make My Own Clothes">I Make My Own Clothes</option>
+              <option value="Target">Target</option>
+              <option value="Thrift It!">Thrift It!</option>
+            </select>
+          </div><br>
+
+          <div class="input-field col s12">
+            <select name='user[music]' multiple>
+              <option value="" disabled selected>Check all that apply</option>
+              <option value="Hip Hop">Hip Hop</option>
+              <option value="R&B and Soul">R&B and Soul</option>
+              <option value="Jam Bands">Jam Bands</option>
+              <option value="House and Techno">House and Techno</option>
+              <option value="Classical and Jazz">Classical and Jazz</option>
+              <option value="Ambient Drone Synth">Ambient Drone Synth</option>
+              <option value="Metal and Hardcore">Metal and Hardcore</option>
+              <option value="Pop Country">Pop Country</option>
+              <option value="Disney Radio">Disney Radio</option>
+              <option value="Gospel">Gospel</option>
+              <option value="Classic Rock">Classic Rock</option>
+              <option value="Indie Rock">Indie Rock</option>
+              <option value="Ska and Punk">Ska and Punk</option>
+            </select>
+            <label>Favorite Music:</label>
+          </div><br>
+
+          <div>
+            Favorite Activities:
+            <% f.label :fav_activities %>
+            <%= f.text_area :fav_activities%>
+          </div>
+
+
+          <div>
+            About Me:
+            <% f.label :bio %>
+            <%= f.text_area :bio%>
+          </div>
+        </div>
+      <div >
+      <input type='submit', value='Submit', class="card-action">
+      </div>
+    </div>
+  </div>
 <% end %>
+</div>
 
-<%= form_for @user do |f| %>
 
-  <div>
-    <%= f.file_field :avatar %>
-  </div>
-
-  <div>
-      <%= f.label :zipcode %>
-      <%= f.text_field :zipcode %>
-  </div>
-  <div>
-      <%= f.label :radius, 'Radius in miles (1-10)'%>
-      <%= number_field_tag 'user[radius]', @user.radius ||= 10, min: 1, max: 10 %>
-  </div>
-
-  <div>
-  <%# f.select :gender %>
-    Gender:
-    <%= f.select :gender, [
-      'Male',
-      'Female',
-      'Non-binary'
-      ] %>
-  </div>
-
-  <div>
-    Vaccinate?
-    <%# f.radio_button :vaccinate, "Yes" %>
-    <% if @user.vaccinate %>
-      <%= f.label 'Yes' %>
-      <%= radio_button_tag 'user[vaccinate]', true, true %>
-    <% else %>
-      <%= f.label 'Yes' %>
-      <%= radio_button_tag 'user[vaccinate]', true%>
-    <% end %>
-    <%# f.radio_button :vaccinate, "No" %>
-    <% if !@user.vaccinate %>
-      <%= f.label 'No' %>
-      <%= radio_button_tag 'user[vaccinate]', false, true %>
-    <% else %>
-      <%= f.label 'No' %>
-      <%= radio_button_tag 'user[vaccinate]', false%>
-    <% end %>
-  </div>
-  <div>
-    Thoughts on
-    <%= f.label :religion %>
-    <%= f.text_field :religion %>
-  </div>
-  <div>
-    Parenting Approach:
-    <%= f.select :parenting_style, [
-      "Figure It Out As We Go",
-      "Carefully Research Everything",
-      "Whatever The Kardashians Are Doing",
-      "I Do What My Mom Tells Me To",
-      "Some Of This, Some Of That"
-      ], :prompt => 'Select One' %>
-
-  </div>
-  <div>
-  Ideal Kidless Night:
-    <%= f.select :date_night, [
-    "Turn Up At The Club",
-    "Romantic Dinner And Drama Movie",
-    "Hotdogs And Horror Movie",
-    "Frozen Pizza And Blaze One",
-    "Dive Bar And Shitty Garage Band",
-    "Can't Go Out, We Have Kids",
-    "Netflix And Chill"
-       ], :prompt => 'Select One' %>
-  <div>
-    I Buy My Kids' Clothes At:
-      <%= f.select :shopping_prefs, [
-    "Jack And Jill",
-    "Carter's",
-    "Walmart",
-    "I Make My Own Clothes",
-    "Target",
-    "Thrift It!"
-        ], :prompt => 'Select One' %>
-
-  </div><br>
-  <div>
-    <%= f.label :fav_activities %>
-    <%= f.text_area :fav_activities, rows: "1", cols: "40" %>
-  </div>
-  <div>
-    <!-- http://stackoverflow.com/questions/10972300/in-rails-with-check-box-tag-how-do-i-keep-the-checkboxes-checked-after-submitt -->
-    Musical Preferences:
-    <% if @user.music  %>
-      <% @music_genres.each do |g|  %>
-        <%= f.label :music, g %>
-        <%= check_box_tag "user[music][]", g, @user.music.include?(g) %>
-      <% end %>
-    <% else @user.music %>
-      <% @music_genres.each do |g|  %>
-        <%= f.label :music, g %>
-        <%= check_box_tag "user[music][]", g %>
-      <% end %>
-    <% end %>
-
-  </div>
-
-  <div>
-    About Me:
-    <%= f.text_area :bio, rows: "2", cols: "50" %>
-  </div>
-
-  <%= f.submit 'Save' %>
-<% end %>
