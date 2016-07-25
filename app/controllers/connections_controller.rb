@@ -23,22 +23,21 @@ class ConnectionsController < ApplicationController
     current_user.friendships.last.update(direct_add: true)
     @other_user.friendships.last.update(direct_add: true)
     flash[:friending] = "Your request has been sent to #{@other_user.username}"
-    logger.info "I AM REDIRECTING TO USER SHOW"
     redirect_to user_path(@other_user)
   end
 
   def direct_accept
     @other_user = User.find(params[:id])
     current_user.accept_request(@other_user)
-    redirect_to :back
     flash[:friending] = "Your now connected to #{@other_user.username}!"
+    redirect_to user_path(@other_user)
   end
 
   def direct_decline
     @other_user = User.find(params[:id])
     current_user.decline_request(@other_user)
-    redirect_to :back
     flash[:friending] = "You have declined connection with #{@other_user.username}"
+    redirect_to user_path(@other_user)
   end
 
   def search_params

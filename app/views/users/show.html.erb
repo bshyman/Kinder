@@ -22,9 +22,10 @@
               <li><%= link_to "Decline Connection", direct_decline_path(@user) %></li>
             <% elsif !@user.friendships.include?(current_user) && !@user.pending_direct_add.include?(current_user) %>
               <li><%= link_to 'Add Friend', direct_add_path(@user) %></li>
-            <% elsif flash[:friending] %>
-              <li><%= flash[:friending] %></li>
             <% end %>
+             <% if flash[:friending] %>
+              <li><%= flash[:friending] %></li>
+             <% end %>
             <% else %>
             <% render 'no_access' %>s
             <% end %>
