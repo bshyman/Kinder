@@ -3,13 +3,7 @@
 </div>
 
 <div class="row col-md-8 col-md-offset-2" id="chats">
-  <% if @chats.any? %>
-    <ul id="chat-index">
-      <%= render @chats %>
-    </ul>
-  <% end %>
   <% if !current_user.friends.empty? %>
-    <p><%= link_to "Send New Message", new_user_chat_path(current_user.id) %></p>
     <ul>
       <% current_user.friends.each do |friend| %>
         <li>
@@ -18,6 +12,6 @@
       <% end %>
     </ul>
   <% else %>
-   <p>Make some connections to message your connections!</p>
+   <p>Make some connections to start messaging!</p>
   <% end %>
 </div>

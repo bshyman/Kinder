@@ -1,25 +1,31 @@
-
 <% if flash[:notice]%>
   <%= flash[:notice] %>
 <% end %>
-<div class='profile-show'>
-   <ul>
-    <p>
-      <%= image_tag @user.avatar.url, size: '150', class: 'profile-pic'  if @user.avatar?%>
 
-    </p>
+ <p><ul>
+  <div>
+    <%= image_tag @user.avatar.url, size: '150', class: 'profile-pic'  if @user.avatar?%>
+  </div>
 
-    <% if authorized?(@user) %>
-      <% if @user.zipcode || @user.zipcode == "" %>
-        <li>Zipcode: <%= @user.zipcode %></li>
-      <% end %>
-      <% if @user.radius || @user.radius == "" %>
-        <li>Radius Preference: <%= @user.radius %> miles</li>
-      <% end %>
+  <% if @user.children.any? %>
+  <ul> Children:
+    <% @user.children.each do |child| %>
+    <li><%= link_to child.name, user_child_path(child.parent.id,child.id) %></li>
     <% end %>
+  </ul>
+  <% end %>
 
-    <% if @user.gender %>
-      <li>Gender: <%= @user.gender %>
+  <% if authorized?(@user) %>
+  <% if @user.zipcode || @user.zipcode == "" %>
+  <li>Zipcode: <%= @user.zipcode %></li>
+  <% end %>
+  <% if @user.radius || @user.radius == "" %>
+  <li>Radius Preference: <%= @user.radius %> miles</li>
+  <% end %>
+  <% end %>
+
+  <% if @user.gender %>
+  <li>Gender: <%= @user.gender %>
     <% end %>
     <li>Vaccinate: <%= vaccinate?(@user) %></li>
     <li>Relationship Status: <%= @user.marital_status.capitalize %> </li>
@@ -28,19 +34,19 @@
     <li>I shop at: <%= @user.shopping_prefs %></li>
 
     <% if @user.religion || @user.religion == "" %>
-      <li>Thoughts On Religion: <%= @user.religion %></li>
+    <li>Thoughts On Religion: <%= @user.religion %></li>
     <% end %>
     <% if @user.fav_activities || @user.religion == "" %>
-        <li>Favorite Activities: <%= @user.fav_activities %></li>
+    <li>Favorite Activities: <%= @user.fav_activities %></li>
     <% end %>
     <% if @user.music != nil %>
-        <li>Music Preferences: <%= format_music_choices(@user) %></li>
+    <li>Music Preferences: <%= format_music_choices(@user) %></li>
     <% end %>
 
     <% if @user.bio || @user.bio == "" %>
-      <%= @user.bio %>
+    <%= @user.bio %>
     <% end %>
 
 
   </ul>
-</div>
+</p>

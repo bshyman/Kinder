@@ -1,6 +1,4 @@
 <div class="row col-md-8 col-md-offset-2">
-  <h1><%= @chat.identifier %></h1>
-
 <div class="panel panel-default">
   <% if @chat.messages.any? %>
     <div class="panel-body" id="messages">
@@ -16,7 +14,5 @@
 </div>
 
 <script>
-$(function() {
   createMessageChannel();
-})
 </script>

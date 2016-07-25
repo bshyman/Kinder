@@ -15,17 +15,20 @@ class UsersController < ApplicationController
   end
 
   def show
+    logged_in_access
     @user = User.find(params[:id])
     @children = @user.children
   end
 
   def edit
     @user = User.find(params[:id])
+    restricted_access(@user)
     @music_genres = ['Hip Hop',"R&B/Soul","Jam Bands", 'House And Techno', "Classical And Jazz", "Ambient And Drone Synth","Ambient And Drone Synth" , "Metal And Hardcore", "Pop Country",  "Disney Radio", "Gospel", "Classic Rock", "Indie Rock", "Ska And Punk"]
   end
 
   def update
     @user = User.find(params[:id])
+    restricted_access(@user)
     if @user.update(user_params)
       redirect_to @user
     else
@@ -33,6 +36,12 @@ class UsersController < ApplicationController
       @music_genres = ['Hip Hop',"R&B/Soul","Jam Bands", 'House And Techno', "Classical And Jazz", "Ambient And Drone Synth","Ambient And Drone Synth" , "Metal And Hardcore", "Pop Country",  "Disney Radio", "Gospel", "Classic Rock", "Indie Rock", "Ska And Punk"]
       render 'edit'
     end
+  end
+
+  def destroy
+    current_user.destroy
+    session.destroy
+    redirect_to root_path
   end
 
   def dashboard

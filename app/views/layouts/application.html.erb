@@ -11,11 +11,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <!-- Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 </head>
 <body>
-  <nav class="orange darken-3">
+   <div class="navbar-fixed">
+  <nav class="orange darken-3 navbar-fixed">
     <a href="#" class="brand-logo center"><%= image_tag "kinder-icon-circle.png", :size => "40x40"%> Kinder</a>
     <!-- nav bar menu for web -->
     <ul class="hide-on-med-and-down">
@@ -55,6 +56,20 @@
       <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
     </ul>
     </nav>
+  </div>
     <%= yield %>
   </body>
+
+<!-- something wrong with asset pipeline, layout.js not working but menu and datepicker run off these scripts -->
+  <script type="text/javascript">
+  $('.button-collapse').sideNav({
+      menuWidth: 200, // Default is 240
+      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    }
+  );
+    $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+  </script>
   </html>

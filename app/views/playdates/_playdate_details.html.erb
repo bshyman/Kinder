@@ -5,7 +5,10 @@
   <p>Attending:
     <ul>
       <% playdate.attending_guests.each do |g| %>
-        <li><%= g.username %></li>
+        <li><%= g.username %> </li>
+        <% g.children.each do |c| %>
+          <li><%= c.name %>, <%= age(c) %> | Allergies: <%= c.allergies  %></li>
+        <% end %>
       <% end %>
     </ul>
   </p>
