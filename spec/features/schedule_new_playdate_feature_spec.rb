@@ -20,7 +20,20 @@ feature "Schedule Playdate Feature" do
     user2.accept_request(user)
     visit '/'
     click_link('Schedule New Playdate')
-    expect(page).to have_content "Schedule New Playdate"
+    expect(page).to have_field "Title"
+  end
+
+  xscenario "with connections, user can schedule a playdate" do
+    user.friend_request(user2)
+    user2.accept_request(user)
+    visit '/'
+    click_link('Schedule New Playdate')
+    fill_in("Title", with: "Pool Party")
+    fill_in("Description", with: "Come cool off with some swimming!")
+    fill_in("Date", with: "09/01/2016")
+    fill_in("Time", with: "Pool Party")
+    fill_in("Location", with: "public pool")
+    expect(page).to have_field "Title"
   end
 end
 
