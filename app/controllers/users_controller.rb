@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    logger.info "I AM SHOWING A USER"
+    p flash
     @user = User.find(params[:id])
     @children = @user.children
   end
