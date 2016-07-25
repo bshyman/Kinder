@@ -2,14 +2,12 @@ require 'rails_helper'
 
 feature 'Register feature' do
   scenario 'user clicks register link and sees registration' do
-    visit '/'
-    click_link "Register"
+    visit '/users/new'
     expect(page).to have_content "Registration"
   end
 
   scenario 'user clicks register link and can create a new account' do
-    visit '/'
-    click_link "Register"
+    visit '/users/new'
     fill_in('Username', :with => 'John')
     fill_in('Email', :with => "vi@vi.com")
     fill_in('Password', :with => 'password')
