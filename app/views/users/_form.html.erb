@@ -50,7 +50,6 @@
       <%= f.label 'Yes' %>
       <%= radio_button_tag 'user[vaccinate]', true%>
     <% end %>
-    <!-- <%= f.label :Yes %> -->
     <%# f.radio_button :vaccinate, "No" %>
     <% if !@user.vaccinate %>
       <%= f.label 'No' %>
@@ -59,7 +58,6 @@
       <%= f.label 'No' %>
       <%= radio_button_tag 'user[vaccinate]', false%>
     <% end %>
-    <!-- <%= f.label :No %> -->
   </div>
   <div>
     Thoughts on

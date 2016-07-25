@@ -27,7 +27,7 @@
       <% elsif current_user.pending_direct_add.include?(@user) %>
         <%= link_to "Accept Connection", direct_accept_path(@user) %>
         <%= link_to "Decline Connection", direct_decline_path(@user) %>
-      <% elsif !@user.friends.include?(current_user). %>
+      <% elsif !@user.friends.include?(current_user) %>
         <%= link_to 'Add Friend', direct_add_path(@user) %>
       <% end %>
     <% else %>

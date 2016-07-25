@@ -18,9 +18,8 @@
         <li>Radius Preference: <%= @user.radius %> miles</li>
       <% end %>
     <% end %>
-    <% if !@user.vaccinate = nil %>
+    
       <li>Vaccinate: <%= vaccinate?(@user) %></li>
-    <% end %>
 
     <li>Parenting Style: <%= @user.parenting_style %></li>
     <li>Ideal Date Night: <%= @user.date_night %></li>
