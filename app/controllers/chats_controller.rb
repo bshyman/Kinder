@@ -11,7 +11,7 @@ class ChatsController < ApplicationController
     @chat = find_chat(friend_user) || Chat.new(identifier: SecureRandom.hex)
     if !@chat.persisted?
       @chat.save
-      @chat.subscriptions.create(user_id: current.id)
+      @chat.subscriptions.create(user_id: current_user.id)
       @chat.subscriptions.create(user_id: friend_user.id)
       respond_to do |format|
         format.html { redirect_to user_chat_path(current_user,@chat) }
