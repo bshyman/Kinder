@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :chats, only: [:index, :show, :create]
   end
   mount ActionCable.server => '/cable'
-  resources :messages, only:[:index]
+  resources :messages, only:[:create]
   get '/kinders/:id/reject_user' => 'kinders#reject_user', as: "swipe_left"
   get '/kinders/:id/accept_user' => 'kinders#accept_user', as: "swipe_right"
   get '/kinders/reset' => 'kinders#reset_kinders', as:"reset_kinders"
