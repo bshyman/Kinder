@@ -1,39 +1,51 @@
 <h2>Dashboard</h2>
 <p>You are logged in as <%= @user.username %></p>
 <% if @user.friends.empty? %>
-  <p>Start Kindering or Add Connections Directly to Schedule Playdates!</p>
+<p>Start Kindering or Add Connections Directly to Schedule Playdates!</p>
 <% else %>
-  <button><%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %></button>
+<button><%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %></button>
 <% end %>
-  <button><%= link_to 'Start Kinder!', kinders_path %></button>
+<button><%= link_to 'Start Kinder!', kinders_path %></button>
 
 <div class="connections">
   <% if !@user.friends.empty? %>
-    <h4>Recent Connections</h4>
-    <% @user.friends.take(3).each do |friend| %>
-      <%= link_to friend.username, user_path(friend) %>
+  <h4>Recent Connections</h4>
+  <div class="row">
+    <div class="col s12 m5">
+      <div class="card-panel white">
+        <ul class="collection">
+          <% @user.friends.take(3).each do |friend| %>
+            <%= link_to(user_path(friend)) do %>
+              <li class="collection-item avatar">
+                <%= image_tag "kinder-icon-circle.png", :size => "40x40", class:"circle"%>
+                <span class="title"><%= friend.username%></span></li>
+            <% end %>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
     <% end %>
-  <% end %>
-  <% if !@user.pending_direct_add.empty? %>
+    <% if !@user.pending_direct_add.empty? %>
     <h4>Requested Connections</h4>
     <% @user.pending_direct_add.each do |friend| %>
-      <%= link_to friend.username, user_path(friend) %>
+    <%= link_to friend.username, user_path(friend) %>
     <% end %>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div class="pending-playdates">
-  <h4>Pending Playdates</h4>
-  <% @pending.each do |pending| %>
-   <%= render partial: 'playdates/playdate', locals: {playdate: pending} %>
-  <% end %>
-  <%= link_to 'See All Pending Playdates'%>
-</div>
+  <div class="pending-playdates">
+    <h4>Pending Playdates</h4>
+    <% @pending.each do |pending| %>
+    <%= render partial: 'playdates/playdate', locals: {playdate: pending} %>
+    <% end %>
+    <%= link_to 'See All Pending Playdates'%>
+  </div>
 
-<div class="scheduled-playdates">
-  <h4>Scheduled Playdates</h4>
-  <% @attending.each do |attending| %>
-   <%= render partial: 'playdates/playdate', locals: {playdate: attending} %>
-  <% end %>
-  <%= link_to 'See All Playdates'%>
-</div>
+  <div class="scheduled-playdates">
+    <h4>Scheduled Playdates</h4>
+    <% @attending.each do |attending| %>
+    <%= render partial: 'playdates/playdate', locals: {playdate: attending} %>
+    <% end %>
+    <%= link_to 'See All Playdates'%>
+  </div>
