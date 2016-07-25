@@ -3,7 +3,8 @@ class KindersController < ApplicationController
 
   def index
     kinder = current_user.users_in_proximity
-    p filter_by(session[:narrow], kinder)
+    kinder = filter_by(session[:narrow], kinder)
+    p kinder
     if current_user.users_in_proximity.empty?
       if current_user.blocked_friends.empty?
         flash[:notice] = "There are no more new parents in the area. Please come back at a later date."
@@ -18,6 +19,11 @@ class KindersController < ApplicationController
   end
 
   def filter
+    if params[:vaccinate] == "true"
+      params[:vaccinate] = true
+    else
+      params[:vaccinate] = false
+    end
     session[:narrow] = {"gender" => params[:gender], "vaccinate" => params[:vaccinate]}
     redirect_to :back
   end
