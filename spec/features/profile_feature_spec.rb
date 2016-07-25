@@ -37,7 +37,7 @@ feature 'Profile feature' do
     expect(page).to have_current_path no_access_path;
   end
 
-  scenario "User can edit user's own profile" do
+  xscenario "User can edit user's own profile" do
     visit user_path(user.id)
     click_link 'Edit Profile'
     fill_in('Zipcode', with: 60614)
