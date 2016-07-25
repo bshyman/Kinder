@@ -1,23 +1,40 @@
 require 'rails_helper'
 
-feature "user schedules a new playdate" do
-
-  xscenario "fill out form and get directed to invite people" do
-    user = User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com")
-    visit '/'
-    click_link "Login"
+feature "Schedule Playdate Feature" do
+  let!(:user) { User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com", zipcode:60614) }
+  let!(:user2) { User.create!(username:"kyri", password:"1234", email: "k@gmail.com", zipcode:60614) }
+  before(:each) do
+    visit '/login'
     fill_in('Username', :with => 'amanda')
     fill_in('Password', :with => '1234')
     click_button('Login')
-    click_link("Schedule New Playdate")
-    fill_in('Title', :with => 'Brunch at Benjis')
-    fill_in('Description', :with => "Let's eat brunch and drink bloddy mary's while the kids play")
-    fill_in('Date', :with => '2016-07-28')
-    fill_in('Location', :with => '123 Main St. Chicago, Il')
-    click_button('Create Playdate')
-    expect(page).to have_content "Select Who to Invite:"
   end
 
+  scenario "without connections, there will not be a schedule playdate button" do
+    visit '/'
+    expect(page).to_not have_content "Schedule New Playdate"
+  end
+
+  scenario "with connections, the schedule playdate button is clickable" do
+    user.friend_request(user2)
+    user2.accept_request(user)
+    visit '/'
+    click_link('Schedule New Playdate')
+    expect(page).to have_field "Title"
+  end
+
+  xscenario "with connections, user can schedule a playdate" do
+    user.friend_request(user2)
+    user2.accept_request(user)
+    visit '/'
+    click_link('Schedule New Playdate')
+    fill_in("Title", with: "Pool Party")
+    fill_in("Description", with: "Come cool off with some swimming!")
+    fill_in("Date", with: "09/01/2016")
+    fill_in("Time", with: "Pool Party")
+    fill_in("Location", with: "public pool")
+    expect(page).to have_field "Title"
+  end
 end
 
 

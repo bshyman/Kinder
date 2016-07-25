@@ -40,6 +40,7 @@ class ConnectionsController < ApplicationController
     redirect_to user_path(@other_user)
   end
 
+  private
   def search_params
     params.require(:search).permit(:search_term)
   end

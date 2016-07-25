@@ -6,10 +6,6 @@ class ChatsController < ApplicationController
     @chat = Chat.new
   end
 
-  def new
-    @chat = Chat.new
-  end
-
    def create
     friend_user = User.find(params[:friend])
     @chat = find_chat(friend_user) || Chat.new(identifier: SecureRandom.hex)

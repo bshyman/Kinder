@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-feature "Playdate feature" do
-
+feature "View playdate feature" do
   scenario "see scheduled playdates" do
     user = User.create!(username:"amanda", password:"1234", email: "adnama.lin@gmail.com", zipcode:60614)
     playdate = Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Brunch at Benjis", description: "Let's eat brunch and drink bloddy mary's while the kids play", location:"123 Main St. Chicago, Il", date:"2016-07-28" ,host_id: user.id)
@@ -19,7 +18,7 @@ feature "Playdate feature" do
     fill_in('Username', :with => 'amanda')
     fill_in('Password', :with => '1234')
     click_button('Login')
-    find_link("See All Playdates").visible?
+    expect(find_link("See All Playdates").visible?).to eq true
   end
 
   scenario "see pending playdates" do
@@ -42,6 +41,6 @@ feature "Playdate feature" do
     fill_in('Username', :with => 'amanda')
     fill_in('Password', :with => '1234')
     click_button('Login')
-    find_link("See All Pending Playdates").visible?
+    expect(find_link("See All Pending Playdates").visible?).to eq true
   end
 end
