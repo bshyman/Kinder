@@ -39,7 +39,7 @@ gem 'fog-aws'
 
 # Use HTTParty to make API get requests
 gem 'httparty'
-
+# For secret .env files for out keys
 gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development, :test do

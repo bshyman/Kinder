@@ -1,23 +1,16 @@
-//reload this script every time the page changes
-$('script').each(function() {
-    if ($(this).attr('src') !== 'assets/js/kinder.js.erb') {
-        var old_src = $(this).attr('src');
-        $(this).attr('src', '');
-        setTimeout(function(){ $(this).attr('src', old_src + '?'+new Date()); }, 250);
-    }
-});
-
-
-$(document).ready(function() {
+function swipeFunction() {
   var swiping_container = document.getElementById("swiping_container");
 
   Hammer(swiping_container).on("swipeleft", function() {
-        window.location = $("#connect").attr("href");
+        window.location = $("#pass").attr("href");
+        console.log("left")
   });
 
   Hammer(document.getElementById("swiping_container")).on("swiperight", function() {
-        window.location = $("#pass").attr('href');
-  });
+        window.location = $("#connect").attr('href');
+        console.log("right")
+      });
+}
 
   // var xDown = 0;
   // var yDown = 0;
@@ -42,4 +35,4 @@ $(document).ready(function() {
   //         window.location = $("#pass").attr('href');
   //       }
   //   });
-});
+
