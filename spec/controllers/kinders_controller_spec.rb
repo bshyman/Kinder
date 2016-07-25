@@ -6,17 +6,17 @@ describe KindersController do
   let (:session) { {user_id: user.id} }
 
   it "has a method that can reject user" do
-    get :reject_user, {id: user2.id}, session
+    get :reject_user, params: {id: user2.id}, session: session
     expect(user.blocked_friends).to eq [user2]
   end
 
   it "has a method that can accept user" do
-    get :accept_user, {id: user2.id}, session
+    get :accept_user, params: {id: user2.id}, session: session
     expect(user.pending_friends).to eq [user2]
   end
 
   it "has a method that can reset kinders" do
-    get :reset_kinders, session
+    get :reset_kinders, session: session
     expect(user.blocked_friends).to eq []
   end
 end
