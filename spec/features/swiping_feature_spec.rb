@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Swiping feature' do
+feature 'Kinder feature' do
   let! (:user) { User.create!(username:"vi", password: "1234", zipcode: 60614, email:"vi@g.com") }
   let! (:user2) { User.create!(username:"aman", password: "1234", zipcode: 60614, email:"a.g.com") }
 
@@ -11,28 +11,39 @@ feature 'Swiping feature' do
     click_button('Login')
   end
 
-  xscenario 'going to kinder brings you to another user"s picture & survey' do
-    visit kinders_path
-    expect(page).to have_current_path kinder_path(user2.id)
+  context 'Pass and connect mimic swipes' do
+    scenario 'going to kinder brings you to another user"s picture & survey' do
+      visit kinders_path
+      expect(page).to have_current_path kinder_path(user2.id)
+    end
+
+    scenario 'clicking a button goes to another user' do
+      visit kinders_path
+      user4 = User.create!(username:"leleand", password:"1234", zipcode:60614, email:"l@g.com")
+      click_link "Pass"
+      expect(page).to have_current_path kinder_path(user4.id)
+    end
   end
 
-  xscenario 'clicking a button goes to another user' do
-    visit kinders_path
-    user4 = User.create!(username:"leleand", password:"1234", zipcode:60614, email:"l@g.com")
-    click_link "left"
-    expect(page).to have_current_path kinder_path(user4.id)
+  context 'there is an end of kinders and a reset option' do
+    scenario 'The end page is shown when you have gone through all possible kinders' do
+      visit kinders_path
+      click_link "Pass"
+      expect(page).to have_content ("You have reached the end of possible kinders within your preferences.")
+    end
+
+    scenario 'You can reset kinders and start over' do
+      visit kinders_path
+      click_link "Pass"
+      click_link "Click here"
+      expect(page).to have_current_path kinder_path(user2.id)
+    end
   end
 
-  xscenario 'The end page is shown when you have gone through all possible kinders' do
-    visit kinders_path
-    click_link "left"
-    expect(page).to have_content ("You have reached the end of possible kinders within your preferences.")
-  end
+  context 'User can filter kinders' do
+    xscenario 'You can filter with gender' do
+      visit kinders_path
 
-  xscenario 'You can reset kinders and start over' do
-    visit kinders_path
-    click_link "left"
-    click_link "Click here"
-    expect(page).to have_current_path kinder_path(user2.id)
+    end
   end
 end

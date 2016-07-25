@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    logged_in_access
     @user = User.find(params[:id])
     @children = @user.children
   end

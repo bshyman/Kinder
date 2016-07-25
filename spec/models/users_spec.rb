@@ -3,7 +3,7 @@ describe User do
   let!(:user2) { User.create!(username:"aman", password: "1234", zipcode:60614, email:"vi@g.com") }
   let!(:user3) { User.create!(username:"benji", password:"1234", zipcode:60614, email:"vi@g.com") }
   describe "Virtual Attributes" do
-    xit "shows users in the same zipcode who are not blocked" do
+    it "shows users in the same zipcode who are not blocked" do
       user.friend_request(user3)
       user3.accept_request(user)
       user.block_friend(user3)
