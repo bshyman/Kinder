@@ -23,7 +23,7 @@
       <%= link_to 'Add Child', new_user_child_path(@user.id) %>
     <% elsif logged_in? %>
       <% if @user.friends.include?(current_user) %>
-        <%= link_to 'Send Message' %>
+        <%= link_to 'Send Message', user_chats_path(current_user.id, :friend => @user.id), method: 'POST' %>
     <% elsif current_user.pending_direct_add.include?(@user) %>
         <%= link_to "Accept Connection", direct_accept_path(@user) %>
         <%= link_to "Decline Connection", direct_decline_path(@user) %>
