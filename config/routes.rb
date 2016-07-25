@@ -25,9 +25,9 @@ Rails.application.routes.draw do
     end
     resources :children
     resources :connections, only:[:index]
+    resources :chats, only: [:new, :index, :show, :create]
   end
   mount ActionCable.server => '/cable'
-  resources :chats, param: :id
   resources :messages
   resources :kinders, only:[:index, :show]
 

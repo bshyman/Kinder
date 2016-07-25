@@ -80,7 +80,9 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
-
+  #configure for redis actioncable on heroku
+  config.web_socket_server_url = "wss://kinderplaydate.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://kinderplaydate.herokuapp.com', 'http://kinderplaydate.herokuapp.com']
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end

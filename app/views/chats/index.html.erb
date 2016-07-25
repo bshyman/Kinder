@@ -8,14 +8,16 @@
       <%= render @chats %>
     </ul>
   <% end %>
-  <% if current_user.friends %>
-    <p>Click on your connection's name to start messaging.</p>
+  <% if !current_user.friends.empty? %>
+    <p><%= link_to "Send New Message", new_user_chat_path(current_user.id) %></p>
     <ul>
       <% current_user.friends.each do |friend| %>
-        <li><%= link_to friend.username  %></li>
+        <li>
+          <%= link_to friend.username, user_chats_path(current_user, :friend => friend.id), method: :post %>
+        </li>
       <% end %>
     </ul>
   <% else %>
-   <p>Make some connections before you start messaging</p>
+   <p>Make some connections to message your connections!</p>
   <% end %>
 </div>
