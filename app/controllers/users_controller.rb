@@ -38,6 +38,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    current_user.destroy
+    session.destroy
+    redirect_to root_path
+  end
+
   def dashboard
     if logged_in?
         @user =  User.find(current_user.id)
