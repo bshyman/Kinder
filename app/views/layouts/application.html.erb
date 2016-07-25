@@ -15,7 +15,8 @@
   <%= javascript_include_tag 'application' %>
 </head>
 <body>
-  <nav class="orange darken-3">
+   <div class="navbar-fixed">
+  <nav class="orange darken-3 navbar-fixed">
     <a href="#" class="brand-logo center"><%= image_tag "kinder-icon-circle.png", :size => "40x40"%> Kinder</a>
     <!-- nav bar menu for web -->
     <ul class="hide-on-med-and-down">
@@ -55,6 +56,7 @@
       <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
     </ul>
     </nav>
+  </div>
     <%= yield %>
   </body>
   </html>
