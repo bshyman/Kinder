@@ -9,11 +9,11 @@
   <%= flash[:welcome_notice]%>
 <% end %>
 
-<div class="row">
+<div id='survey_form' class="row">
   <div class="col s12 m6">
-    <div class="card-panel blue-grey darken-1">
-      <div class="card-content white-text">
-        <span class="card-title">Profile</span>
+    <div class="card-panel grey lighten-3">
+      <div class="card-content black-text">
+        <h4 class="card-title center"> Parent Profile</h4>
           <%= form_for @user do |f| %>
 
           <div>
@@ -28,10 +28,12 @@
             </div>
           </div>
 
-          <div>
-          Zipcode: <% f.label :zipcode %>
-          <%= f.text_field :zipcode, class: 'materialize-textarea center input-field col s6' %>
+          <div id="zip" class="input-field col s8">
+            <input id="zipcode" type="text" class="validate">
+            <label id='white' for="zipcode">Zipcode</label>
           </div><br>
+          <br>
+          <br>
           <div>
 
             <p class="range-field">
@@ -50,17 +52,38 @@
           </div>
 
           <div>
-            <span>Vaccinate?</span>
-              <input class="with-gap" name="user[vaccinate]" type="radio" id="yes" />
-              <label for="yes">Yes</label>
+            <select name='user[marital_status]'>
+              <option value='' disabled selected>Relationship Status</option>
+              <option value='single'>Single</option>
+              <option value='married'>Married</option>
+              <option value='divorced'>Divorced</option>
+              <option value='widowed'>Widowed</option>
+              <option value='dating'>In A Relationship</option>
+              <option value='polyamorous'>Polyamorous</option>
+            </select>
 
-              <input class="with-gap" name="user[vaccinate]" type="radio" id="no" />
-              <label for="no">No</label>
+
           </div>
 
+
+
+
           <div>
-            Thoughts on Religion:
-            <%= f.text_field :religion %>
+            <span>Vaccinate?</span>
+              <input class="with-gap" name="user[vaccinate]" type="radio" value="true" id='yes' />
+              <label for="yes">Yes</label>
+
+              <input class="with-gap" name="user[vaccinate]" type="radio" value="false" id='no'/>
+              <label for="no">No</label>
+          </div>
+          <br>
+
+
+
+
+          <div>
+            <% f.label :religion %>
+            <%= f.text_field :religion, placeholder: 'Thoughts On Religion' %>
           </div>
 
 
@@ -133,8 +156,8 @@
             <%= f.text_area :bio%>
           </div>
         </div>
-      <div >
-      <input type='submit', value='Submit', class="card-action">
+      <div class='center'>
+      <input type='submit', value='Submit', class=" btn card-action">
       </div>
     </div>
   </div>
