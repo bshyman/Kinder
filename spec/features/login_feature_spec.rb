@@ -24,6 +24,6 @@ feature "Login feature" do
     within("#slide-out") do
       click_link "Logout"
     end
-    expect(page).to have_current_path root_path
+    expect(page).to have_current_path '/login'
   end
 end
