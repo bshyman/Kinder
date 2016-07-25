@@ -1,7 +1,8 @@
 module UserHelper
 
   def vaccinate?(user)
-    user.vaccinate ? 'Yes' : 'No'
+  	return "No" if user.vaccinate == nil
+  	user.vaccinate ? "Yes" : "No"
   end
 
 
