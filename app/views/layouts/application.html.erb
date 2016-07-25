@@ -1,52 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kinder</title>
-    <%= favicon_link_tag 'kinder-favicon.png' %>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-      <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="https://use.fontawesome.com/2317d4c203.js"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body style="font-size:14px">
-    <i id="menu-toggle" class="fa fa-bars" aria-hidden="false"></i>
-    <div id="wrapper">
-    <div id="logo">
-      <%= link_to root_path do %>
-        <%= image_tag "kinder-icon.png", :size => "100x100"%>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kinder</title>
+  <%= favicon_link_tag 'kinder-favicon.png' %>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <nav>
+    <a href="#" class="brand-logo center"><%= image_tag "kinder-icon.png", :size => "50x50"%> Kinder</a>
+    <ul id="slide-out" class="side-nav">
+      <% if current_user %>
+      <li><%= link_to 'Dashboard', dashboard_path(current_user.id), class: "waves-effect"  %></li>
+      <li><%= link_to 'Kinder', kinders_path, class: "waves-effect"  %></li>
+      <li><%= link_to 'Playdates', user_playdates_path(current_user.id), class: "waves-effect" %></li>
+      <li><%= link_to 'Profile', user_path(current_user.id), class: "waves-effect" %></li>
+      <li><%= link_to 'Messages', user_chats_path(current_user.id), class: "waves-effect" %></li>
+      <li><%= link_to 'Connections', user_connections_path(current_user.id), class: "waves-effect" %></li>
+      <li><%= link_to 'Logout', logout_path, class: "waves-effect"  %></li>
+      <% else %>
+      <li><%= link_to 'Login', login_path, class: "waves-effect" %></li>
+      <li><%= link_to 'Register', new_user_path, class: "waves-effect" %></li>
       <% end %>
-    </div>
-      <%= render "/layouts/header" %>
-        <div id="page-content-wrapper">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-12">
-                <%= yield %>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-    <!-- Bootstrap Core JavaScript -->
-    <script>
-      $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
-      });
-    </script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+      <li><%= link_to 'About', about_path, class: "waves-effect" %></li>
+      <li><%= link_to 'Contact', contact_path, class: "waves-effect" %></li>
+      <li class="no-padding">
+    </ul>
+    <ul class="left">
+      <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></li>
+    </ul>
+    </nav>
+    <%= yield %>
   </body>
-</html>
+  </html>
