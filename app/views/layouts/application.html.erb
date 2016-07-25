@@ -16,12 +16,13 @@
 </head>
 <body>
   <nav class="orange darken-3">
-    <a href="#" class="brand-logo center"><%= image_tag "kinder-icon.png", :size => "50x50"%> Kinder</a>
+    <a href="#" class="brand-logo center"><%= image_tag "kinder-icon-circle.png", :size => "40x40"%> Kinder</a>
     <!-- nav bar menu for web -->
     <ul class="hide-on-med-and-down">
     <% if current_user %>
       <li><%= link_to 'Dashboard', dashboard_path(current_user.id), class: "waves-effect"  %></li>
       <li><%= link_to 'Kinder', kinders_path, class: "waves-effect"  %></li>
+      <li><%= link_to 'Profile', user_path(current_user.id), class: "waves-effect" %></li>
       <li><%= link_to 'Messages', user_chats_path(current_user.id), class: "waves-effect" %></li>
       <li><%= link_to 'Connections', user_connections_path(current_user.id), class: "waves-effect" %></li>
           </ul>
