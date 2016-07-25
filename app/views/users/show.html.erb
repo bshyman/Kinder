@@ -5,11 +5,11 @@
 <% end %>
 
 <% if @user.children.any? %>
-  <% @user.children.each do |child| %>
   <ul> Children:
-    <li><%= link_to child.name, user_child_path(child.parent.id,child.id) %></li>
+    <% @user.children.each do |child| %>
+      <li><%= link_to child.name, user_child_path(child.parent.id,child.id) %></li>
+    <% end %>
   </ul>
-  <% end %>
 <% end %>
 
 <div class='survey'>
