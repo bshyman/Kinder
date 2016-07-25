@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/dashboard' => 'users#dashboard', as: "dashboard"
   post '/connections/search' => 'connections#search', as: "search"
   get '/users/:id/add' => 'connections#direct', as: "direct_add"
-
+  post '/kinders/:id' => 'kinders#filter', as: 'filter'
   resources :users, except: [:index] do
     resources :playdates do
       resources :attendees, only: [:new, :create]

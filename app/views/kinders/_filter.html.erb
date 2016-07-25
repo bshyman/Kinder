@@ -1,13 +1,19 @@
-<%= form_for :filter, method: 'get' do |f| %>
+<%= form_for :kinders, method: 'post', url: {action: 'filter'} do |f| %>
 Gender:
-  <%= f.select :gender, [
-  "Male", "Female", "Non-Binary"
-  ], :name => :gender %>
-Vaccination:
-  <%= f.select :vaccinate, [
-    "Yes", "No"
-    ], :name => :vaccinate %>
+  <select name='gender'>
+    <option value="">Select One</option>
+    <option value='Male'>Male</option>
+    <option value='Female'>Female</option>
+    <option value='Non-Binary'>Non-Binary</option>
 
+
+  </select>
+
+
+Vaccinated?:
+  <select name='vaccinate'>
+    <option value='true'>Yes</option>
+    <option value='false'>No</option>
+  </select>
   <%= f.submit 'Filter Results' %>
-
 <% end %>

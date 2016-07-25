@@ -28,3 +28,6 @@ Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}
 Attendee.create!(guest_id:1, playdate_id: 1, response: true)
 Attendee.create!(guest_id:2, playdate_id: 2, response: true)
 Attendee.create!(guest_id:1, playdate_id: 3, response: nil)
+
+5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:"true", first_name:Faker::Name.first_name) }
+5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:"false", first_name:Faker::Name.first_name) }
