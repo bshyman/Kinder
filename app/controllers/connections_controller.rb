@@ -39,6 +39,7 @@ class ConnectionsController < ApplicationController
     redirect_to :back
   end
 
+  private
   def search_params
     params.require(:search).permit(:search_term)
   end
