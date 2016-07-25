@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionHelper
   include AuthenticationControllerHelper
   include UserHelper
+  include KinderHelper
 
   def index
   end

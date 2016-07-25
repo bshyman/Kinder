@@ -1,3 +1,12 @@
+<%= render 'filter' %>
+<% if session[:narrow] && !session[:narrow].empty? %>
+  <p> Current Filters:
+    <% session[:narrow].each_pair do |k,v| %>
+      <%= "#{k}: #{v} " %>
+    <% end %>
+    <%= link_to "Clear Filters", delete_filters_path(@user.id), method: :delete %>
+  </p>
+<% end %>
 
 <h2><%= @user.first_name %></h2>
 
@@ -7,4 +16,5 @@
 
 <%= link_to "Pass", swipe_left_path(@user.id), id:"pass" %>
 <%= link_to "Connect", swipe_right_path(@user.id), id:"connect" %>
+
 

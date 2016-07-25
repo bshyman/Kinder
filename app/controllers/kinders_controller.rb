@@ -3,7 +3,9 @@ class KindersController < ApplicationController
 
   def index
     kinder = current_user.users_in_proximity
-    if current_user.users_in_proximity.empty?
+    kinder = filter_by(session[:narrow], kinder)
+    kinder
+    if kinder.empty?
       if current_user.blocked_friends.empty?
         flash[:notice] = "There are no more new parents in the area. Please come back at a later date."
       end
@@ -14,6 +16,24 @@ class KindersController < ApplicationController
     else
       redirect_to kinder_path(kinder.sample.id)
     end
+  end
+
+  def filter
+    if params[:vaccinate] == "true"
+      params[:vaccinate] = true
+    elsif params[:vaccinate] == "false"
+      params[:vaccinate] = false
+    end
+
+    session[:narrow] = {}
+    session[:narrow]["gender"] = params[:gender] if params[:gender] != ''
+    session[:narrow]["vaccinate"] = params[:vaccinate] if params[:vaccinate] != ''
+    redirect_to :back
+  end
+
+  def delete_filter
+    session.delete(:narrow)
+    redirect_to :back
   end
 
   def show
@@ -58,6 +78,10 @@ class KindersController < ApplicationController
       current_user.unblock_friend(user)
     end
     redirect_to kinders_path
+  end
+
+  def filter_params
+    params.permit(:gender, :vaccinate)
   end
 end
 
