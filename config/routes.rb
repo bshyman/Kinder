@@ -12,14 +12,14 @@ Rails.application.routes.draw do
   get '/kinders/:id/reject_user' => 'kinders#reject_user', as: "swipe_left"
   get '/kinders/:id/accept_user' => 'kinders#accept_user', as: "swipe_right"
   get '/users/:user_id/playdates/:playdate_id/attendees/decline' => 'attendees#decline_invite', as: "decline_invite"
-   get '/users/:user_id/playdates/:playdate_id/attendees/accept' => 'attendees#accept_invite', as: "accept_invite"
+  get '/users/:user_id/playdates/:playdate_id/attendees/accept' => 'attendees#accept_invite', as: "accept_invite"
   get '/users/:user_id/dashboard' => 'users#dashboard', as: "dashboard"
   post '/connections/search' => 'connections#search', as: "search"
   get '/users/:id/add' => 'connections#direct', as: "direct_add"
   post '/kinders/:id' => 'kinders#filter', as: 'filter'
+  delete '/kinders/:id' => 'kinders#delete_filter', as: 'delete_filters'
   get '/users/:id/accept' => 'connections#direct_accept', as: "direct_accept"
   get '/users/:id/decline' => 'connections#direct_decline', as: "direct_decline"
-
   resources :users, except: [:index] do
     resources :playdates do
       resources :attendees, only: [:new, :create]
