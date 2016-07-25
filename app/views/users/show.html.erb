@@ -24,7 +24,7 @@
               <li><%= link_to 'Add Friend', direct_add_path(@user) %></li>
             <% end %>
              <% if flash[:friending] %>
-              <li><%= flash[:friending] %></li>
+              <li class="blue-grey-text text-lighten-4"><%= flash[:friending] %></li>
              <% end %>
             <% else %>
             <% render 'no_access' %>s
