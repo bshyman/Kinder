@@ -6,14 +6,12 @@ class User < ActiveRecord::Base
   has_friendship
   mount_uploader :avatar, AvatarUploader
 
-  has_many :reviews, foreign_key: :reviewer_id
-  # wtf is comments?
-  has_many :comments, foreign_key: :commenter_id
   has_many :hosting, foreign_key: :host_id, class_name: :Playdate, dependent: :destroy
   has_many :attendees, foreign_key: :guest_id, dependent: :destroy
   has_many :attending, through: :attendees, source: :playdate
   has_many :messages
-  has_many :chats, through: :messages
+  has_many :subscriptions
+  has_many :chats, through: :subscriptions
   has_many :children, foreign_key: :parent_id, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true

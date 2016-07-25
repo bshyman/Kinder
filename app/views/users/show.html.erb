@@ -1,4 +1,8 @@
-<h2>Welcome <%= @user.full_name %>!</h2>
+<% if current_user.id == @user.id %>
+  <h3>Welcome <%= @user.full_name %>!</h3>
+<% else %>
+  <h3><%= @user.full_name %>!</h3>
+<% end %>
 
 <% if @user.children.any? %>
   <% @user.children.each do |child| %>
@@ -20,7 +24,10 @@
     <% elsif logged_in? %>
       <% if @user.friends.include?(current_user) %>
         <%= link_to 'Send Message' %>
-      <% elsif @user.friendships.include?(current_user) %>
+    <% elsif current_user.pending_direct_add.include?(@user) %>
+        <%= link_to "Accept Connection", direct_accept_path(@user) %>
+        <%= link_to "Decline Connection", direct_decline_path(@user) %>
+    <% elsif !@user.friendships.include?(current_user) %>
         <%= link_to 'Add Friend', direct_add_path(@user) %>
       <% end %>
     <% else %>
@@ -29,5 +36,23 @@
 
   <% if flash[:request_sent] %>
     <%= flash[:request_sent] %>
+  <% elsif flash[:accepted] %>
+    <%= flash[:accepted] %>
   <% end %>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

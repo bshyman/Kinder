@@ -1,18 +1,23 @@
+<%= current_user.friends %>
 
+
+
+
+
+<!--
 <div class="row col-md-8 col-md-offset-2">
 
   <h1>Create a chat on a programming topic</h1>
     <div class="well">
       <div class="chat-form">
-        <%= form_for @chat do |f| %>
+        form_for @chat do |f|
           <div class="input-group">
             <span class="input-group-addon">identifier:</span>
-            <%= f.text_field :identifier, class: "form-control"%>
+            #f.text_field :identifier, class: "form-control"
           </div>
-          <%= f.submit class: "btn btn-primary", id: "create-chat" %>
-        <% end %>
+          #f.submit class: "btn btn-primary", id: "create-chat" %>
+        #end %>
       </div>
     </div>
-
-    <%= render partial: 'layouts/flash_errors'%>
 </div>
+ -->

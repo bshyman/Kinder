@@ -17,15 +17,18 @@ Rails.application.routes.draw do
   post '/connections/search' => 'connections#search', as: "search"
   get '/users/:id/add' => 'connections#direct', as: "direct_add"
   post '/kinders/:id' => 'kinders#filter', as: 'filter'
+  get '/users/:id/accept' => 'connections#direct_accept', as: "direct_accept"
+  get '/users/:id/decline' => 'connections#direct_decline', as: "direct_decline"
+
   resources :users, except: [:index] do
     resources :playdates do
       resources :attendees, only: [:new, :create]
     end
     resources :children
     resources :connections, only:[:index]
+    resources :chats, only: [:new, :index, :show, :create]
   end
   mount ActionCable.server => '/cable'
-  resources :chats, param: :id
   resources :messages
   resources :kinders, only:[:index, :show]
 

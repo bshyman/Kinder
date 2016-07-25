@@ -6,11 +6,64 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(first_name: "Amanda", last_name: "Lin", username:"amanda", password:"1234", email: "adnama.lin@gmail.com", zipcode: 60614, radius: 10)
-User.create!(first_name: "Benji", last_name: "Shyman", username:"benji", password:"1234", email: "bshyman@gmail.com", zipcode: 60614, radius: 5)
-User.create!(first_name: "Vivien", last_name: "Kuo", username:"vi", password:"1234", email: "vi@gmail.com", zipcode: 60614, radius: 1)
-User.create!(first_name: "Leland", last_name: "Meiners", username:"leland", password:"1234", email: "leland@gmail.com", zipcode: 60614, radius: 10)
-User.create!(first_name: "Test", last_name: "Zip", username:"test_zip", password:"1234", email: "test@gmail.com", zipcode: 60607, radius: 10)
+user1 = User.create!(first_name: "Amanda",
+	last_name: "Lin",
+	username:"amanda",
+	password:"1234",
+	email: "adnama.lin@gmail.com",
+	zipcode: 60616,
+	radius: 10,
+	vaccinate: true,
+	gender: "female")
+
+user2 = User.create!(first_name: "Benji",
+	last_name: "Shyman",
+	username:"benji",
+	password:"1234",
+	email: "bshyman@gmail.com",
+	zipcode: 60616,
+	radius: 10,
+	vaccinate: true,
+	gender: "male")
+
+user3 = User.create!(first_name: "Vivien",
+	last_name: "Kuo",
+	username:"vi",
+	password:"1234",
+	email: "vi@gmail.com",
+	zipcode: 60616,
+	radius: 10,
+	vaccinate: true,
+	gender: "female")
+
+user4 = User.create!(first_name: "Leland",
+	last_name: "Meiners",
+	username:"leland",
+	password:"1234",
+	email: "leland@gmail.com",
+	zipcode: 60616,
+	radius: 10,
+	vaccinate: true,
+	gender: "male")
+
+user5 = User.create!(first_name: "Test",
+	last_name: "Zip",
+	username:"test_zip",
+	password:"1234",
+	email: "test@gmail.com",
+	zipcode: 60616,
+	radius: 10,
+	vaccinate: true,
+	gender: "female")
+
+user1.friend_request(user2)
+user1.friend_request(user3)
+user1.friend_request(user4)
+user1.friend_request(user5)
+user2.accept_request(user1)
+user3.accept_request(user1)
+user4.accept_request(user1)
+user5.accept_request(user1)
 
 Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Brunch at Benjis", description: "Let's eat brunch and drink bloddy mary's while the kids play", location:"123 Main St. Chicago, Il", date:"2016-07-28" ,host_id: 2)
 Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Bubble tea with the kiddos", description: "Get dem bubbles", location:"Kung Fu Tea", date:"2016-07-27" ,host_id: 1)
