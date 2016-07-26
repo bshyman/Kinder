@@ -1,34 +1,36 @@
 <div class="playdate_details">
-  <h4><%= playdate.title %> hosted by <%= playdate.host.username %></h4>
+  <span class="card-title"><%= playdate.title %> hosted by <%= playdate.host.username %></span>
   <p>Date and Time: <%= playdate.date.strftime("%B, %dth") %>  <%= playdate.time.strftime("%H:%m%P") %></p>
   <p>Description: <%= playdate.description %></p>
   <p>Attending:
     <ul>
       <% playdate.attending_guests.each do |g| %>
-        <li><%= g.username %> </li>
-        <% g.children.each do |c| %>
-          <li><%= c.name %>, <%= age(c) %> | Allergies: <%= c.allergies  %></li>
-        <% end %>
+      <li><%= g.username %> </li>
+      <% g.children.each do |c| %>
+      <li><%= c.name %>, <%= age(c) %> | Allergies: <%= c.allergies  %></li>
+      <% end %>
       <% end %>
     </ul>
   </p>
   <p>Pending:
     <ul>
       <% playdate.pending_guests.each do |g| %>
-        <li><%= g.username %></li>
+      <li><%= g.username %></li>
       <% end %>
     </ul>
   </p>
-  <p>Location: <%= playdate.location %> (maybe a map here using google api!)</p>
-  <%= link_to 'Message' %>
-  <% if playdate.host.id == current_user.id %>
+    <p>Location: <%= link_to playdate.location, "http://maps.google.com/?q=#{playdate.location}" %></p>
+  <div class="card-action playdate-links">
+    <% if playdate.host.id == current_user.id %>
     <%= link_to 'Cancel Playdate', user_playdate_path, method: :delete %>
-  <% else %>
-    <% if current_user.attending_playdates.include?(playdate) %>
-      <%= link_to 'Decline Invite', decline_invite_path(current_user.id, playdate.id) %>
     <% else %>
-      <%= link_to 'Decline Invite', decline_invite_path(current_user.id, playdate.id) %>
-      <%= link_to 'Accept Invite', accept_invite_path(current_user.id, playdate.id) %>
+    <% if current_user.attending_playdates.include?(playdate) %>
+    <%= link_to 'Can No Longer Attend', decline_invite_path(current_user.id, playdate.id) %>
+    <% else %>
+    <%= link_to 'Accept', accept_invite_path(current_user.id, playdate.id) %>
+    <%= link_to 'Decline', decline_invite_path(current_user.id, playdate.id) %>
     <% end %>
-  <% end %>
+    <% end %>
+  </div>
+
 </div>

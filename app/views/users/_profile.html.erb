@@ -1,10 +1,14 @@
 <% if flash[:notice]%>
 <%= flash[:notice] %>
 <% end %>
-
-<ul class="profile-survey">
+<div class="profile-survey">
+<ul >
   <div class="center">
-    <%= image_tag @user.avatar.url, size: '150', class: 'profile-pic'  if @user.avatar?%>
+    <%  if @user.avatar? %>
+      <%= image_tag @user.avatar.url, size: '150x150', class: "profile-pic"%>
+    <% else %>
+      <%= image_tag "kinder-icon-circle.png", :size => '150x150'%>
+    <% end %>
   </div>
 
   <% if @user.children.any? %>
@@ -65,3 +69,4 @@
 
   </ul>
 </p>
+</div>

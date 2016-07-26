@@ -17,7 +17,7 @@
 <body>
    <div class="navbar-fixed">
   <nav class="orange darken-3 navbar-fixed">
-    <a href="#" class="brand-logo center"><%= image_tag "kinder-icon-circle.png", :size => "40x40", class: 'header-logo' %> Kinder</a>
+    <a href="#" class="brand-logo center"><%= image_tag "kinder-icon-circle.png", :size => "40x40", class: 'header-logo' %></a>
     <!-- nav bar menu for web -->
     <ul class="hide-on-med-and-down">
     <% if current_user %>
@@ -72,17 +72,4 @@
   <!-- container aids padding  -->
   <div class="container"><%= yield %></div>
   </body>
-
-<!-- something wrong with asset pipeline, layout.js not working but menu and datepicker run off these scripts -->
-  <script type="text/javascript">
-  $('.button-collapse').sideNav({
-      menuWidth: 200, // Default is 240
-      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    }
-  );
-    $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
-  </script>
   </html>

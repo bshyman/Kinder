@@ -12,7 +12,7 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
     if @child.save && authorized?(@child.parent)
         flash[:notice] = "#{@child.name} has been successfully added"
-        redirect_to user_children_path(@child.parent.id)
+        redirect_to user_path(@child.parent.id)
       else
         @errors = @child.errors
         redirect_to new_user_child_path(child_params[:parent_id])

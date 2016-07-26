@@ -4,29 +4,31 @@
         <%= error %>
       <% end %>
   <% end %>
+
 </div>
 <% if flash[:welcome_notice] %>
   <%= flash[:welcome_notice]%>
 <% end %>
 
-<div id='survey_form' class="row">
-  <div class="col s12 m6">
-    <div class="card-panel grey lighten-3">
-      <div class="card-content black-text">
-        <h4 class="card-title center"> Parent Profile</h4>
-          <%= form_for @user do |f| %>
 
-          <div>
-            <div class="file-field input-field">
-              <div class="btn col s6">
-                <span>Profile Pic: </span>
-                <%= f.file_field :avatar %>
-              </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
-              </div>
-            </div>
-          </div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal col s15">
+    <div class="modal-content">
+      <h4 class=" center">Parent Profile</h4>
+      <div id='survey_form' class="row">
+        <div class="">
+          <div class=" black-text">
+            <%= form_for @user do |f| %>
+
+            <div>
+              <div class="file-field input-field">
+                <div class="btn col s6">
+                  <span>Profile Pic: </span>
+                  <%= f.file_field :avatar %>
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
 
           <div id="zip" class="input-field col s8">
             <input name='user[zipcode]'id="zipcode" type="text" class="validate">
@@ -156,10 +158,13 @@
             <%= f.text_area :bio, length: "300", class: "materialize-textarea", id: "textarea1"%>
           </div>
         </div>
-      <div class='center'>
-      <input type='submit', value='Save', class=" btn card-action">
+      </div>
+      <div id='modal-footer-overide' class="modal-footer">
+        <input type='submit', value='Save', class="modal-action btn card-action">
+        <button class=' btn card-action modal-close'>Exit</button>
       </div>
     </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 </div>
