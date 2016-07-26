@@ -35,3 +35,58 @@ html {
 .search-icon {
   margin-top: 10px;
 }
+
+.profile-survey > li{
+  border-bottom: 1px solid white;
+  margin: 5px auto;
+}
+
+.bold-survey {
+  font-weight: bold;
+}
+
+#logo{
+  text-align: center;
+}
+
+
+.profile-pic {
+  border-radius: 60%;
+  margin: 0 auto 10px;
+}
+
+.errors {
+  color: red;
+  font-size: 1.8em;
+}
+
+#zip {
+  text-align: center;
+margin: 10px 15%;
+}
+
+#white {
+  font-size: 1.2em;
+  color: black;
+}
+
+@media (min-width: 990px){
+  #survey_form {
+    position: relative;
+    margin: 10px;
+    left: 25%;
+  }
+}
+@media (min-width: 590px) {
+  #survey_form {
+    position: relative;
+    left: 30%;
+  }
+
+  #header {
+    width: 100%;
+
+  }
+
+
+}
