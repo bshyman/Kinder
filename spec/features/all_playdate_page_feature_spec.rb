@@ -21,7 +21,7 @@ feature "View playdate feature" do
     fill_in('Username', :with => 'amanda')
     fill_in('Password', :with => '1234')
     click_button('Login')
-    within("div.pending-playdates > div.playdate-listing") do
+    within("div.pending-playdates") do
       expect(page).to have_content "beach Day!"
     end
   end

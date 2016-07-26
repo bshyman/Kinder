@@ -1,52 +1,65 @@
 <% if flash[:notice]%>
-  <%= flash[:notice] %>
+<%= flash[:notice] %>
 <% end %>
 
- <p><ul>
-  <div>
+<ul class="profile-survey">
+  <div class="center">
     <%= image_tag @user.avatar.url, size: '150', class: 'profile-pic'  if @user.avatar?%>
   </div>
 
   <% if @user.children.any? %>
-  <ul> Children:
-    <% @user.children.each do |child| %>
-    <li><%= link_to child.name, user_child_path(child.parent.id,child.id) %></li>
-    <% end %>
-  </ul>
+    <ul> Children:
+      <% @user.children.each do |child| %>
+        <li><%= link_to child.name, user_child_path(child.parent.id,child.id) %></li>
+      <% end %>
+    </ul>
   <% end %>
 
   <% if authorized?(@user) %>
-  <% if @user.zipcode  %>
-    <li>Zipcode: <%= @user.zipcode %></li>
-  <% end %>
-  <% if @user.radius || @user.radius == "" %>
-  <li>Radius Preference: <%= @user.radius %> miles</li>
-  <% end %>
+    <% if @user.zipcode  %>
+      <li class="bold-survey">Zipcode: <%= @user.zipcode %></li>
+    <% end %>
+    <% if @user.radius%>
+      <li class="bold-survey">Radius Preference: <%= @user.radius %> miles</li>
+    <% end %>
   <% end %>
 
-  <% if @user.gender %>
-  <li>Gender: <%= @user.gender %>
+    <% if @user.gender %>
+    <li class="bold-survey">Gender: <%= @user.gender %>
     <% end %>
-    <li>Vaccinate: <%= vaccinate?(@user) %></li>
+
+    <li class="bold-survey">Vaccinate: <%= vaccinate?(@user) %></li>
+
     <% if @user.marital_status %>
-      <li>Relationship Status: <%= @user.marital_status.capitalize %> </li>
+    <li class="bold-survey">Relationship Status: <%= @user.marital_status.capitalize %> </li>
     <% end %>
-    <li>Parenting Style: <%= @user.parenting_style %></li>
-    <li>Ideal Date Night: <%= @user.date_night %></li>
-    <li>I shop at: <%= @user.shopping_prefs %></li>
 
-    <% if @user.religion || @user.religion == "" %>
-    <li>Thoughts On Religion: <%= @user.religion %></li>
+    <% if @user.parenting_style %>
+    <li class="bold-survey">Parenting Style: <%= @user.parenting_style %></li>
     <% end %>
-    <% if @user.fav_activities || @user.religion == "" %>
-    <li>Favorite Activities: <%= @user.fav_activities %></li>
+
+    <% if @user.date_night %>
+    <li class="bold-survey">Ideal Date Night: <%= @user.date_night %></li>
     <% end %>
+
+    <% if @user.shopping_prefs %>
+    <li class="bold-survey">I shop at: <%= @user.shopping_prefs %></li>
+    <% end %>
+
+    <% if @user.religion %>
+    <li class="bold-survey">Thoughts On Religion: <%= @user.religion %></li>
+    <% end %>
+
+    <% if @user.fav_activities%>
+    <li class="bold-survey">Favorite Activities: <%= @user.fav_activities %></li>
+    <% end %>
+
     <% if @user.music != nil %>
-    <li>Music Preferences: <%= format_music_choices(@user) %></li>
+    <li class="bold-survey">Music Preferences: <%= format_music_choices(@user) %></li>
     <% end %>
 
-    <% if @user.bio || @user.bio == "" %>
-    <%= @user.bio %>
+    <% if @user.bio %>
+      <li class="bold-survey">About You: <br/ ><%= @user.bio %></li>
     <% end %>
 
 

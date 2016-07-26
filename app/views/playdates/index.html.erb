@@ -1,25 +1,38 @@
-<h2>Playdates</h2>
+<h4 class="center teal-text text-lighten-3">Playdates</h4>
 
-<% if @user.friends.empty? %>
-  <p>Start Kindering or Add Connections Directly to Schedule Playdates!</p>
-<% else %>
-  <button><%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %></button>
-<% end %>
-  <button><%= link_to 'Start Kinder!', kinders_path %></button>
-
-
-<div class="pending-playdates">
-  <h4>Pending Playdates</h4>
-  <% @pending.each do |pending| %>
-   <%= render partial: 'playdate', locals: {playdate: pending} %>
+<div class="dashboard-link center">
+  <% if @user.friends.empty? %>
+    <p>Start Kindering or Add Connections Directly to Schedule Playdates!</p>
+  <% else %>
+    <button class="waves-effect orange darken-3 btn-flat"><%= link_to 'New Playdate', new_user_playdate_path(@user.id), class: "white-text" %></button>
   <% end %>
-  <%= link_to 'See All Pending Playdates'%>
+    <button class="waves-effect orange darken-3 btn-flat"><%= link_to 'Start Kinder!', kinders_path, class: "white-text" %></button>
 </div>
 
-<div class="scheduled-playdates">
-  <h4>Scheduled Playdates</h4>
-    <% @attending.each do |attending| %>
-     <%= render partial: 'playdate', locals: {playdate: attending} %>
+
+  <div class="pending-playdates">
+    <% if !@pending.empty? %>
+    <ul class="collection with-header">
+      <li class="collection-header white-text teal lighten-3"><h6>Pending Playdates</h6></li>
+        <% @pending.each do |pending| %>
+          <li class="collection-item" >
+            <%= render partial: 'playdates/playdate', locals: {playdate: pending} %>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
-  <%= link_to 'See All Playdates' %>
-</div>
+  </div>
+
+  <div class="scheduled-playdates">
+    <ul class="collection with-header">
+      <li class="collection-header white-text teal lighten-3"><h6>Scheduled Playdates</h6></li>
+        <% @attending.each do |attending| %>
+        <li class="collection-item">
+          <%= link_to(user_playdate_path(current_user.id, attending.id), class: "collection-item playdate-item") do %>
+            <%= render partial: 'playdates/playdate', locals: {playdate: attending} %>
+          <% end %>
+        </li>
+        <% end %>
+    </ul>
+    <%# link_to 'See All Playdates'%>
+  </div>
