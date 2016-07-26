@@ -137,3 +137,13 @@ html {
   justify-content: space-between;
 }
 
+.message-line {
+  align-items: center;
+  display: flex;
+  text-align: left;
+}
+
+.message-pic {
+  border-radius: 60%;
+  margin-right: 5px;
+}

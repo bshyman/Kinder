@@ -1,6 +1,6 @@
-<p>
+<p class='message-line'>
   <%  if message.user.avatar? %>
-    <%= image_tag message.user.avatar.url, size: '30x30', class: "profile-pic"%>
+    <%= image_tag message.user.avatar.url, size: '30x30', class: "message-pic"%>
   <% else %>
-    <%= image_tag 'kinder-icon-circle', size: '30x30', class: "profile-pic"%>
-  <% end %><%=message.content%></p>
+    <%= image_tag 'kinder-icon-circle', size: '30x30', class: "message-pic"%>
+  <% end %><span><%=message.content%></span></p>
