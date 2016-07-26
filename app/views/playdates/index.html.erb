@@ -10,13 +10,15 @@
 </div>
 
 
-  <div class="pending-playdates">
+<div class="pending-playdates">
     <% if !@pending.empty? %>
     <ul class="collection with-header">
       <li class="collection-header white-text teal lighten-3"><h6>Pending Playdates</h6></li>
         <% @pending.each do |pending| %>
           <li class="collection-item" >
+            <%= link_to(user_playdate_path(current_user.id, pending.id), class: "collection-item playdate-item") do %>
             <%= render partial: 'playdates/playdate', locals: {playdate: pending} %>
+            <% end %>
           </li>
         <% end %>
       </ul>

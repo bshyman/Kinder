@@ -130,4 +130,8 @@ html {
   margin: auto;
 }
 
+.playdate-links {
+  display: flex;
+  justify-content: space-between;
+}
 

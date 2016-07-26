@@ -1,9 +1,10 @@
 <% if flash[:zipcode] %>
-  <%= flash[:zipcode] %>
+  <h5 class="center-align"><%= flash[:zipcode] %></h5>
+  <p class="center-align">Go to your <%= link_to 'profile', user_path(current_user) %> to add a zipcode and radius!</p>
 <% elsif flash[:notice] %>
-  <%= flash[:notice] %>
+ <p class="center-align"><%= flash[:notice] %></p>
 <% else %>
-  <p> You have reached the end of possible kinders within your preferences. <%= link_to "Click here", reset_kinders_path %> to reset your kinders and see the kinders that you swiped left.</p>
+  <p class="center-align"> You have reached the end of possible kinders within your preferences. <%= link_to "Click here", reset_kinders_path %> to reset your kinders and see the kinders that you swiped left.</p>
 <% end %>
 
 
