@@ -1,17 +1,22 @@
-<div class="row col-md-8 col-md-offset-2" id="chat-title">
-  <h1>Messages</h1>
-</div>
+<h4 class="teal-text text-lighten-3 center-align">Messages</h4>
 
-<div class="row col-md-8 col-md-offset-2" id="chats">
-  <% if !current_user.friends.empty? %>
-    <ul>
-      <% current_user.friends.each do |friend| %>
-        <li>
-          <%= link_to friend.username, user_chats_path(current_user, :friend => friend.id), method: :post %>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-   <p>Make some connections to start messaging!</p>
-  <% end %>
-</div>
+<% if !current_user.friends.empty? %>
+      <ul>
+        <% current_user.friends.each do |friend| %>
+          <li class="collection-item connection-item">
+            <%= link_to( user_chats_path(current_user, :friend => friend.id), method: :post, class: "recent-connect") do %>
+            <span class="recent-connect-avatar">
+              <%  if friend.avatar? %>
+                <%= image_tag friend.avatar.url, size: '30x30', class: "profile-pic"%>
+              <% else %>
+                <%= image_tag "kinder-icon-circle.png", :size => "20x20" %>
+              <% end %>
+            </span>
+            <span class="recent-connect-name"><%= friend.username%></span>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+<% else %>
+  <p>You have no connections yet. You can start by looking through <%= link_to "kinders", kinders_path %> to make connections and schedule playdates.<p>
+<% end %>
