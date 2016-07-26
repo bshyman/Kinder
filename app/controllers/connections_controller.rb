@@ -11,9 +11,8 @@ class ConnectionsController < ApplicationController
       redirect_to user_path(@user)
     else
       # redirect_back(fallback_location: fallback_location)
-      redirect_to :back
+      redirect_back fallback_location: user_connections_path(current_user)
       flash[:no_result] = "No Results for #{search_params[:search_term]}"
-      p flash
     end
   end
 
