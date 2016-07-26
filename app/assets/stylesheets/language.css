@@ -9,3 +9,21 @@ html {
 .picker__date-display, .picker__weekday-display{
     background-color: #ef6c00;
 }
+
+.container {
+  padding: 10 10;
+}
+
+.recent-connect {
+  display: flex;
+  align-items: center;
+}
+
+.recent-connect-name {
+  margin-left: 10px;
+  margin-bottom: 8px;
+}
+
+.dashboard-link {
+  margin: 10px 0;
+}
