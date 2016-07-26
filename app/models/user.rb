@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_friendship
   mount_uploader :avatar, AvatarUploader
-  has_one :survey
+
   has_many :hosting, foreign_key: :host_id, class_name: :Playdate, dependent: :destroy
   has_many :attendees, foreign_key: :guest_id, dependent: :destroy
   has_many :attending, through: :attendees, source: :playdate
@@ -15,15 +15,17 @@ class User < ActiveRecord::Base
   has_many :children, foreign_key: :parent_id, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
-
+  serialize :music
+  validates :bio, length: {maximum: 300,
+                  too_long: "must be limited to %{count} characters"}
 
   def users_in_proximity
     # NEED TO UNCOMMENT FOR PRODUCTION TO HIT API
     # HOURLY LIMIT IS 50
     # api = ZipcodeAPI.new
-    # nearby = api.get_nearby_zipcodes(self.survey.zipcode, self.survey.radius)
-    # users =  User.survey.where("zipcode IN (?)", nearby.map(&:to_i))
-    users =  User.where(zipcode: self.survey.zipcode)
+    # nearby = api.get_nearby_zipcodes(self.zipcode, self.radius)
+    # users =  User.where("zipcode IN (?)", nearby.map(&:to_i))
+    users =  User.where(zipcode: self.zipcode)
     users.to_a
     users -= [self]
     users -= self.blocked_friends
