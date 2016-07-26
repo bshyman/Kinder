@@ -9,7 +9,6 @@
         <% end %>
         <%= render 'profile' %>
         <div class="card-action">
-
           <ul class="profile-btn">
             <% if logged_in? && authorized?(@user) %>
             <li> <!-- Modal Trigger -->
@@ -210,7 +209,4 @@
     <%= render partial: 'children/new' %>
   </div>
 </div>
-
-
-
 
