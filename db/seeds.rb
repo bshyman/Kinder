@@ -10,9 +10,7 @@ user1 = User.create!(first_name: "Amanda",
 	last_name: "Lin",
 	username:"amanda",
 	password:"1234",
-	email: "adnama.lin@gmail.com")
-
-user1.create_survey!(
+	email: "adnama.lin@gmail.com",
 	zipcode: 60616,
 	radius: 10,
 	vaccinate: true,
@@ -22,9 +20,7 @@ user2 = User.create!(first_name: "Benji",
 	last_name: "Shyman",
 	username:"benji",
 	password:"1234",
-	email: "bshyman@gmail.com")
-
-user2.create_survey!(
+	email: "bshyman@gmail.com",
 	zipcode: 60616,
 	radius: 10,
 	vaccinate: true,
@@ -34,9 +30,7 @@ user3 = User.create!(first_name: "Vivien",
 	last_name: "Kuo",
 	username:"vi",
 	password:"1234",
-	email: "vi@gmail.com")
-
-user3.create_survey!(
+	email: "vi@gmail.com",
 	zipcode: 60616,
 	radius: 10,
 	vaccinate: true,
@@ -46,9 +40,7 @@ user4 = User.create!(first_name: "Leland",
 	last_name: "Meiners",
 	username:"leland",
 	password:"1234",
-	email: "leland@gmail.com")
-
-user4.create_survey!(
+	email: "leland@gmail.com",
 	zipcode: 60616,
 	radius: 10,
 	vaccinate: true,
@@ -58,9 +50,7 @@ user5 = User.create!(first_name: "Test",
 	last_name: "Zip",
 	username:"test_zip",
 	password:"1234",
-	email: "test@gmail.com")
-
-user5.create_survey!(
+	email: "test@gmail.com",
 	zipcode: 60616,
 	radius: 10,
 	vaccinate: true,
@@ -92,6 +82,5 @@ Attendee.create!(guest_id:1, playdate_id: 1, response: true)
 Attendee.create!(guest_id:2, playdate_id: 2, response: true)
 Attendee.create!(guest_id:1, playdate_id: 3, response: nil)
 
-# Seeds for kindering
-# 5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:true, first_name:Faker::Name.first_name) }
-# 5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:false, first_name:Faker::Name.first_name) }
+5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:true, first_name:Faker::Name.first_name) }
+5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:false, first_name:Faker::Name.first_name) }
