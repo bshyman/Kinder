@@ -45,6 +45,15 @@ html {
   font-weight: bold;
 }
 
+.user-info{
+  display: flex;
+  border-bottom: 1px solid #80cbc4;
+}
+
+.user-name-nav {
+  margin-left: 10px;
+}
+
 #logo{
   text-align: center;
 }

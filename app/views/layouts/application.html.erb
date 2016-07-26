@@ -37,6 +37,17 @@
     <!-- Side bar menu for mobile -->
     <ul id="slide-out" class="side-nav">
       <% if current_user %>
+      <li>
+        <div class="userView user-info">
+        <a href="#!user">
+          <%  if current_user.avatar? %>
+            <%= image_tag current_user.avatar.url, size: '40x40', class: "profile-pic"%>
+          <% else %>
+            <%= image_tag "kinder-icon-circle.png", :size => "40x40" %>
+          <% end %>
+        </a>
+        <a href="#" class="black-text name user-name-nav"><%= current_user.first_name %></a>
+      </div></li>
       <li><%= link_to 'Dashboard', dashboard_path(current_user.id), class: "waves-effect"  %></li>
       <li><%= link_to 'Kinder', kinders_path, class: "waves-effect"  %></li>
       <li><%= link_to 'Playdates', user_playdates_path(current_user.id), class: "waves-effect" %></li>
