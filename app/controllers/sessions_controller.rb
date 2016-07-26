@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     @user = User.from_omniauth(request.env['omniauth.auth'])
     if @user.save!
       session[:user_id] = @user.id
-      flash[:success] = "Welcome, #{@user.name}!"
+      flash[:success] = "Welcome, #{@user.full_name}!"
     else
       flash[:warning] = "There was an error while trying to authenticate you..."
     end
