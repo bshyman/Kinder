@@ -153,7 +153,7 @@
           <div>
             About Me:
             <% f.label :bio %>
-            <%= f.text_area :bio%>
+            <%= f.text_area :bio, length: "300", class: "materialize-textarea", id: "textarea1"%>
           </div>
         </div>
       <div class='center'>
@@ -163,5 +163,3 @@
   </div>
 <% end %>
 </div>
-
-
