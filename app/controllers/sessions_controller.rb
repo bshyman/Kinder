@@ -10,9 +10,19 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @user = User.find_by(username: login_params[:username])
+    if @user && @user.authenticate(login_params[:password])
+      session[:user_id] = @user.id
+      redirect_to dashboard_path(@user.id)
+    else
+      @error = "Invalid username or password"
+      render 'new'
+    end
+  end
+
+  def google_create
     begin
       @user = User.from_omniauth(request.env['omniauth.auth'])
-      p "user: #{@user}"
       session[:user_id] = @user.id
       flash[:success] = "Welcome, #{@user.name}!"
     rescue
