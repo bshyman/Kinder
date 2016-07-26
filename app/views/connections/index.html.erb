@@ -1,13 +1,27 @@
-<h3>Connections</h3>
+<h4 class="teal-text text-lighten-3 center-align">Connections</h3>
+
 
 <%= render 'search_bar' %>
 
-<% if @connections.empty? %>
-  <p>You have no connections yet. You can start by looking through <%= link_to "kinders", kinders_path %> to make connections and schedule playdates.<p>
-<% else %>
-  <ul>
-    <% @connections.each do |user| %>
-      <li><%= link_to user.username, user_path(user) %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="connections">
+  <h5 class="center">Your Connections</h5>
+  <% if !@connections.empty? %>
+        <ul>
+          <% @connections.each do |friend| %>
+            <li class="collection-item connection-item">
+              <%= link_to(user_path(friend), class: "recent-connect") do %>
+              <span class="recent-connect-avatar">
+                <%  if friend.avatar? %>
+                  <%= image_tag friend.avatar.url, size: '30x30', class: "profile-pic"%>
+                <% else %>
+                  <%= image_tag "kinder-icon-circle.png", :size => "30x30" %>
+                <% end %>
+              </span>
+              <span class="recent-connect-name"><%= friend.username%></span>
+              <% end %>
+            </li>
+          <% end %>
+          </ul>
+  <% else %>
+    <p>You have no connections yet. You can start by looking through <%= link_to "kinders", kinders_path %> to make connections and schedule playdates.<p>
+  <% end %>

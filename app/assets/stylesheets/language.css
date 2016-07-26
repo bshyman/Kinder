@@ -9,3 +9,93 @@ html {
 .picker__date-display, .picker__weekday-display{
     background-color: #ef6c00;
 }
+
+.container {
+  padding: 10 10;
+}
+
+.recent-connect {
+  display: flex;
+  align-items: center;
+}
+
+.recent-connect-name {
+  margin-left: 10px;
+  margin-bottom: 8px;
+}
+
+.dashboard-link {
+  margin: 10px 0;
+}
+
+.connection-item{
+  border-bottom: 1px solid lightgray;
+}
+
+.search-icon {
+  margin-top: 10px;
+}
+
+.profile-survey > li{
+  border-bottom: 1px solid white;
+  margin: 5px auto;
+}
+
+.bold-survey {
+  font-weight: bold;
+}
+
+.user-info{
+  display: flex;
+  border-bottom: 1px solid #80cbc4;
+}
+
+.user-name-nav {
+  margin-left: 10px;
+}
+
+#logo{
+  text-align: center;
+}
+
+
+.profile-pic {
+  border-radius: 60%;
+  margin: 0 auto 10px;
+}
+
+.errors {
+  color: red;
+  font-size: 1.8em;
+}
+
+#zip {
+  text-align: center;
+margin: 10px 15%;
+}
+
+#white {
+  font-size: 1.2em;
+  color: black;
+}
+
+@media (min-width: 990px){
+  #survey_form {
+    position: relative;
+    margin: 10px;
+    left: 25%;
+  }
+}
+@media (min-width: 590px) {
+  #survey_form {
+    position: relative;
+    left: 30%;
+  }
+
+  #header {
+    width: 100%;
+
+  }
+
+
+}

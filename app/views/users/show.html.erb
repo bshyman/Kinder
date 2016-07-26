@@ -3,9 +3,9 @@
     <div class="card grey lighten-3">
       <div class="card-content black-text">
         <% if current_user.id == @user.id %>
-          <span class="card-title teal-text">Welcome <%= @user.full_name %>!</span>
+          <p class="card-title teal-text center-align">Hello, <%= @user.full_name %>!</p>
         <% else %>
-          <span class="card-title"><%= @user.full_name %>!</span>
+          <p class="card-title center-align"><%= @user.full_name %>!</p>
         <% end %>
         <%= render 'profile' %>
         <div class="card-action">
@@ -205,19 +205,6 @@
 <% end %>
 </div>    
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

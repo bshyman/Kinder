@@ -12,14 +12,14 @@ feature "Schedule Playdate Feature" do
 
   scenario "without connections, there will not be a schedule playdate button" do
     visit '/'
-    expect(page).to_not have_content "Schedule New Playdate"
+    expect(page).to_not have_content "New Playdate"
   end
 
   scenario "with connections, the schedule playdate button is clickable" do
     user.friend_request(user2)
     user2.accept_request(user)
     visit '/'
-    click_link('Schedule New Playdate')
+    click_link('New Playdate')
     expect(page).to have_field "Title"
   end
 
@@ -36,5 +36,3 @@ feature "Schedule Playdate Feature" do
     expect(page).to have_field "Title"
   end
 end
-
-

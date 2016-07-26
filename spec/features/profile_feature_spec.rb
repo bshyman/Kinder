@@ -25,7 +25,7 @@ feature 'Profile feature' do
 
   scenario "User can see own profile" do
     visit user_path(user.id)
-    expect(page).to have_content ("Welcome Vivien Kuo!");
+    expect(page).to have_content ("Hello, Vivien Kuo!");
   end
 
   scenario "User cannot see a profile if not logged in" do
