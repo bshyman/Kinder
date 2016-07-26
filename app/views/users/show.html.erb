@@ -1,39 +1,36 @@
 <div class="row">
-  <div class="col s12 m6">
-    <div class="card grey lighten-3">
+  <div class="col s12">
+    <div id='profile-card' class=" card grey lighten-3">
       <div class="card-content black-text">
         <% if current_user.id == @user.id %>
-          <p class="card-title teal-text center-align">Hello, <%= @user.full_name %>!</p>
+        <p class="card-title teal-text center-align">Hello, <%= @user.full_name %>!</p>
         <% else %>
-          <p class="card-title center-align"><%= @user.full_name %>!</p>
+        <p class="card-title center-align"><%= @user.full_name %>!</p>
         <% end %>
         <%= render 'profile' %>
         <div class="card-action">
 
-
- 
-
-
-
           <ul>
             <% if logged_in? && authorized?(@user) %>
-              <li> <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit Profile</a></li>
-              <li><%= link_to 'Delete Account', user_path(@user.id), method: 'DELETE' %></li>
-              <li><%= link_to 'Add Child', new_user_child_path(@user.id) %></li>
+            <li> <!-- Modal Trigger -->
+              <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit Profile</a></li>
+              <li><%= link_to 'Delete Account', user_path(@user.id), method: 'DELETE' %></li><li>
+              <!-- Modal Trigger -->
+              <a class="waves-effect waves-light btn modal-trigger" href="#add_child">Add Child</a>
+            </li>
             <% elsif logged_in? %>
             <% if @user.friends.include?(current_user) %>
-              <li><%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %></li>
-              <li><%= link_to 'Send Message', user_chats_path(current_user, :friend => @user.id), method: :post %></li>
+            <li><%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %></li>
+            <li><%= link_to 'Send Message', user_chats_path(current_user, :friend => @user.id), method: :post %></li>
             <% elsif current_user.pending_direct_add.include?(@user) %>
-              <li><%= link_to "Accept Connection", direct_accept_path(@user) %></li>
-              <li><%= link_to "Decline Connection", direct_decline_path(@user) %></li>
+            <li><%= link_to "Accept Connection", direct_accept_path(@user) %></li>
+            <li><%= link_to "Decline Connection", direct_decline_path(@user) %></li>
             <% elsif !@user.friendships.include?(current_user) && !@user.pending_direct_add.include?(current_user) %>
-              <li><%= link_to 'Add Friend', direct_add_path(@user) %></li>
+            <li><%= link_to 'Add Friend', direct_add_path(@user) %></li>
             <% end %>
-             <% if flash[:friending] %>
-              <li class="blue-grey-text text-lighten-4"><%= flash[:friending] %></li>
-             <% end %>
+            <% if flash[:friending] %>
+            <li class="blue-grey-text text-lighten-4"><%= flash[:friending] %></li>
+            <% end %>
             <% else %>
             <% render 'no_access' %>s
             <% end %>
@@ -45,13 +42,13 @@
 </div>
 
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal col s15">
-    <div class="modal-content">
-      <h4 class=" center">Parent Profile</h4>
-<div id='survey_form' class="row">
-  <div class="">
-      <div class=" black-text">
+<!-- Modal Structure -->
+<div id="modal1" class="modal col s15">
+  <div class="modal-content">
+    <h4 class=" center">Parent Profile</h4>
+    <div id='survey_form' class="row">
+      <div class="">
+        <div class=" black-text">
           <%= form_for @user do |f| %>
 
           <div>
@@ -108,11 +105,11 @@
 
           <div>
             <span>Vaccinate?</span>
-              <input class="with-gap" name="user[vaccinate]" type="radio" value="true" id='yes' />
-              <label for="yes">Yes</label>
+            <input class="with-gap" name="user[vaccinate]" type="radio" value="true" id='yes' />
+            <label for="yes">Yes</label>
 
-              <input class="with-gap" name="user[vaccinate]" type="radio" value="false" id='no'/>
-              <label for="no">No</label>
+            <input class="with-gap" name="user[vaccinate]" type="radio" value="false" id='no'/>
+            <label for="no">No</label>
           </div>
           <br>
 
@@ -194,16 +191,24 @@
             <%= f.text_area :bio%>
           </div>
         </div>
-      
+
+      </div>
+    </div>
+    <div id='modal-footer' class="modal-footer">
+      <input type='submit' value='Save' class=" modal-action btn card-action">
+      <input class='modal-action btn card-action modal-close' value='Cancel'>
     </div>
   </div>
-    <div class="modal-footer">
-      <input type='submit', value='Save', class="modal-action btn card-action">
-      <button class=' btn card-action modal-close'>Exit</button>
-    </div>
+  <% end %>
+</div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="add_child" class="modal">
+  <div class="modal-content">
+    <%= render partial: 'children/new' %>
   </div>
-<% end %>
-</div>    
 </div>
 
 

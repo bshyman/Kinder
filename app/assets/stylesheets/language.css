@@ -1,13 +1,13 @@
 html {
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-  }
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
 
 .picker__box{
-    background-color: #ef6c00;
+  background-color: #ef6c00;
 }
 
 .picker__date-display, .picker__weekday-display{
-    background-color: #ef6c00;
+  background-color: #ef6c00;
 }
 
 .container {
@@ -41,6 +41,13 @@ html {
   margin: 5px auto;
 }
 
+#profile-card {
+  text-align: center;
+  max-width: 500px;
+  line-height: 30px;
+  margin: 20px auto;
+}
+
 .bold-survey {
   font-weight: bold;
 }
@@ -71,7 +78,7 @@ html {
 
 #zip {
   text-align: center;
-margin: 10px 15%;
+  margin: 10px 15%;
 }
 
 #white {
@@ -79,23 +86,40 @@ margin: 10px 15%;
   color: black;
 }
 
-@media (min-width: 990px){
-  #survey_form {
-    position: relative;
-    margin: 10px;
-    left: 25%;
-  }
+#modal-footer > input {
+  margin: 0px 20px;
+  width: 40%;
+  height: 40px;
+  background-color: orange;
+  display: inline;
 }
-@media (min-width: 590px) {
-  #survey_form {
-    position: relative;
-    left: 30%;
-  }
 
-  #header {
-    width: 100%;
+.add-child-btn {
+  width: 100%;
+  border-radius: 10px;
+}
 
-  }
 
+
+
+#header {
+  width: 100%;
 
 }
+
+
+#survey_form {
+  margin: auto;
+
+}
+
+.modal {
+  overflow-x: hidden !important;
+}
+
+.filter {
+  width: 600px;
+  margin: auto;
+}
+
+

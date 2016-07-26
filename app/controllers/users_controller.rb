@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     logged_in_access
     @user = User.find(params[:id])
     @children = @user.children
+    @child = Child.new
   end
 
   def edit

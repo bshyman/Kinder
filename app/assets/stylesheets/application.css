@@ -29,7 +29,7 @@
 }
 #zip {
   text-align: center;
-margin: 10px 15%;
+  margin: 10px 15%;
 }
 
 #white {
@@ -37,34 +37,6 @@ margin: 10px 15%;
   color: black;
 }
 
-#survey_form {
-  width: 550px !important;
- 
-}
 
-.modal {
-  width: 700px !important;
-  overflow-x: hidden !important;
-}
-
-.filter {
-  width: 600px;
-  margin: auto;
-}
-
-
-/*@media (min-width: 990px){
-  #survey_form {
-    position: relative;
-    margin: 10px;
-    left: 25%;
-  }
-}
-@media (min-width: 590px) {
-  #survey_form {
-    position: relative;
-    left: 30%;
-  }
-}*/
 
 

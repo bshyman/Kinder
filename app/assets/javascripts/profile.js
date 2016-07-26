@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('select').material_select();
-   $('.modal-trigger').leanModal();
-   
+  $('.modal-trigger').leanModal();
+
 });
 

@@ -1,8 +1,8 @@
 <% if flash[:notice]%>
 <%= flash[:notice] %>
 <% end %>
-
-<ul class="profile-survey">
+<div class="profile-survey">
+<ul >
   <div class="center">
     <%= image_tag @user.avatar.url, size: '150', class: 'profile-pic'  if @user.avatar?%>
   </div>
@@ -65,3 +65,4 @@
 
   </ul>
 </p>
+</div>
