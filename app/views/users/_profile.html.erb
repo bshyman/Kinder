@@ -16,50 +16,50 @@
   <% end %>
 
   <% if authorized?(@user) %>
-    <% if @user.zipcode  %>
-      <li class="bold-survey">Zipcode: <%= @user.zipcode %></li>
+    <% if @user.survey.zipcode  %>
+      <li class="bold-survey">Zipcode: <%= @user.survey.zipcode %></li>
     <% end %>
-    <% if @user.radius%>
-      <li class="bold-survey">Radius Preference: <%= @user.radius %> miles</li>
+    <% if @user.survey.radius%>
+      <li class="bold-survey">Radius Preference: <%= @user.survey.radius %> miles</li>
     <% end %>
   <% end %>
 
-    <% if @user.gender %>
-    <li class="bold-survey">Gender: <%= @user.gender %>
+    <% if @user.survey.gender %>
+    <li class="bold-survey">Gender: <%= @user.survey.gender %>
     <% end %>
 
-    <li class="bold-survey">Vaccinate: <%= vaccinate?(@user) %></li>
+    <li class="bold-survey">Vaccinate: <%= vaccinate?(@user.survey) %></li>
 
-    <% if @user.marital_status %>
-    <li class="bold-survey">Relationship Status: <%= @user.marital_status.capitalize %> </li>
+    <% if @user.survey.marital_status %>
+    <li class="bold-survey">Relationship Status: <%= @user.survey.marital_status.capitalize %> </li>
     <% end %>
 
-    <% if @user.parenting_style %>
-    <li class="bold-survey">Parenting Style: <%= @user.parenting_style %></li>
+    <% if @user.survey.parenting_style %>
+    <li class="bold-survey">Parenting Style: <%= @user.survey.parenting_style %></li>
     <% end %>
 
-    <% if @user.date_night %>
-    <li class="bold-survey">Ideal Date Night: <%= @user.date_night %></li>
+    <% if @user.survey.date_night %>
+    <li class="bold-survey">Ideal Date Night: <%= @user.survey.date_night %></li>
     <% end %>
 
-    <% if @user.shopping_prefs %>
-    <li class="bold-survey">I shop at: <%= @user.shopping_prefs %></li>
+    <% if @user.survey.shopping_prefs %>
+    <li class="bold-survey">I shop at: <%= @user.survey.shopping_prefs %></li>
     <% end %>
 
-    <% if @user.religion %>
-    <li class="bold-survey">Thoughts On Religion: <%= @user.religion %></li>
+    <% if @user.survey.religion %>
+    <li class="bold-survey">Thoughts On Religion: <%= @user.survey.religion %></li>
     <% end %>
 
-    <% if @user.fav_activities%>
-    <li class="bold-survey">Favorite Activities: <%= @user.fav_activities %></li>
+    <% if @user.survey.fav_activities%>
+    <li class="bold-survey">Favorite Activities: <%= @user.survey.fav_activities %></li>
     <% end %>
 
-    <% if @user.music != nil %>
-    <li class="bold-survey">Music Preferences: <%= format_music_choices(@user) %></li>
+    <% if @user.survey.music != nil %>
+    <li class="bold-survey">Music Preferences: <%= format_music_choices(@user.survey) %></li>
     <% end %>
 
-    <% if @user.bio %>
-      <li class="bold-survey">About You: <br/ ><%= @user.bio %></li>
+    <% if @user.survey.bio %>
+      <li class="bold-survey">About You: <br/ ><%= @user.survey.bio %></li>
     <% end %>
 
 
