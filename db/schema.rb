@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725181656) do
+ActiveRecord::Schema.define(version: 20160726160252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,11 +72,10 @@ ActiveRecord::Schema.define(version: 20160725181656) do
     t.integer "user_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.integer  "zipcode"
-    t.string   "username",                     null: false
-    t.string   "email",                        null: false
-    t.string   "password_digest",              null: false
+  create_table "surveys", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "zipcode",         default: 60654
+    t.integer  "radius",          default: 10
     t.boolean  "vaccinate"
     t.string   "religion"
     t.string   "parenting_style"
@@ -84,15 +83,22 @@ ActiveRecord::Schema.define(version: 20160725181656) do
     t.string   "shopping_prefs"
     t.string   "fav_activities"
     t.string   "music"
-    t.string   "avatar"
+    t.string   "marital_status"
     t.string   "bio"
     t.string   "gender"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",        null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "avatar"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "radius",          default: 10
-    t.string   "marital_status"
   end
 
 end

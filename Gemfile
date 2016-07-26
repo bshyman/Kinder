@@ -35,7 +35,13 @@ gem 'faker', github: 'stympy/faker'
 #file_upload
 gem 'carrierwave'
 gem 'fog-aws'
-# connections
+# authlogic login & oauth
+gem "ruby-openid"
+gem "rack-openid", :require => "rack/openid"
+gem "authlogic"
+gem "oauth"
+gem "oauth2"
+gem "authlogic-connect"
 
 # Use HTTParty to make API get requests
 gem 'httparty'
