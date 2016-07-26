@@ -65,6 +65,9 @@ html {
   text-align: center;
 }
 
+.header-logo{
+  margin-top: 7px;
+}
 
 .profile-pic {
   border-radius: 60%;
@@ -114,7 +117,6 @@ html {
   width: 100%;
 
 }
-
 
 #survey_form {
   margin: auto;
