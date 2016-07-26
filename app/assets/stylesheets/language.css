@@ -86,17 +86,27 @@ html {
   color: black;
 }
 
-#modal-footer > input {
-  margin: 0px 20px;
+#modal-footer-overide > input {
+  margin-right:5px;
   width: 40%;
   height: 40px;
   background-color: orange;
-  display: inline;
+}
+
+#modal-footer-overide {
+  margin-top: 10px;
+  display: flex;
+  justify-content:center;
 }
 
 .add-child-btn {
   width: 100%;
   border-radius: 10px;
+}
+
+.profile-btn {
+  display: flex;
+  justify-content: center;
 }
 
 

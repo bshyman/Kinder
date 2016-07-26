@@ -1,28 +1,28 @@
 <%= form_for @playdate, url: user_playdates_path(current_user.id) do |f| %>
 
   <div>
-    <%= f.label :title%><br />
-    <%= f.text_field :title %>
+    <%= f.label :title, class: "black-text"%><br />
+    <%= f.text_field :title, class: "black-text" %>
   </div>
 
   <div>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.label :description, class: "black-text" %><br />
+    <%= f.text_area :description, class: "black-text" %>
   </div>
 
   <div>
-    <%= f.label :date %><br />
-    <%= f.date_field :date %>
+    <%= f.label :date, class: "black-text" %><br />
+    <%= f.date_field :date, class: "black-text datepicker" %>
   </div>
 
   <div>
-    <%= f.label :time %><br />
-    <%= f.time_field :time %>
+    <%= f.label :time, class: "black-text" %><br />
+    <%= f.time_field :time, class: "black-text timepicker" %>
   </div>
 
   <div>
-    <%= f.label :location %><br />
-    <%= f.text_field :location  %>
+    <%= f.label :location, class: "black-text" %><br />
+    <%= f.text_field :location, class: "black-text"  %>
   </div><br />
 
   <div>

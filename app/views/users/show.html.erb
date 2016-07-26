@@ -5,22 +5,22 @@
         <% if current_user.id == @user.id %>
         <p class="card-title teal-text center-align">Hello, <%= @user.full_name %>!</p>
         <% else %>
-        <p class="card-title center-align"><%= @user.full_name %>!</p>
+        <p class="card-title center-align"><%= @user.full_name %></p>
         <% end %>
         <%= render 'profile' %>
         <div class="card-action">
 
-          <ul>
+          <ul class="profile-btn">
             <% if logged_in? && authorized?(@user) %>
             <li> <!-- Modal Trigger -->
-              <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit Profile</a></li>
-              <li><%= link_to 'Delete Account', user_path(@user.id), method: 'DELETE' %></li><li>
+              <a class="waves-effect waves-light modal-trigger" href="#modal1">Edit Profile</a></li>
+              <li><%= link_to 'Delete Account', user_path(@user.id), method: 'DELETE', class: "waves-effect waves-light "  %></li><li>
               <!-- Modal Trigger -->
-              <a class="waves-effect waves-light btn modal-trigger" href="#add_child">Add Child</a>
+              <a class="waves-effect waves-light  modal-trigger" href="#add_child">Add Child</a>
             </li>
             <% elsif logged_in? %>
             <% if @user.friends.include?(current_user) %>
-            <li><%= link_to 'Schedule New Playdate', new_user_playdate_path(@user.id) %></li>
+            <li><%= link_to 'New Playdate', new_user_playdate_path(@user.id) %></li>
             <li><%= link_to 'Send Message', user_chats_path(current_user, :friend => @user.id), method: :post %></li>
             <% elsif current_user.pending_direct_add.include?(@user) %>
             <li><%= link_to "Accept Connection", direct_accept_path(@user) %></li>
@@ -188,13 +188,13 @@
           <div>
             About Me:
             <% f.label :bio %>
-            <%= f.text_area :bio%>
+            <%= f.text_area :bio, length: "300", class: "materialize-textarea", id: "textarea1"%>
           </div>
         </div>
 
       </div>
     </div>
-    <div id='modal-footer' class="modal-footer">
+    <div id='modal-footer-overide' class="modal-footer">
       <input type='submit' value='Save' class=" modal-action btn card-action">
       <input class='modal-action btn card-action modal-close' value='Cancel'>
     </div>

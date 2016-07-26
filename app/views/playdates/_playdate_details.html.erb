@@ -19,7 +19,7 @@
       <% end %>
     </ul>
   </p>
-  <p>Location: <%= playdate.location %> (maybe a map here using google api!)</p>
+  <p>Location: <%= link_to playdate.location, "http://maps.google.com/?q=#{playdate.location}" %></p>
   <%= link_to 'Message' %>
   <% if playdate.host.id == current_user.id %>
     <%= link_to 'Cancel Playdate', user_playdate_path, method: :delete %>
