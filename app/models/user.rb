@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
 
   class << self
     def from_omniauth(auth_hash)
-      p "#{auth_hash['info']}"
       user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
       user.first_name = auth_hash['info']['first_name']
       user.last_name = auth_hash['info']['last_name']
@@ -29,9 +28,7 @@ class User < ActiveRecord::Base
       user.password = SecureRandom.hex
       user.email = auth_hash['info']['email']
       user.avatar = auth_hash['info']['image']
-      user.save!
       user
-      p user
     end
   end
 
