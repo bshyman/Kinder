@@ -2,5 +2,5 @@
   <%  if message.user.avatar? %>
     <%= image_tag message.user.avatar.url, size: '30x30', class: "profile-pic"%>
   <% else %>
-    <%=message.user.username%>
+    <%= image_tag 'kinder-icon-circle', size: '30x30', class: "profile-pic"%>
   <% end %><%=message.content%></p>
