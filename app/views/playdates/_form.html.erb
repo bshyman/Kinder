@@ -7,7 +7,7 @@
 
   <div>
     <%= f.label :description, class: "black-text" %><br />
-    <%= f.text_area :description, class: "black-text" %>
+    <%= f.text_area :description, class: "black-text materialize-textarea" %>
   </div>
 
   <div>
@@ -26,7 +26,7 @@
   </div><br />
 
   <div>
-    <%= f.submit 'Create Playdate' %>
+    <%= f.submit 'Save', class: "waves-effect waves-light btn orange darken-3" %>
   </div>
 
 <% end %>
