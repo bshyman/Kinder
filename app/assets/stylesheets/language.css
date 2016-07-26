@@ -1,13 +1,13 @@
 html {
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-  }
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
 
 .picker__box{
-    background-color: #ef6c00;
+  background-color: #ef6c00;
 }
 
 .picker__date-display, .picker__weekday-display{
-    background-color: #ef6c00;
+  background-color: #ef6c00;
 }
 
 .container {
@@ -41,6 +41,13 @@ html {
   margin: 5px auto;
 }
 
+#profile-card {
+  text-align: center;
+  max-width: 500px;
+  line-height: 30px;
+  margin: 20px auto;
+}
+
 .bold-survey {
   font-weight: bold;
 }
@@ -58,6 +65,9 @@ html {
   text-align: center;
 }
 
+.header-logo{
+  margin-top: 7px;
+}
 
 .profile-pic {
   border-radius: 60%;
@@ -71,7 +81,7 @@ html {
 
 #zip {
   text-align: center;
-margin: 10px 15%;
+  margin: 10px 15%;
 }
 
 #white {
@@ -79,23 +89,61 @@ margin: 10px 15%;
   color: black;
 }
 
-@media (min-width: 990px){
-  #survey_form {
-    position: relative;
-    margin: 10px;
-    left: 25%;
-  }
+#modal-footer-overide > input {
+  margin-right:5px;
+  width: 40%;
+  height: 40px;
+  background-color: #ef6c00;
 }
-@media (min-width: 590px) {
-  #survey_form {
-    position: relative;
-    left: 30%;
-  }
 
-  #header {
-    width: 100%;
+#modal-footer-overide {
+  margin-top: 10px;
+  display: flex;
+  justify-content:center;
+}
 
-  }
+.add-child-btn {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.profile-btn {
+  display: flex;
+  justify-content: center;
+}
 
 
+#header {
+  width: 100%;
+
+}
+
+#survey_form {
+  margin: auto;
+
+}
+
+.modal {
+  overflow-x: hidden !important;
+}
+
+.filter {
+  width: 600px;
+  margin: auto;
+}
+
+.playdate-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-line {
+  align-items: center;
+  display: flex;
+  text-align: left;
+}
+
+.message-pic {
+  border-radius: 60%;
+  margin-right: 5px;
 }

@@ -12,6 +12,7 @@ class KindersController < ApplicationController
       if !current_user.zipcode
         flash[:zipcode] = "You need to enter zipcode to begin exploring"
       end
+      @user = current_user
       render 'no_kinders'
     else
       redirect_to kinder_path(kinder.sample.id)
