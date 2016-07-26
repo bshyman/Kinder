@@ -41,6 +41,8 @@ gem 'fog-aws'
 gem 'httparty'
 # For secret .env files for out keys
 gem 'dotenv-rails', :groups => [:development, :test]
+#OAuth & Google
+gem "omniauth-google-oauth2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

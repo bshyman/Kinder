@@ -1,4 +1,9 @@
 <div id="user-form-container">
+  <% if flash[:success] || flash[:warning] %>
+    <%= flash[:success] %>
+    <%= flash[:warning] %>
+  <% end %>
+
   <h4>Login</h2>
   <% if @error %>
 	  <%= @error %>
@@ -19,4 +24,6 @@
   </div>
 
   <% end %>
+    <p>Or Authenticate via Google to get started:<%= link_to 'Google', '/auth/google' %>
+    </p>
 </div>
