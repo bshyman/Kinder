@@ -27,3 +27,11 @@ html {
 .dashboard-link {
   margin: 10px 0;
 }
+
+.connection-item{
+  border-bottom: 1px solid lightgray;
+}
+
+.search-icon {
+  margin-top: 10px;
+}

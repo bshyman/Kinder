@@ -10,4 +10,6 @@ $(document).ready(function(){
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
 
+  $('textarea#textarea1').characterCounter();
+
 });
