@@ -19,6 +19,22 @@ class User < ActiveRecord::Base
   validates :bio, length: {maximum: 300,
                   too_long: "must be limited to %{count} characters"}
 
+  class << self
+    def from_omniauth(auth_hash)
+      p "#{auth_hash['info']}"
+      user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
+      user.first_name = auth_hash['info']['first_name']
+      user.last_name = auth_hash['info']['last_name']
+      user.username = auth_hash['info']['email']
+      user.password = SecureRandom.hex
+      user.email = auth_hash['info']['email']
+      user.avatar = auth_hash['info']['image']
+      user.save!
+      user
+      p user
+    end
+  end
+
   def users_in_proximity
     # NEED TO UNCOMMENT FOR PRODUCTION TO HIT API
     # HOURLY LIMIT IS 50

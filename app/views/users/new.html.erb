@@ -1,4 +1,8 @@
 <div id="user-form-container">
+	<% if flash[:success] || flash[:warning] %>
+		<%= flash[:success] %>
+		<%= flash[:warning] %>
+	<% end %>
 
 <h4>Registration</h2>
 
@@ -34,4 +38,6 @@
 	    <button type="submit" name="Register!">Register!</button>
 	  </div>
   <% end %>
+  <p>Or Authenticate via Google to get started:
+  <%= link_to 'Google', '/auth/google' %></p>
 </div>
