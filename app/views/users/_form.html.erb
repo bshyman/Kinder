@@ -1,3 +1,4 @@
+<div class='profile-form'>
 <div class='errors'>
   <% if @errors && @errors.any? %>
     <% @errors.each do |error| %>
@@ -9,11 +10,15 @@
   <%= flash[:welcome_notice]%>
 <% end %>
 
+ 
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal col s15">
+    <div class="modal-content">
+      <h4 class=" center">Parent Profile</h4>
 <div id='survey_form' class="row">
-  <div class="col s12 m6">
-    <div class="card-panel grey lighten-3">
-      <div class="card-content black-text">
-        <h4 class="card-title center"> Parent Profile</h4>
+  <div class="">
+      <div class=" black-text">
           <%= form_for @user do |f| %>
 
           <div>
@@ -156,12 +161,19 @@
             <%= f.text_area :bio%>
           </div>
         </div>
-      <div class='center'>
-      <input type='submit', value='Save', class=" btn card-action">
-      </div>
+      
+    </div>
+  </div>
+    <div class="modal-footer">
+      <input type='submit', value='Save', class="modal-action btn card-action">
+      <button class=' btn card-action modal-close'>Exit</button>
     </div>
   </div>
 <% end %>
+</div>    
 </div>
+</div>
+
+
 
 

@@ -9,9 +9,16 @@
         <% end %>
         <%= render 'profile' %>
         <div class="card-action">
+
+
+ 
+
+
+
           <ul>
             <% if logged_in? && authorized?(@user) %>
-              <li><%= link_to 'Edit Profile', edit_user_path(@user.id) %></li>
+              <li> <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Edit Profile</a></li>
               <li><%= link_to 'Delete Account', user_path(@user.id), method: 'DELETE' %></li>
               <li><%= link_to 'Add Child', new_user_child_path(@user.id) %></li>
             <% elsif logged_in? %>
@@ -35,6 +42,168 @@
       </div>
     </div>
   </div>
+</div>
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal col s15">
+    <div class="modal-content">
+      <h4 class=" center">Parent Profile</h4>
+<div id='survey_form' class="row">
+  <div class="">
+      <div class=" black-text">
+          <%= form_for @user do |f| %>
+
+          <div>
+            <div class="file-field input-field">
+              <div class="btn col s6">
+                <span>Profile Pic: </span>
+                <%= f.file_field :avatar %>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div id="zip" class="input-field col s8">
+            <input name='user[zipcode]'id="zipcode" type="text" class="validate">
+            <label id='white' for="zipcode">Zipcode</label>
+          </div><br>
+          <br>
+          <br>
+          <div>
+
+            <p class="range-field">
+              Radius (in miles):
+              <input type="range" name='user[radius]' id="radius" min="0" max="50" />
+            </p>
+          </div>
+
+          <div>
+            <select name='user[gender]'>
+              <option value="" disabled selected>Gender</option>
+              <option name="user[:gender]" id="male" />Male</option>
+              <option name="user[:gender]" id="female" />Female</option>
+              <option name="user[:gender]" id="non-binary" />Non-Binary</option>
+            </select>
+          </div>
+
+          <div>
+            <select name='user[marital_status]'>
+              <option value='' disabled selected>Relationship Status</option>
+              <option value='single'>Single</option>
+              <option value='married'>Married</option>
+              <option value='divorced'>Divorced</option>
+              <option value='widowed'>Widowed</option>
+              <option value='dating'>In A Relationship</option>
+              <option value='polyamorous'>Polyamorous</option>
+            </select>
+
+
+          </div>
+
+
+
+
+          <div>
+            <span>Vaccinate?</span>
+              <input class="with-gap" name="user[vaccinate]" type="radio" value="true" id='yes' />
+              <label for="yes">Yes</label>
+
+              <input class="with-gap" name="user[vaccinate]" type="radio" value="false" id='no'/>
+              <label for="no">No</label>
+          </div>
+          <br>
+
+
+
+
+          <div>
+            <% f.label :religion %>
+            <%= f.text_field :religion, placeholder: 'Thoughts On Religion' %>
+          </div>
+
+
+          <div class="input-field col s12">
+            <select name='user[parenting_style]'>
+              <option value="" disabled selected>Parenting Approach:</option>
+              <option value="Figure It Out As We Go">Figure It Out As We Go</option>
+              <option value="Carefully Research Everything">Carefully Research Everything</option>
+              <option value="Whatever The Kardashians Are Doing">Whatever The Kardashians Are Doing</option>
+              <option value="I Do What My Mom Tells Me To">I Do What My Mom Tells Me To</option>
+              <option value="Some Of This, Some Of That">Some Of This, Some Of That</option>
+            </select>
+          </div>
+
+          <div class="input-field col s12">
+            <select name="user[date_night]">
+              <option value="" disabled selected>Ideal Kidless Night:</option>
+              <option value="Turn Up At The Club">Turn Up At The Club</option>
+              <option value="Romantic Dinner And Drama Movie">Romantic Dinner And Drama Movie</option>
+              <option value="Hotdogs And Horror Movie">Hotdogs And Horror Movie</option>
+              <option value="Frozen Pizza And Blaze One">Frozen Pizza And Blaze One</option>
+              <option value="Dive Bar And Shitty Garage Band">Dive Bar And Shitty Garage Band</option>
+              <option value="Can't Go Out, We Have Kids">Can't Go Out, We Have Kids</option>
+              <option value="Netflix And Chill">Netflix And Chill</option>
+            </select>
+          </div>
+
+          <div class="input-field col s12">
+            <select name='user[shopping_prefs]'>
+              <option value="" disabled selected>I Buy My Kids' Clothes At:</option>
+              <option value="Jack And Jill">Jack And Jill</option>
+              <option value="Carter's">Carter's</option>
+              <option value="Walmart">Walmart</option>
+              <option value="I Make My Own Clothes">I Make My Own Clothes</option>
+              <option value="Target">Target</option>
+              <option value="Thrift It!">Thrift It!</option>
+            </select>
+          </div><br>
+
+          <div class="input-field col s12">
+            <select name='user[music]' multiple>
+              <option value="" disabled selected>Check all that apply</option>
+              <option value="Hip Hop">Hip Hop</option>
+              <option value="R&B and Soul">R&B and Soul</option>
+              <option value="Jam Bands">Jam Bands</option>
+              <option value="House and Techno">House and Techno</option>
+              <option value="Classical and Jazz">Classical and Jazz</option>
+              <option value="Ambient Drone Synth">Ambient Drone Synth</option>
+              <option value="Metal and Hardcore">Metal and Hardcore</option>
+              <option value="Pop Country">Pop Country</option>
+              <option value="Disney Radio">Disney Radio</option>
+              <option value="Gospel">Gospel</option>
+              <option value="Classic Rock">Classic Rock</option>
+              <option value="Indie Rock">Indie Rock</option>
+              <option value="Ska and Punk">Ska and Punk</option>
+            </select>
+            <label>Favorite Music:</label>
+          </div><br>
+
+          <div>
+            Favorite Activities:
+            <% f.label :fav_activities %>
+            <%= f.text_area :fav_activities%>
+          </div>
+
+
+          <div>
+            About Me:
+            <% f.label :bio %>
+            <%= f.text_area :bio%>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+    <div class="modal-footer">
+      <input type='submit', value='Save', class="modal-action btn card-action">
+      <button class=' btn card-action modal-close'>Exit</button>
+    </div>
+  </div>
+<% end %>
+</div>    
 </div>
 
 

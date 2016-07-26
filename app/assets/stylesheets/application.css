@@ -37,7 +37,23 @@ margin: 10px 15%;
   color: black;
 }
 
-@media (min-width: 990px){
+#survey_form {
+  width: 550px !important;
+ 
+}
+
+.modal {
+  width: 700px !important;
+  overflow-x: hidden !important;
+}
+
+.filter {
+  width: 600px;
+  margin: auto;
+}
+
+
+/*@media (min-width: 990px){
   #survey_form {
     position: relative;
     margin: 10px;
@@ -49,14 +65,8 @@ margin: 10px 15%;
     position: relative;
     left: 30%;
   }
+}*/
 
-  #header {
-    width: 100%;
-
-  }
-
-
-}
 
 
 

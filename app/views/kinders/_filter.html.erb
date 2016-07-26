@@ -1,18 +1,31 @@
-<%= form_for :kinders, method: 'post', url: {action: 'filter'} do |f| %>
-Gender:
-  <select name='gender'>
-    <option value=""></option>
-    <option value='Male'>Male</option>
-    <option value='Female'>Female</option>
-    <option value='Non-Binary'>Non-Binary</option>
-  </select>
-
-
-Vaccinated?:
-  <select name='vaccinate'>
-    <option value=''></option>
-    <option value='true'>Yes</option>
-    <option value='false'>No</option>
-  </select>
-  <%= f.submit 'Filter Results' %>
-<% end %>
+<div class=' col s12 filter'>
+  <%= form_for :kinders, method: 'post', url: {action: 'filter'} do |f| %>
+  <div class='col s4'>
+    <select name='gender' class=''>
+      <option value="" disabled selected>Gender</option>
+      <option value='Male'>Male</option>
+      <option value='Female'>Female</option>
+      <option value='Non-Binary'>Non-Binary</option>
+    </select>
+</div>
+<div class='col s4'>
+    <select name='vaccinate' >
+      <option value='' disabled selected>Vaccinated?</option>
+      <option value='true'>Yes</option>
+      <option value='false'>No</option>
+    </select>
+</div>
+<div>
+     <select name='marital_status]'>
+        <option value='' disabled selected>Relationship Status</option>
+        <option value='single'>Single</option>
+        <option value='married'>Married</option>
+        <option value='divorced'>Divorced</option>
+        <option value='widowed'>Widowed</option>
+        <option value='dating'>In A Relationship</option>
+        <option value='polyamorous'>Polyamorous</option>
+       </select>
+</div>
+    <%= f.submit 'Filter Results', class: '' %>
+  <% end %>
+</div>
