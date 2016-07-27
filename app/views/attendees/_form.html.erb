@@ -1,12 +1,16 @@
 <h5 class="center teal-text text-lighten-3">Select Invitee</h5>
 <div class="row">
-  <div class="col s12 m5">
+  <div class="col s12">
     <div class="card-panel grey lighten-2">
       <div class="possible-invitees center">
+        <% if flash[:warning] %>
+          <p class="center-align orange-text"><%= flash[:warning] %></p>
+        <% end %>
         <%= form_for @attendee, url: user_playdate_attendees_path, method: :post do |f| %>
+        <input type="hidden" name="attending[guest_id][]" value=" ">
         <% @user.friends.each do |friend| %>
-        <input id="<%= friend.id %>" type="checkbox" class="filled-in" name="attending[guest_id]" value="<%= friend.id %>">
-        <label class="black-text" for="<%= friend.id %>"><%= friend.first_name %></label><br />
+          <input id="<%= friend.id %>" type="checkbox" class="filled-in" name="attending[guest_id][]" value="<%= friend.id %>">
+          <label class="black-text" for="<%= friend.id %>"><%= friend.first_name %></label><br />
         <% end %><br />
         <button class="btn orange darken-3" type="submit" name="Invite">Invite</button>
         <% end %>
