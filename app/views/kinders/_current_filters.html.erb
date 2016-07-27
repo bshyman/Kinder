@@ -1,0 +1,5 @@
+<p>
+  <% session[:narrow].each_pair do |k,v| %>
+    <div class="chip"><%= "#{k.capitalize}: #{v} " %></div>
+  <% end %>
+</p>

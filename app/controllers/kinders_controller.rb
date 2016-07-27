@@ -29,12 +29,12 @@ class KindersController < ApplicationController
     session[:narrow] = {}
     session[:narrow]["gender"] = params[:gender] if params[:gender] != ''
     session[:narrow]["vaccinate"] = params[:vaccinate] if params[:vaccinate] != ''
-    redirect_to :back
+    redirect_to kinders_path
   end
 
   def delete_filter
     session.delete(:narrow)
-    redirect_to :back
+    redirect_to kinders_path
   end
 
   def show
