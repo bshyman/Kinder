@@ -101,4 +101,19 @@ class User < ActiveRecord::Base
     direct
   end
 
+  def find_unreads
+    unseen = []
+    self.chats.each do |c|
+      c.messages.each do |m|
+        if m.user_id != self.id
+          if m.seen == false
+            unseen << m
+          end
+        end
+      end
+    end
+    unseen
+  end
+
+
 end
