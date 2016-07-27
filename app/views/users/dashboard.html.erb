@@ -1,5 +1,9 @@
 <h4 class="center teal-text text-lighten-3"><%= @user.first_name %>'s Dashboard</h4>
 
+<% if flash[:friending] %>
+  <p class="center-align orange-text"><%= flash[:confirm] %></p>
+<% end %>
+
 <div class="dashboard-link center">
   <% if @user.friends.empty? %>
     <p>Start Kindering or Add Connections Directly to Schedule Playdates!</p>
