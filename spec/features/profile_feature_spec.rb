@@ -47,9 +47,9 @@ feature 'Profile feature' do
     expect(page).to have_content "Zipcode: 60614"
   end
 
-  xscenario "User can delete user's own profile" do
+  scenario "User can delete user's own profile" do
     visit user_path(user.id)
     click_link("Delete Account")
-
+    save_and_open_page
   end
 end
