@@ -6,20 +6,17 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Kinder (Swiping)
+ * Zipcode API
+ * Hammer JS
+* Playdate Scheduling
+* Friending (Direct & Swiping)
+* Profile 
+ * S3 Profile Photo Storage 
+* Live Messaging & Notifications 
+  * Actioncable (Websockets)
+* Google Integration with OAuth2
+ * Sign In with OpenID
+ * Calendar 
+ * Maps
+* 
