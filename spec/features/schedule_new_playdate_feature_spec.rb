@@ -48,4 +48,23 @@ feature "Schedule Playdate Feature" do
     click_link('Accept')
     expect(page).to have_content("You have accepted this playdate")
   end
+
+  scenario "invited user can decline a invite" do
+    user.friend_request(user2)
+    user2.accept_request(user)
+    playdate = Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "beach Day!", description: "Picnic at the beach, bring your pets!", location:"Montrose Beach", date:"2016-08-27",host_id: user2.id)
+    Attendee.create(guest_id:user.id, playdate_id:playdate.id, response:nil)
+    visit user_playdate_path(user.id, playdate.id)
+    click_link('Decline')
+    expect(page).to have_content("You have declined beach Day!")
+  end
+
+  scenario "user can delete a scheduled playdate" do
+    user.friend_request(user2)
+    user2.accept_request(user)
+    playdate = Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "beach Day!", description: "Picnic at the beach, bring your pets!", location:"Montrose Beach", date:"2016-08-27",host_id: user.id)
+    visit user_playdate_path(user.id, playdate.id)
+    click_link('Cancel Playdate')
+    expect(page).to have_content("You have deleted #{playdate.title}")
+  end
 end
