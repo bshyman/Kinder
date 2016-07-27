@@ -6,11 +6,10 @@ class KindersController < ApplicationController
     kinder = filter_by(session[:narrow], kinder)
     kinder
     if kinder.empty?
-      if current_user.blocked_friends.empty?
-        flash[:notice] = "There are no more new parents in the area. Please come back at a later date."
-      end
       if !current_user.zipcode
         flash[:zipcode] = "You need to enter zipcode to begin exploring"
+      elsif current_user.blocked_friends.empty?
+        flash[:notice] = "There are no more new parents in the area. Please come back at a later date."
       end
       @user = current_user
       render 'no_kinders'
