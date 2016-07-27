@@ -1,10 +1,17 @@
-<% if flash[:zipcode] %>
-  <h5 class="center-align"><%= flash[:zipcode] %></h5>
-  <p class="center-align">Go to your <%= link_to 'profile', user_path(current_user) %> to add a zipcode and radius!</p>
-<% elsif flash[:notice] %>
- <p class="center-align"><%= flash[:notice] %></p>
-<% else %>
-  <p class="center-align"> You have reached the end of possible kinders within your preferences. <%= link_to "Click here", reset_kinders_path %> to reset your kinders and see the kinders that you swiped left.</p>
-<% end %>
-
-
+<div class="card grey lighten-3">
+  <div class="card-content black-text">
+    <% if flash[:zipcode] %>
+      <h5 class="center-align"><%= flash[:zipcode] %></h5>
+      <p class="center-align">Go to your <%= link_to 'profile', user_path(current_user) %> to add a zipcode and radius!</p>
+    <% elsif session[:narrow] %>
+      <%= render partial: "current_filters" %>
+      <p>
+        <%= link_to "Clear filters", delete_filters_path(@user.id), method: :delete %> to see more kinders in your area.
+      </p>
+    <% elsif flash[:notice] %>
+     <p class="center-align"><%= flash[:notice] %></p>
+    <% else %>
+      <p class="center-align"> You have reached the end of possible kinders within your preferences. <%= link_to "Click here", reset_kinders_path %> to reset your kinders and see the kinders that you swiped left.</p>
+    <% end %>
+  </div>
+</div>

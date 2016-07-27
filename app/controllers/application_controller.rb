@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include KinderHelper
   include GoogleCalendarHelpers
   include PlaydateHelper
+  include MessageHelper
 
   def index
   end
