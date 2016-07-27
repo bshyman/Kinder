@@ -5,7 +5,7 @@
 <div class="possible-invitees center">
   <%= form_for @attendee, url: user_playdate_attendees_path, method: :post do |f| %>
     <% @user.friends.each do |friend| %>
-       <input id="<%= friend.id %>" type="checkbox" name="attending[guest_id]" value="<%= friend.id %>">
+       <input id="<%= friend.id %>" type="checkbox" class="filled-in" name="attending[guest_id]" value="<%= friend.id %>">
        <label class="black-text" for="<%= friend.id %>"><%= friend.first_name %></label><br />
     <% end %><br />
   <%= f.submit 'Invite!', class: "waves-effect waves-light black-text btn white" %>
