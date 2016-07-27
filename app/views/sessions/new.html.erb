@@ -4,10 +4,16 @@
     <%= flash[:warning] %>
   <% end %>
 
-  <h4>Login</h2>
+  <h4 class="center teal-text text-lighten-3">Login</h4>
+
+  <%= link_to('/auth/google', class: "center-btn") do %>
+  	<%= image_tag 'btn_google_signin.png'%>
+  <% end %>
+
   <% if @error %>
 	  <%= @error %>
   <% end %>
+
   <%= form_for User.new, url: login_path, method: :post do |f|%>
   <div>
     <%= f.label :username %>
@@ -19,11 +25,10 @@
     <%= f.password_field :password %>
   </div>
 
-  <div>
-    <button type="submit" name="Login">Login</button>
+  <div class="center-btn">
+    <button class="btn" type="submit" name="Login">Login</button>
+    <%= link_to 'Register', new_user_path, class: "btn", style: "margin-left:20px;" %>
   </div>
 
   <% end %>
-    <p>Or Authenticate via Google to get started:<%= link_to 'Google', '/auth/google' %>
-    </p>
 </div>
