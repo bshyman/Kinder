@@ -183,3 +183,42 @@ body {
        display: flex;
      }
  }
+
+ .footer-buttons {
+  justify-content: center;
+  display: space-between;
+
+ }
+
+ .profile-button {
+  background-color: orange;
+  display: block;
+  padding: 3px;
+  margin-top: 5px;
+  border-radius: 10px;
+  color: white !important;
+  text-align: center;
+
+ }
+
+ .child-modal {
+  height: 80%;
+ }
+
+ .dash-btn {
+  display: flex;
+  width: 160px;
+  margin: auto;
+  text-align: center;
+ }
+
+ .delete-profile-button {
+  background-color: orange;
+  display: block;
+  padding: 3px;
+  margin: 15px 50px;
+  border-radius: 10px;
+  color: white !important;
+  text-align: center;
+
+ }

@@ -25,8 +25,9 @@
     <%= f.text_field :location, class: "black-text"  %>
   </div><br />
 
-  <div>
-    <button class="btn orange darken-3" type="submit" name="save">Save</button>
+  <div class='footer-buttons'>
+    <input class="btn orange darken-3" type="submit" name="save" value='Save'>
+    <%= link_to 'Cancel', user_playdates_path(current_user.id), class: "btn orange darken-3"  %>
   </div>
 
 <% end %>

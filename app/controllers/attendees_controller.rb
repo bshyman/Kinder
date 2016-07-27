@@ -7,12 +7,22 @@ class AttendeesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @invite = Attendee.new(guest_id: guest_params[:guest_id], playdate_id: params[:playdate_id], response: nil)
-    if @invite.save
+    if guest_params["guest_id"] == [" "]
+      @attendee = Attendee.new
+      flash[:warning] = "You must select atleast one guest"
+      render 'new'
+    else
+      invited = guest_params["guest_id"]
+      invited.delete_if { |g| g == " " }
+      guests = []
+      invited.each do |g|
+        guests << User.find(g)
+      end
+      guests.each do |g|
+        Attendee.create(guest_id: g.id, playdate_id: params[:playdate_id], response: nil)
+      end
       flash[:calendar_event] = "We have added this event to your calendar!"
       redirect_to user_playdate_path(@user, params[:playdate_id])
-    else
-      render 'new'
     end
   end
 
@@ -42,7 +52,7 @@ class AttendeesController < ApplicationController
 
   private
   def guest_params
-    params.require(:attending).permit(:guest_id)
+    params.require(:attending).permit(:guest_id  => [])
   end
 
 end

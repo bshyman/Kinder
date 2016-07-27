@@ -41,10 +41,11 @@ class ConnectionsController < ApplicationController
 
   def disconnect
     # remove friend method has issues on github
-    @other_user = User.find(params[:id])
-    current_user.remove_friend(@other_user)
+    @other_user = User.find(params[:friend])
     flash[:friending] = "You have disconnect with #{@other_user.username}"
-    redirect_to user_path(@other_user)
+    current_user.friendships.where(friend_id: @other_user.id).destroy_all
+    @other_user.friendships.where(friend_id: current_user.id).destroy_all
+    redirect_to dashboard_path(current_user)
   end
 
   private
