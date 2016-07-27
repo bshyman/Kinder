@@ -36,8 +36,11 @@ class ChatsController < ApplicationController
 
   def show
     @friend = User.find(params[:friend])
+
     @chat = Chat.find_by(id: params[:id])
     @message = Message.new
+    recieved_msgs = @chat.messages.where.not(user_id: current_user.id)
+    recieved_msgs.each {|msg| msg.update(seen: true)}
   end
 
    private
