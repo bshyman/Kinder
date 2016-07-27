@@ -29,6 +29,7 @@ class AttendeesController < ApplicationController
     @playdate = Playdate.find(params[:playdate_id])
     @user = User.find(params[:user_id])
     @user.accept_invite(@playdate)
+    send_cal_event(@playdate, current_user) if current_user.provider == "google"
     redirect_to user_playdates_path(@user)
   end
 

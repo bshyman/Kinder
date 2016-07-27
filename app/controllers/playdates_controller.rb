@@ -23,6 +23,7 @@ class PlaydatesController < ApplicationController
     @user = User.find(params[:user_id])
     @playdate = Playdate.new(playdate_params)
     if @playdate.save
+      send_cal_event(@playdate, current_user) if current_user.provider == "google"
       redirect_to new_user_playdate_attendee_path(@user.id, @playdate.id)
     else
       render 'new'
