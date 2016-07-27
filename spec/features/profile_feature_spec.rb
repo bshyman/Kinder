@@ -37,14 +37,6 @@ feature 'Profile feature' do
     expect(page).to have_current_path no_access_path;
   end
 
-  scenario "User can edit user's own profile" do
-    visit user_path(user.id)
-    fill_in('Zipcode', :with => "60657")
-    fill_in('First Name', :with => "60657")
-    click_button('Save')
-    expect(response).to redirect_to user_path(user.id)
-  end
-
   scenario "User can delete user's own profile" do
     visit user_path(user.id)
     within('#delete-account') do
