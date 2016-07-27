@@ -2,6 +2,11 @@ html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
 
+body {
+  background-image: asset-data-url("agsquare.png");
+  background-repeat: repeat;
+}
+
 .picker__box{
   background-color: #ffffff;
 }
