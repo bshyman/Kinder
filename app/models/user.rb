@@ -78,10 +78,6 @@ class User < ActiveRecord::Base
     pending_playdates
   end
 
-  def create_invite(guest_id, playdate_id)
-    Attendee.new(guest_id: guest_id, playdate_id: playdate_id, response: nil)
-  end
-
   def accept_invite(playdate)
     @attendee = self.attendees.find_by(playdate_id: playdate.id)
     @attendee.update(response: true)
