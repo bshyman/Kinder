@@ -43,6 +43,7 @@ gem 'httparty'
 gem 'dotenv-rails', :groups => [:development, :test]
 #OAuth & Google
 gem "omniauth-google-oauth2"
+gem 'google-api-client', '0.8.2', require: 'google/api_client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -3,6 +3,9 @@
   <div class="col s12 m6">
     <div class="card grey lighten-2">
       <div class="card-content black-text">
+        <% if flash[:calendar_event] %>
+          <p><%= flash[:calendar_event] %></p>
+        <% end %>
         <%= render partial: 'playdate_details', locals: {playdate: @playdate} %>
       </div>
     </div>

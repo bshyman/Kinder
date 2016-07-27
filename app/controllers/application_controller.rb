@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include AuthenticationControllerHelper
   include UserHelper
   include KinderHelper
+  include GoogleCalendarHelpers
 
   def index
   end

@@ -9,7 +9,8 @@ class AttendeesController < ApplicationController
     @user = User.find(params[:user_id])
     @invite = Attendee.new(guest_id: guest_params[:guest_id], playdate_id: params[:playdate_id], response: nil)
     if @invite.save
-      redirect_to user_playdates_path(@user)
+      flash[:calendar_event] = "We have added this event to your calendar!"
+      redirect_to user_playdate_path(@user, params[:playdate_id])
     else
       render 'new'
     end
@@ -29,7 +30,9 @@ class AttendeesController < ApplicationController
     @playdate = Playdate.find(params[:playdate_id])
     @user = User.find(params[:user_id])
     @user.accept_invite(@playdate)
-    redirect_to user_playdates_path(@user)
+    send_cal_event(@playdate, current_user) if current_user.provider == "google"
+    flash[:calendar_event] = "We have added this event to your calendar!"
+    redirect_to user_playdate_path(@user.id, @playdate)
   end
 
   private

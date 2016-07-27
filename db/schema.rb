@@ -95,6 +95,9 @@ ActiveRecord::Schema.define(version: 20160726204750) do
     t.string   "marital_status"
     t.string   "provider"
     t.string   "uid"
+    t.string   "token"
+    t.string   "refresh_token"
+    t.integer  "expires_in"
   end
 
 end
