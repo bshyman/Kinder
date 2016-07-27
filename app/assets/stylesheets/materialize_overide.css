@@ -11,7 +11,7 @@ html {
 }
 
 .container {
-  padding: 10 10;
+  padding: 20 10;
 }
 
 .recent-connect {
@@ -146,4 +146,15 @@ html {
 .message-pic {
   border-radius: 60%;
   margin-right: 5px;
+}
+
+.parent-profile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-btn {
+  display: flex;
+  justify-content: center;
 }

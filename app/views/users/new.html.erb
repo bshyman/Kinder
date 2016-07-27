@@ -1,43 +1,64 @@
 <div id="user-form-container">
 	<% if flash[:success] || flash[:warning] %>
-		<%= flash[:success] %>
-		<%= flash[:warning] %>
+	<%= flash[:success] %>
+	<%= flash[:warning] %>
 	<% end %>
 
-<h4>Registration</h2>
+	<h4 class="center teal-text text-lighten-3">Registration</h4>
+	<%= link_to('/auth/google', class: "center-btn") do %>
+		<%= image_tag 'btn_google_signin.png'%>
+	<% end %>
 
-  <%= form_for @user do |f| %>
-	  <% if @user.errors.any? %>
-		  <ul>
-	    <% @user.errors.full_messages.each do |error| %>
-		    <li><%= error %></li>
-	    <% end %>
-	  </ul>
-	  <% end %>
-	  <div>
-	    <%= f.label :username %>
-	    <%= f.text_field :username %>
-	  </div><br>
+	<div class="row">
+		<div class="col s12 m6">
+			<div class="card grey lighten-2">
+				<div class="card-content black-text">
+					<%= form_for @user do |f| %>
+					<% if @user.errors.any? %>
+					<ul>
+						<% @user.errors.full_messages.each do |error| %>
+						<li><%= error %></li>
+						<% end %>
+					</ul>
+					<% end %>
+					<div>
+						<%= f.label :username, class: "black-text" %>
+						<%= f.text_field :username %>
+					</div><br>
 
-	  <div>
-	    <%= f.label :email %>
-	    <%= f.email_field :email %>
-	  </div><br>
+					<div>
+						<%= f.label :email, class: "black-text"  %>
+						<%= f.email_field :email %>
+					</div><br>
 
-	  <div>
-	    <%= f.label :password %>
-	    <%= f.password_field :password %>
-	  </div><br>
+					<div>
+						<%= f.label :first_name, class: "black-text"  %>
+						<%= f.text_field :first_name %>
+					</div>
 
-	  <div>
-	    <%= f.label :password_confirmation %>
-	    <%= f.password_field :password_confirmation %>
-	  </div><br>
+					<div>
+						<%= f.label :last_name, class: "black-text"  %>
+						<%= f.text_field :last_name %>
+					</div>
 
-	  <div>
-	    <button type="submit" name="Register!">Register!</button>
-	  </div>
-  <% end %>
-  <p>Or Authenticate via Google to get started:
-  <%= link_to 'Google', '/auth/google' %></p>
+					<div>
+						<%= f.label :password, class: "black-text"  %>
+						<%= f.password_field :password %>
+					</div><br>
+
+					<div>
+						<%= f.label :password_confirmation, class: "black-text"  %>
+						<%= f.password_field :password_confirmation %>
+					</div><br>
+
+					<div class="center-btn">
+						<button type="submit" name="Register!" class="btn">Register!</button>
+					</div>
+
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
