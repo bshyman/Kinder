@@ -14,7 +14,7 @@ user1 = User.create!(first_name: "Amanda",
 	zipcode: 60616,
 	radius: 10,
 	vaccinate: true,
-	gender: "female")
+	gender: "Female")
 
 user2 = User.create!(first_name: "Benji",
 	last_name: "Shyman",
@@ -24,7 +24,7 @@ user2 = User.create!(first_name: "Benji",
 	zipcode: 60616,
 	radius: 10,
 	vaccinate: true,
-	gender: "male")
+	gender: "Male")
 
 user3 = User.create!(first_name: "Vivien",
 	last_name: "Kuo",
@@ -44,7 +44,7 @@ user4 = User.create!(first_name: "Leland",
 	zipcode: 60616,
 	radius: 10,
 	vaccinate: true,
-	gender: "male")
+	gender: "Male")
 
 user5 = User.create!(first_name: "Test",
 	last_name: "Zip",
@@ -54,7 +54,7 @@ user5 = User.create!(first_name: "Test",
 	zipcode: 60616,
 	radius: 10,
 	vaccinate: true,
-	gender: "female")
+	gender: "Female")
 
 user1.friend_request(user2)
 user1.friend_request(user3)
