@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
 
   class << self
     def from_omniauth(auth_hash)
-      p auth_hash
       user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
       if !user.persisted?
         user.first_name = auth_hash['info']['first_name']
@@ -33,7 +32,6 @@ class User < ActiveRecord::Base
         user.token = auth_hash['credentials']['token']
         user.refresh_token = auth_hash['credentials']['refresh_token']
         user.expires_in = auth_hash['credentials']['expires_at']
-        user.save!
       end
       user
     end
