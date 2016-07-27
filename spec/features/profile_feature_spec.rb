@@ -49,7 +49,9 @@ feature 'Profile feature' do
 
   scenario "User can delete user's own profile" do
     visit user_path(user.id)
-    click_link("Delete Account")
-    save_and_open_page
+    within('#delete-account') do
+      click_link("Delete Account")
+    end
+    expect{ User.find(user.id) }.to raise_exception(ActiveRecord::RecordNotFound)
   end
 end
