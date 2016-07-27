@@ -18,7 +18,7 @@
             </li>
             <li>
               <!-- Modal Trigger -->
-              <a class="waves-effect waves-light  modal-trigger profile-button" href="#add_child">Add Child</a>
+              <a class="waves-effect waves-light   modal-trigger profile-button" href="#add_child">Add Child</a>
             </li>
             <% elsif logged_in? %>
             <% if @user.friends.include?(current_user) %>
@@ -225,7 +225,7 @@
 
 
 <!-- Modal Structure -->
-<div id="add_child" class="modal">
+<div id="add_child" class="modal child-modal">
   <div class="modal-content">
     <%= render partial: 'children/new' %>
   </div>
