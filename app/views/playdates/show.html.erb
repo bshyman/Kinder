@@ -1,14 +1,13 @@
 
-<div class="row">
-  <div class="col s12 m6">
-    <div class="card grey lighten-2">
+<div class="row playdate-details">
+  <div class="col s12">
+    <div class="card white">
       <div class="card-content black-text">
-        <% if flash[:calendar_event] %>
-          <p><%= flash[:calendar_event] %></p>
+        <% if flash[:confirm] %>
+          <p class="center-align orange-text"><%= flash[:confirm] %></p>
         <% end %>
         <%= render partial: 'playdate_details', locals: {playdate: @playdate} %>
       </div>
     </div>
   </div>
 </div>
-

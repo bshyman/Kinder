@@ -7,18 +7,18 @@ class ChatsController < ApplicationController
   end
 
    def create
-    friend_user = User.find(params[:friend])
-    @chat = find_chat(friend_user) || Chat.new(identifier: SecureRandom.hex)
+    @friend = User.find(params[:friend])
+    @chat = find_chat(@friend) || Chat.new(identifier: SecureRandom.hex)
     if !@chat.persisted?
       @chat.save
       @chat.subscriptions.create(user_id: current_user.id)
-      @chat.subscriptions.create(user_id: friend_user.id)
+      @chat.subscriptions.create(user_id: @friend.id)
       respond_to do |format|
-        format.html { redirect_to user_chat_path(current_user,@chat) }
+        format.html { redirect_to user_chat_path(current_user, @chat,  :friend => @friend.id) }
         format.js
       end
     else
-      redirect_to user_chat_path(current_user,@chat)
+      redirect_to user_chat_path(current_user,@chat, :friend => @friend.id)
     end
   end
 
@@ -35,6 +35,7 @@ class ChatsController < ApplicationController
   end
 
   def show
+    @friend = User.find(params[:friend])
     @chat = Chat.find_by(id: params[:id])
     @message = Message.new
   end
@@ -45,4 +46,3 @@ class ChatsController < ApplicationController
     #   params.require(:chat).permit(:identifier)
     # end
 end
-

@@ -1,35 +1,52 @@
-<div class="playdate_details">
-  <span class="card-title"><%= playdate.title %> hosted by <%= playdate.host.username %></span>
-  <p>Date and Time: <%= playdate.date.strftime("%B, %dth") %>  <%= playdate.time.strftime("%H:%m%P") %></p>
-  <p>Description: <%= playdate.description %></p>
-  <p>Attending:
-    <ul>
-      <% playdate.attending_guests.each do |g| %>
-      <li><%= g.username %> </li>
-      <% g.children.each do |c| %>
-      <li><%= c.name %>, <%= age(c) %> | Allergies: <%= c.allergies  %></li>
-      <% end %>
-      <% end %>
-    </ul>
-  </p>
-  <p>Pending:
-    <ul>
-      <% playdate.pending_guests.each do |g| %>
-      <li><%= g.username %></li>
-      <% end %>
-    </ul>
-  </p>
-    <p>Location: <%= link_to playdate.location, "http://maps.google.com/?q=#{playdate.location}" %></p>
+<div>
+  <div>
+    <span class="card-title center-align teal-text text-lighten-3 center-btn"><%= playdate.title %></span><br />
+  </div>
+  <div><span class="bold">Host: </span><%= playdate.host.username %></div>
+  <div><span class="bold">Date and Time: </span> <%= playdate.date.strftime("%B, %dth") %>  <%= playdate.time.strftime("%H:%m%P") %></div>
+  <div><span class="bold">Description: </span><%= playdate.description %></div>
+  <div><span class="bold">Location: </span><%= link_to playdate.location, "http://maps.google.com/?q=#{playdate.location}" %></div>
+
+  <% if !playdate.attending_guests.empty? %>
+  <ul class="collection with-header">
+    <li class="collection-header white-text teal lighten-3"><h6>Attending</h6></li>
+    <% playdate.attending_guests.each do |g| %>
+      <li class="collection-item"><%= g.username %>
+        <ul>
+        <% g.children.each do |c| %>
+          <li><%= c.name %>, <%= age(c) %> | Allergies: <%= c.allergies  %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <% if !playdate.pending_guests.empty? %>
+  <ul class="collection with-header">
+    <li class="collection-header white-text orange darken-3"><h6>Pending</h6></li>
+    <% playdate.pending_guests.each do |g| %>
+      <li class="collection-item"><%= g.username %>
+        <ul>
+        <% g.children.each do |c| %>
+          <li><%= c.name %>, <%= age(c) %> | Allergies: <%= c.allergies  %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+
   <div class="card-action playdate-links">
     <% if playdate.host.id == current_user.id %>
     <%= link_to 'Cancel Playdate', user_playdate_path, method: :delete %>
     <% else %>
-    <% if current_user.attending_playdates.include?(playdate) %>
-    <%= link_to 'Can No Longer Attend', decline_invite_path(current_user.id, playdate.id) %>
-    <% else %>
-    <%= link_to 'Accept', accept_invite_path(current_user.id, playdate.id) %>
-    <%= link_to 'Decline', decline_invite_path(current_user.id, playdate.id) %>
-    <% end %>
+      <% if current_user.attending_playdates.include?(playdate) %>
+        <%= link_to 'Can No Longer Attend', decline_invite_path(current_user.id, playdate.id) %>
+      <% else %>
+        <%= link_to 'Accept', accept_invite_path(current_user.id, playdate.id) %>
+        <%= link_to 'Decline', decline_invite_path(current_user.id, playdate.id) %>
+      <% end %>
     <% end %>
   </div>
 

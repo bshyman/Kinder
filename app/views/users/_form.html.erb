@@ -7,13 +7,9 @@
 
 </div>
 <% if flash[:welcome_notice] %>
-  <%= flash[:welcome_notice]%>
+  <p class="center orange darken-3"><%= flash[:welcome_notice]%></p>
 <% end %>
 
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal col s15">
-    <div class="modal-content">
       <h4 class=" center">Parent Profile</h4>
       <div id='survey_form' class="row">
         <div class="">
@@ -30,10 +26,10 @@
                   <input class="file-path validate" type="text">
                 </div>
 
-          <div id="zip" class="input-field col s8">
-            <input name='user[zipcode]'id="zipcode" type="text" class="validate">
-            <label id='white' for="zipcode">Zipcode</label>
-          </div><br>
+                <div id="zip" class="input-field col s8">
+                  <%= f.label :zipcode%>
+                  <%= f.text_field :zipcode, id: "zipcode", class: "validate" %>
+                </div><br>
           <br>
           <br>
           <div>
@@ -42,6 +38,16 @@
               Radius (in miles):
               <input type="range" name='user[radius]' id="radius" min="0" max="50" />
             </p>
+          </div>
+
+          <div>
+            <% f.label :first_name %>
+            <%= f.text_field :first_name, placeholder: 'First Name' %>
+          </div>
+
+          <div>
+            <% f.label :last_name %>
+            <%= f.text_field :last_name, placeholder: 'First Name' %>
           </div>
 
           <div>
@@ -159,12 +165,7 @@
           </div>
         </div>
       </div>
-      <div id='modal-footer-overide' class="modal-footer">
         <input type='submit', value='Save', class="modal-action btn card-action">
-        <button class=' btn card-action modal-close'>Exit</button>
-      </div>
     </div>
     <% end %>
   </div>
-</div>
-</div>

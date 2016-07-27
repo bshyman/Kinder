@@ -37,6 +37,7 @@ class PlaydatesController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     @playdate = Playdate.find(params[:id])
+    flash[:confirm] = "You have deleted #{@playdate.title}"
     @playdate.destroy
     redirect_to user_playdates_path(@user)
   end

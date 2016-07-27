@@ -5,7 +5,7 @@
         <% if current_user.id == @user.id %>
         <p class="card-title teal-text center-align">Hello, <%= @user.full_name %>!</p>
         <% else %>
-        <p class="card-title center-align"><%= @user.full_name %></p>
+        <p class="card-title center-align"><%= @user.first_name %></p>
         <% end %>
         <%= render 'profile' %>
         <div class="card-action">
@@ -21,6 +21,7 @@
             <% if @user.friends.include?(current_user) %>
             <li><%= link_to 'New Playdate', new_user_playdate_path(@user.id) %></li>
             <li><%= link_to 'Send Message', user_chats_path(current_user, :friend => @user.id), method: :post %></li>
+            <li><%# link_to 'Disconnect', disconnect_path(current_user, :friend => @user.id) %></li>
             <% elsif current_user.pending_direct_add.include?(@user) %>
             <li><%= link_to "Accept Connection", direct_accept_path(@user) %></li>
             <li><%= link_to "Decline Connection", direct_decline_path(@user) %></li>
@@ -44,7 +45,14 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal col s15">
   <div class="modal-content">
-    <h4 class=" center">Parent Profile</h4>
+    <div class="parent-profile">
+      <% if logged_in? %>
+        <%  if @user.avatar? %>
+          <span style="margin-right:5px;"><%= image_tag @user.avatar.url, size: '40x40', class: "profile-pic"%></span>
+        <% end %>
+      <% end %>
+      <h5 class=" center">Parent Profile</h5>
+    </div>
     <div id='survey_form' class="row">
       <div class="">
         <div class=" black-text">
@@ -63,8 +71,8 @@
           </div>
 
           <div id="zip" class="input-field col s8">
-            <input name='user[zipcode]'id="zipcode" type="text" class="validate">
-            <label id='white' for="zipcode">Zipcode</label>
+            <%= f.label :zipcode%>
+            <%= f.text_field :zipcode, id: "zipcode", class: "validate" %>
           </div><br>
           <br>
           <br>
@@ -74,6 +82,16 @@
               Radius (in miles):
               <input type="range" name='user[radius]' id="radius" min="0" max="50" />
             </p>
+          </div>
+
+          <div>
+            <% f.label :first_name %>
+            <%= f.text_field :first_name, placeholder: 'First Name' %>
+          </div>
+
+          <div>
+            <% f.label :last_name %>
+            <%= f.text_field :last_name, placeholder: 'Last Name' %>
           </div>
 
           <div>
@@ -180,7 +198,7 @@
           <div>
             Favorite Activities:
             <% f.label :fav_activities %>
-            <%= f.text_area :fav_activities%>
+            <%= f.text_area :fav_activities, class: "materialize-textarea"%>
           </div>
 
 
@@ -209,4 +227,3 @@
     <%= render partial: 'children/new' %>
   </div>
 </div>
-

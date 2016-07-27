@@ -15,7 +15,7 @@ feature 'Profile feature' do
 
   scenario "User can see another user's profile" do
     visit user_path(user2.id)
-    expect(page).to have_content ("Amanda Lin!");
+    expect(page).to have_content ("Amanda");
   end
 
   scenario "User cannot edit another person's profile" do
