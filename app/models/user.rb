@@ -21,17 +21,21 @@ class User < ActiveRecord::Base
 
   class << self
     def from_omniauth(auth_hash)
-      p "#{auth_hash['info']}"
+      p auth_hash
       user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
-      user.first_name = auth_hash['info']['first_name']
-      user.last_name = auth_hash['info']['last_name']
-      user.username = auth_hash['info']['email']
-      user.password = SecureRandom.hex
-      user.email = auth_hash['info']['email']
-      user.avatar = auth_hash['info']['image']
-      user.save!
+      if !user.persisted?
+        user.first_name = auth_hash['info']['first_name']
+        user.last_name = auth_hash['info']['last_name']
+        user.username = auth_hash['info']['email']
+        user.password = SecureRandom.hex
+        user.email = auth_hash['info']['email']
+        # user.avatar = {url: auth_hash['info']['image']}
+        user.token = auth_hash['credentials']['token']
+        user.refresh_token = auth_hash['credentials']['refresh_token']
+        user.expires_in = auth_hash['credentials']['expires_at']
+        user.save!
+      end
       user
-      p user
     end
   end
 
