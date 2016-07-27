@@ -1,5 +1,7 @@
 <h4 class="center teal-text text-lighten-3">Playdates</h4>
-
+<% if flash[:confirm] %>
+  <p class="center-align orange-text"><%= flash[:confirm] %></p>
+<% end %>
 <div class="dashboard-link center">
   <% if @user.friends.empty? %>
     <p>Start Kindering or Add Connections Directly to Schedule Playdates!</p>

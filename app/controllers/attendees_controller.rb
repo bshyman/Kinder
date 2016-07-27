@@ -22,16 +22,21 @@ class AttendeesController < ApplicationController
   def decline_invite
     @playdate = Playdate.find(params[:playdate_id])
     @user = User.find(params[:user_id])
+    flash[:confirm] = "You have declined #{@playdate.title}"
     @user.decline_invite(@playdate)
-    redirect_back fallback_location: dashboard_path(@user)
+    redirect_to user_playdates_path(@user.id)
   end
 
   def accept_invite
     @playdate = Playdate.find(params[:playdate_id])
     @user = User.find(params[:user_id])
     @user.accept_invite(@playdate)
-    send_cal_event(@playdate, current_user) if current_user.provider == "google"
-    flash[:calendar_event] = "We have added this event to your calendar!"
+    if current_user.provider == "google"
+      send_cal_event(@playdate, current_user)
+      flash[:confirm] = "We have added this event to your calendar!"
+    else
+      flash[:confirm] = "You have accepted this playdate"
+    end
     redirect_to user_playdate_path(@user.id, @playdate)
   end
 
