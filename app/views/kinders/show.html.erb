@@ -2,7 +2,7 @@
   <div class="col s12">
     <div class="card grey lighten-3">
       <div class="card-content black-text">
-          <div id="swiping_container" style="background-image:url(<%= p avatar_url %>)">
+          <div id="swiping_container" style="background-image:url(<%= avatar_url %>)">
           <p class="card-title center-align"><%= @user.first_name %></p>
         	<%= render 'users/profile' %>
           <% if session[:narrow] && !session[:narrow].empty? %>

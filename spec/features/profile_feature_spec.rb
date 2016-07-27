@@ -37,11 +37,19 @@ feature 'Profile feature' do
     expect(page).to have_current_path no_access_path;
   end
 
-  xscenario "User can edit user's own profile" do
+  scenario "User can edit user's own profile" do
     visit user_path(user.id)
     click_link 'Edit Profile'
-    fill_in('Zipcode', with: 60614)
+    within('#zip') do
+      fill_in('Zipcode', with: 60614)
+    end
     click_button('Save')
     expect(page).to have_content "Zipcode: 60614"
+  end
+
+  xscenario "User can delete user's own profile" do
+    visit user_path(user.id)
+    click_link("Delete Account")
+
   end
 end
