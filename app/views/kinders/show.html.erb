@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col s12">
-    <div class=" card grey lighten-3">
+    <div class="card grey lighten-3">
       <div class="card-content black-text">
           <div id="swiping_container" style="background-image:url(<%= p avatar_url %>)">
           <p class="card-title center-align"><%= @user.first_name %></p>
@@ -37,4 +37,7 @@
   swipeFunction();
   resizePadding();
   resizePaddingOnResizingWindow();
+  if(jQuery.browser.mobile) {
+    $('div.s12').prepend("Start swiping: left for 'meh', and right for 'connect me!'")
+  }
 </script>
