@@ -11,7 +11,8 @@
   <% else %>
     <button class="waves-effect orange darken-3 btn-flat"><%= link_to 'New Playdate', new_user_playdate_path(@user.id), class: "white-text" %></button>
   <% end %>
-    <button class="waves-effect orange darken-3 btn-flat"><%= link_to 'Start Kinder!', kinders_path, class: "white-text" %></button>
+    <%= link_to 'Start Kinder!', kinders_path, class: "white-text waves-effect orange darken-3 std-btn" %>
+  <%= link_to 'Dashboard', dashboard_path(current_user.id), class: 'waves-effect waves-light std-btn  orange darken-3' %>
 </div>
 
 
@@ -43,8 +44,6 @@
         <% end %>
     </ul>
   <% end %>
-  <div class='footer-buttons'>
-  <%= link_to 'Dashboard', dashboard_path(current_user.id), id: 'dashboard_button', class: 'waves-effect waves-light btn-large dash-btn orange darken-3' %>
-  </div>
+
     <%# link_to 'See All Playdates'%>
   </div>
