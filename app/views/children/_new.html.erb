@@ -1,7 +1,7 @@
 <%= form_for @child, url: "/users/"+current_user.id.to_s+"/children" do |f| %>
   <div>
     <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "required" %>
   </div>
   <div>
     <%= f.label :allergies%>
@@ -10,13 +10,10 @@
 
  <div>
     <%= f.label :birthday %>
-    <%= f.date_field :birthday, class: "datepicker"%>
+    <%= f.date_field :birthday, class: "datepicker", placeholder: "required"%>
   </div>
 
   <p>
     <%= f.submit 'Add Child', class: 'btn btn-default add-child-btn' %>
   </p>
 <% end %>
-
-
-
