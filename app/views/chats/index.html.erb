@@ -4,10 +4,10 @@
       <ul>
         <% current_user.friends.each do |friend| %>
           <li class="collection-item connection-item">
-            <%= link_to( user_chats_path(current_user, :friend => friend.id), method: :post, class: "recent-connect") do %>
+            <%= link_to( user_chats_path(current_user, :friend => friend.id), method: :post, class: "recent-connect collection-item") do %>
             <span class="recent-connect-avatar">
               <%  if friend.avatar? %>
-                <%= image_tag friend.avatar.url, size: '30x30', class: "profile-pic"%>
+                <%= image_tag friend.avatar.url, size: '30x30', class: "message-pic"%>
               <% else %>
                 <%= image_tag "kinder-icon-circle.png", :size => "30x30" %>
               <% end %>
