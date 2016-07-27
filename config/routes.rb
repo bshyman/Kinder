@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/users/:id/add' => 'connections#direct', as: "direct_add"
   get '/users/:id/accept' => 'connections#direct_accept', as: "direct_accept"
   get '/users/:id/decline' => 'connections#direct_decline', as: "direct_decline"
+  get '/users/:id/disconnect' => 'connections#disconnect', as: "disconnect"
   resources :users, except: [:index] do
     resources :playdates, except: [:update, :edit] do
       resources :attendees, only: [:new, :create]

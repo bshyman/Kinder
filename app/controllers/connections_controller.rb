@@ -39,6 +39,14 @@ class ConnectionsController < ApplicationController
     redirect_to user_path(@other_user)
   end
 
+  def disconnect
+    # remove friend method has issues on github
+    @other_user = User.find(params[:id])
+    current_user.remove_friend(@other_user)
+    flash[:friending] = "You have disconnect with #{@other_user.username}"
+    redirect_to user_path(@other_user)
+  end
+
   private
   def search_params
     params.require(:search).permit(:search_term)
