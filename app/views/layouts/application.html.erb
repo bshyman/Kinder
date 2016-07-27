@@ -29,14 +29,14 @@
           </ul>
     <ul class="right hide-on-med-and-down">
       <li><%= link_to 'Logout', logout_path, class: "waves-effect"  %></li>
-      <% else %>
+    <% else %>
       <li><%= link_to 'Login', login_path, class: "waves-effect" %></li>
       <li><%= link_to 'Register', new_user_path, class: "waves-effect" %></li>
-      <% end %>
+    <% end %>
     </ul>
     <!-- Side bar menu for mobile -->
     <ul id="slide-out" class="side-nav">
-      <% if current_user %>``
+      <% if current_user %>
       <li>
         <div class="userView user-info teal lighten-3">
         <a href="#!user">
