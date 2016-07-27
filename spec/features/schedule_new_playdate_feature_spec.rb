@@ -23,16 +23,23 @@ feature "Schedule Playdate Feature" do
     expect(page).to have_field "Title"
   end
 
-  xscenario "with connections, user can schedule a playdate" do
+  scenario "with connections, user can schedule a playdate" do
     user.friend_request(user2)
     user2.accept_request(user)
     visit '/'
-    click_link('Schedule New Playdate')
+    click_link('New Playdate')
     fill_in("Title", with: "Pool Party")
     fill_in("Description", with: "Come cool off with some swimming!")
     fill_in("Date", with: "09/01/2016")
-    fill_in("Time", with: "Pool Party")
+    fill_in("Time", with: "01:00 PM")
     fill_in("Location", with: "public pool")
-    expect(page).to have_field "Title"
+    click_button('Save')
+    check("#{user2.id}")
+    click_button('Invite')
+    expect(page).to have_content "Pool Party"
+  end
+
+  scenario "invited user can accept invite" do
+
   end
 end
