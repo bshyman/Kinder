@@ -43,5 +43,8 @@
         <% end %>
     </ul>
   <% end %>
+  <div class='footer-buttons'>
+  <%= link_to 'Dashboard', dashboard_path(current_user.id), id: 'dashboard_button', class: 'waves-effect waves-light btn-large center-align orange darken-3' %>
+  </div>
     <%# link_to 'See All Playdates'%>
   </div>
