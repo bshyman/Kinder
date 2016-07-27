@@ -9,13 +9,16 @@
         <% end %>
         <%= render 'profile' %>
         <div class="card-action">
-          <ul class="profile-btn">
+          <ul class=" ">
             <% if logged_in? && authorized?(@user) %>
             <li> <!-- Modal Trigger -->
-              <a class="waves-effect waves-light modal-trigger" href="#modal1">Edit Profile</a></li>
-              <li><%= link_to 'Delete Account', user_path(@user.id), method: 'DELETE', class: "waves-effect waves-light "  %></li><li>
+              <a class="waves-effect waves-light modal-trigger profile-button" href="#modal1">Edit Profile</a>
+            </li>
+            <li><a class="waves-effect waves-light modal-trigger profile-button" href="#delete-account">Delete Account</a>
+            </li>
+            <li>
               <!-- Modal Trigger -->
-              <a class="waves-effect waves-light  modal-trigger" href="#add_child">Add Child</a>
+              <a class="waves-effect waves-light  modal-trigger profile-button" href="#add_child">Add Child</a>
             </li>
             <% elsif logged_in? %>
             <% if @user.friends.include?(current_user) %>
@@ -47,9 +50,9 @@
   <div class="modal-content">
     <div class="parent-profile">
       <% if logged_in? %>
-        <%  if @user.avatar? %>
-          <span style="margin-right:5px;"><%= image_tag @user.avatar.url, size: '40x40', class: "profile-pic"%></span>
-        <% end %>
+      <%  if @user.avatar? %>
+      <span style="margin-right:5px;"><%= image_tag @user.avatar.url, size: '40x40', class: "profile-pic"%></span>
+      <% end %>
       <% end %>
       <h5 class=" center">Parent Profile</h5>
     </div>
@@ -225,5 +228,19 @@
 <div id="add_child" class="modal">
   <div class="modal-content">
     <%= render partial: 'children/new' %>
+  </div>
+</div>
+
+
+
+<!-- Modal Structure -->
+<div id="delete-account" class="modal">
+  <div class="modal-content">
+    <h4>Fine, be that way!</h4>
+    <p >Are you sure you want to delete your account?</p>
+  </div>
+  <div class="">
+    <%= link_to 'Delete Account', user_path(current_user.id), method: 'DELETE', class: 'red delete-profile-button' %>
+    <%= link_to 'Stay!', user_path(current_user.id), class: 'delete-profile-button modal-close' %>
   </div>
 </div>
