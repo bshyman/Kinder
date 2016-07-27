@@ -137,10 +137,6 @@ body {
   margin: auto;
 }
 
-.playdate-links {
-  display: flex;
-  justify-content: space-between;
-}
 
 .message-line {
   align-items: center;
@@ -163,3 +159,27 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.playdate-details {
+  margin-top: 20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+/* For mobile phones: */
+// @media only screen
+// and (min-device-width : 375px)
+// and (max-device-width : 667px) {
+//   .playdate-links {
+//     display: flex;
+//     justify-content: space-between;
+//   }
+// }
+//
+// @media only screen and (min-width: 768px) {
+//     /* For desktop: */
+//     .playdate-links {
+//       display: flex;
+//     }
+// }
