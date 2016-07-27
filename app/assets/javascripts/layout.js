@@ -14,5 +14,3 @@ $(document).ready(function(){
 
 });
 
-//detecting to see if user is browsing from mobile
-
