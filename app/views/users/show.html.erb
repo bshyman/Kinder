@@ -21,6 +21,7 @@
             <% if @user.friends.include?(current_user) %>
             <li><%= link_to 'New Playdate', new_user_playdate_path(@user.id) %></li>
             <li><%= link_to 'Send Message', user_chats_path(current_user, :friend => @user.id), method: :post %></li>
+            <li><%# link_to 'Disconnect', disconnect_path(current_user, :friend => @user.id) %></li>
             <% elsif current_user.pending_direct_add.include?(@user) %>
             <li><%= link_to "Accept Connection", direct_accept_path(@user) %></li>
             <li><%= link_to "Decline Connection", direct_decline_path(@user) %></li>
