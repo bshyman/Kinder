@@ -40,10 +40,10 @@ class User < ActiveRecord::Base
   def users_in_proximity
     # NEED TO UNCOMMENT FOR PRODUCTION TO HIT API
     # HOURLY LIMIT IS 50
-     api = ZipcodeAPI.new
-     nearby = api.get_nearby_zipcodes(self.zipcode, self.radius)
-     users =  User.where("zipcode IN (?)", nearby.map(&:to_i))
-    # users =  User.where(zipcode: self.zipcode)
+    #api = ZipcodeAPI.new
+    #nearby = api.get_nearby_zipcodes(self.zipcode, self.radius)
+    #users =  User.where("zipcode IN (?)", nearby.map(&:to_i))
+    users =  User.where(zipcode: self.zipcode)
     users.to_a
     users -= [self]
     users -= self.blocked_friends
