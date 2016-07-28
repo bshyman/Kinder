@@ -11,15 +11,15 @@
         </div>
       </div>
       <div class="card-action">
-        <div class="row">
+        <div class="row ">
           <div class="col s4 center-align">
-            <%= link_to "Pass", swipe_left_path(@user.id), {id:"pass"} %>
+            <%= link_to "Pass", swipe_left_path(@user.id), id:"pass", class: 'orange darken-3' %>
           </div>
           <div class="col s4 center-align">
-            <a class="waves-effect waves-light modal-trigger" href="#modal1">Filter Kinders</a>
+            <a class="waves-effect waves-light modal-trigger filter-btn orange darken-3" href="#modal1">Filter Kinders</a>
           </div>
           <div class="col s4 center-align">
-            <%= link_to "Connect", swipe_right_path(@user.id), {id:"connect"}  %>
+            <%= link_to "Connect", swipe_right_path(@user.id), id:"connect", class: 'orange darken-3'  %>
           </div>
         </div>
       </div>
