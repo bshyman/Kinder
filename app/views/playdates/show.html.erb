@@ -10,6 +10,9 @@
         <% if flash[:confirm] %>
           <p class="center-align orange-text"><%= flash[:confirm] %></p>
         <% end %>
+        <% if flash[:calendar_event] %>
+          <p class="center-align orange-text"><%= flash[:calendar_event] %></p>
+        <% end %>
         <%= render partial: 'playdate_details', locals: {playdate: @playdate} %>
       </div>
     </div>

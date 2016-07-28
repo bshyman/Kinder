@@ -21,7 +21,7 @@ class AttendeesController < ApplicationController
       guests.each do |g|
         Attendee.create(guest_id: g.id, playdate_id: params[:playdate_id], response: nil)
       end
-      flash[:calendar_event] = "We have added this event to your calendar!"
+      flash[:calendar_event] = "We have added this event to your calendar!" if current_user.provider == "google"
       redirect_to user_playdate_path(@user, params[:playdate_id])
     end
   end
