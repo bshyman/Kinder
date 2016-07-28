@@ -22,10 +22,10 @@
   <% end %>
 
   <% if authorized?(@user) %>
-    <% if @user.zipcode  %>
+    <% if @user.zipcode || @user.zipcode == "" %>
       <li><span class="bold">Zipcode:</span> <%= @user.zipcode %></li>
     <% end %>
-    <% if @user.radius%>
+    <% if @user.radius || @user.radius == ""%>
       <li><span class="bold">Radius Preference:</span> <%= @user.radius %> miles</li>
     <% end %>
   <% end %>
@@ -52,11 +52,11 @@
     <li><span class="bold">I shop at:</span> <%= @user.shopping_prefs %></li>
     <% end %>
 
-    <% if @user.religion %>
+    <% if @user.religion || @user.religion == ""%>
     <li><span class="bold">Thoughts On Religion:</span> <%= @user.religion %></li>
     <% end %>
 
-    <% if @user.fav_activities%>
+    <% if @user.fav_activities || @user.fav_activities == ""%>
     <li><span class="bold">Favorite Activities:</span> <%= @user.fav_activities %></li>
     <% end %>
 
@@ -64,7 +64,7 @@
     <li><span class="bold">Music Preferences:</span> <%= format_music_choices(@user) %></li>
     <% end %>
 
-    <% if @user.bio %>
+    <% if @user.bio || @user.bio == "" %>
       <li><span class="bold">About You:</span> <br/ ><%= @user.bio %></li>
     <% end %>
 
