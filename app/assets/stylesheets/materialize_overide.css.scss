@@ -203,20 +203,20 @@ body {
 
  .filter-btn {
   display: block;
-  position: relative;
-  bottom: 5px;
-
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 15px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.2em;
  }
 
- .kinder-buttons {
-  display: flex;
- }
-
- #pass {
-
- }
-
-
+ .connect-pass {
+  border-radius: 10px;
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+   }
 
  .child-modal {
   height: 80%;
