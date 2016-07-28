@@ -1,7 +1,7 @@
 <div class="card grey lighten-3">
   <div class="card-content black-text">
     <% if flash[:zipcode] %>
-      <h5 class="center-align"><%= flash[:zipcode] %></h5>
+      <h5 class="center-align headline"><%= flash[:zipcode] %></h5>
       <p class="center-align">Go to your <%= link_to 'profile', user_path(current_user) %> to add a zipcode and radius!</p>
     <% elsif session[:narrow] %>
       <%= render partial: "current_filters" %>
@@ -15,3 +15,4 @@
     <% end %>
   </div>
 </div>
+

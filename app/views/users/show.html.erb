@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col s12">
     <div id='profile-card' class=" card grey lighten-3">
-      <div class="card-content black-text">
+      <div class="card-content white black-text">
         <% if current_user.id == @user.id %>
-        <p class="card-title teal-text center-align">Hello, <%= @user.full_name %>!</p>
+        <p class="card-title teal-text text-lighten-3 center-align headline">Hello, <%= @user.full_name %>!</p>
         <% else %>
-        <p class="card-title center-align"><%= @user.first_name %></p>
+        <p class="card-title teal-text text-lighten-3 center-align headline"><%= @user.first_name %></p>
         <% end %>
         <%= render 'profile' %>
         <div class="card-action">
@@ -25,14 +25,14 @@
             </li>
             <% elsif logged_in? %>
             <% if @user.friends.include?(current_user) %>
-              <li><%= link_to 'New Playdate', new_user_playdate_path(@user.id) %></li>
-              <li><%= link_to 'Send Message', user_chats_path(current_user, :friend => @user.id), method: :post %></li>
-              <li><%= link_to 'Disconnect', disconnect_path(current_user, :friend => @user.id) %></li>
+              <li><%= link_to 'New Playdate', new_user_playdate_path(@user.id), class: "profile-button orange darken-3" %></li>
+              <li><%= link_to 'Send Message', user_chats_path(current_user, :friend => @user.id), class: "profile-button orange darken-3", method: :post %></li>
+              <li><%= link_to 'Disconnect', disconnect_path(current_user, :friend => @user.id), class: "profile-button orange darken-3" %></li>
             <% elsif current_user.pending_direct_add.include?(@user) %>
-              <li><%= link_to "Accept Connection", direct_accept_path(@user) %></li>
-              <li><%= link_to "Decline Connection", direct_decline_path(@user) %></li>
+              <li><%= link_to "Accept Connection", direct_accept_path(@user), class: "profile-button orange darken-3"%></li>
+              <li><%= link_to "Decline Connection", direct_decline_path(@user), class: "profile-button orange darken-3" %></li>
             <% elsif !@user.friendships.include?(current_user) && !@user.pending_direct_add.include?(current_user) %>
-              <li><%= link_to 'Add Friend', direct_add_path(@user) %></li>
+              <li><%= link_to 'Add Friend', direct_add_path(@user), class: "profile-button orange darken-3" %></li>
             <% end %>
             <% else %>
             <% render 'no_access' %>s
@@ -54,7 +54,7 @@
       <span style="margin-right:5px;"><%= image_tag @user.avatar.url, size: '40x40', class: "profile-pic"%></span>
       <% end %>
       <% end %>
-      <h5 class=" center">Parent Profile</h5>
+      <h5 class=" center headline">Parent Profile</h5>
     </div>
     <div id='survey_form' class="row">
       <div class="">

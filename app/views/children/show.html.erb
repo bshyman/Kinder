@@ -1,13 +1,20 @@
-<div>
-   <ul>
-    <li>Name: <%= @child.name %></li>
-    <li>Parent: <%= @child.parent.username %></li>
-    <li>Allergies : <%= @child.allergies %></li>
-    <li>Birthday: <%= @child.birthday %></li>
-  </ul>
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card grey lighten-3">
+      <div class="card-content black-text">
+        <span class="card-title headline teal-text"><%= @child.name %></span><div>
+           <ul class-"">
+            <li>Parent: <%= @child.parent.username %></li>
+            <li>Allergies : <%= @child.allergies %></li>
+            <li>Birthday: <%= @child.birthday %></li>
+          </ul>
+      </div>
+      <div class="card-action">
+        <%= link_to 'Edit Child Info', edit_user_child_path(@child.parent.id, @child.id) %>
+        <%= link_to 'Delete Child', user_child_path(@child.parent.id, @child.id), method: 'DELETE' %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to 'Edit Child Info', edit_user_child_path(@child.parent.id, @child.id) %>
-
-<%= link_to 'Delete Child', user_child_path(@child.parent.id, @child.id), method: 'DELETE' %>
 
