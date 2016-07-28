@@ -18,7 +18,7 @@ user1 = User.create!(
 	first_name: "Amanda",
 	last_name: "Lin",
 	marital_status: 'single',
-	bio: "I'm smart",
+	bio: "Noming all day",
 	radius: 10,
 	gender: "Female")
 
@@ -175,34 +175,3 @@ mike = User.create(
 	last_name: "Busch",
 	marital_status: 'married'
 	)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
