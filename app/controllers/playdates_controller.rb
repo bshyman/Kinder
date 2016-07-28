@@ -32,6 +32,8 @@ class PlaydatesController < ApplicationController
 
   def show
     @playdate = Playdate.find(params[:id])
+    key = ENV['GOOGLE_MAP']
+    @google_api_search = "https://www.google.com/maps/embed/v1/search?q=  #{sanitize_search_term(@playdate.location)}&key=#{key}"
   end
 
   def destroy

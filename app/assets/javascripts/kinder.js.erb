@@ -12,6 +12,16 @@ function swipeFunction() {
       });
 }
 
+function resizePadding() {
+  $("div#swiping_container").css('padding-top', $("div#swiping_container").width());
+}
+
+function resizePaddingOnResizingWindow() {
+  $(window).on('resize', function() {
+    resizePadding();
+  });
+}
+
   // var xDown = 0;
   // var yDown = 0;
   // var xUp = 0;

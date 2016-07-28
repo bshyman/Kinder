@@ -12,7 +12,8 @@ class MessagesController < ApplicationController
       ActionCable.server.broadcast( "messages_#{message_params[:chat_id]}",
       #broadcasting out to messages channel, which all chats are linked to messages channel
       message: message.content,
-      user: image
+      user: image,
+      username: message.user.first_name
       )
     else
       redirect_to chats_path

@@ -37,11 +37,11 @@ feature 'Profile feature' do
     expect(page).to have_current_path no_access_path;
   end
 
-  xscenario "User can edit user's own profile" do
+  scenario "User can delete user's own profile" do
     visit user_path(user.id)
-    click_link 'Edit Profile'
-    fill_in('Zipcode', with: 60614)
-    click_button('Save')
-    expect(page).to have_content "Zipcode: 60614"
+    within('#delete-account') do
+      click_link("Delete Account")
+    end
+    expect{ User.find(user.id) }.to raise_exception(ActiveRecord::RecordNotFound)
   end
 end

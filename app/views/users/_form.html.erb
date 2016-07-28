@@ -7,10 +7,10 @@
 
 </div>
 <% if flash[:welcome_notice] %>
-  <p class="center orange darken-3"><%= flash[:welcome_notice]%></p>
+  <p class="center orange-text text-darken-3"><%= flash[:welcome_notice]%></p>
 <% end %>
 
-      <h4 class=" center">Parent Profile</h4>
+      <h4 class="center">Parent Profile</h4>
       <div id='survey_form' class="row">
         <div class="">
           <div class=" black-text">
@@ -28,8 +28,9 @@
 
                 <div id="zip" class="input-field col s8">
                   <%= f.label :zipcode%>
-                  <%= f.text_field :zipcode, id: "zipcode", class: "validate" %>
+                  <%= f.text_field :zipcode, class: "validate" %>
                 </div><br>
+              </div>
           <br>
           <br>
           <div>

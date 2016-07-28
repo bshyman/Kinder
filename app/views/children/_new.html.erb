@@ -14,6 +14,7 @@
   </div>
 
   <p>
-    <%= f.submit 'Add Child', class: 'btn btn-default add-child-btn' %>
+    <%= f.submit 'Add Child', class: 'btn btn-default orange add-child-btn' %>
+    <%= link_to 'Cancel', user_path(current_user.id), class: 'btn add-child-btn orange modal-close' %>
   </p>
 <% end %>

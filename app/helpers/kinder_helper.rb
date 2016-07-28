@@ -10,4 +10,16 @@ module KinderHelper
     end
    filtered_results
   end
+
+  def current_controller?(names)
+    names.include?(params[:controller]) unless params[:controller].blank? || false
+  end
+
+  def avatar_url
+    if @user.avatar?
+      @user.avatar.url
+    else
+      asset_path "kinder-icon-circle.png"
+    end
+  end
 end

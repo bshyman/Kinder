@@ -1,23 +1,43 @@
-<%= render 'filter' %>
-<% if session[:narrow] && !session[:narrow].empty? %>
-  <p> Current Filters:
-    <% session[:narrow].each_pair do |k,v| %>
-      <%= "#{k}: #{v} " %>
-    <% end %>
-    <%= link_to "Clear Filters", delete_filters_path(@user.id), method: :delete %>
-  </p>
-<% end %>
-
-<h2><%= @user.first_name %></h2>
-
-<div id="swiping_container">
-	<%= render 'users/profile' %>
+<div class="row">
+  <div class="col s12">
+    <div class="card grey lighten-3">
+      <div class="card-content black-text">
+          <div id="swiping_container" style="background-image:url(<%= avatar_url %>)">
+          <p class="card-title center-align"><%= @user.first_name %></p>
+        	<%= render 'users/profile' %>
+          <% if session[:narrow] && !session[:narrow].empty? %>
+            <%= render partial: "current_filters" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          <div class="col s4 center-align">
+            <%= link_to "Pass", swipe_left_path(@user.id), {id:"pass"} %>
+          </div>
+          <div class="col s4 center-align">
+            <a class="waves-effect waves-light modal-trigger" href="#modal1">Filter Kinders</a>
+          </div>
+          <div class="col s4 center-align">
+            <%= link_to "Connect", swipe_right_path(@user.id), {id:"connect"}  %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to "Pass", swipe_left_path(@user.id), id:"pass" %>
-<%= link_to "Connect", swipe_right_path(@user.id), id:"connect" %>
-
+<div id="modal1" class="modal col s15">
+  <div class="modal-content">
+    <%= render 'filter' %>
+  </div>
+</div>
 
 <script>
   swipeFunction();
+  resizePadding();
+  resizePaddingOnResizingWindow();
+  if(jQuery.browser.mobile) {
+    $('div.s12').prepend("Start swiping: left for 'meh', and right for 'connect me!'")
+  }
 </script>

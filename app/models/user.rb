@@ -78,10 +78,6 @@ class User < ActiveRecord::Base
     pending_playdates
   end
 
-  def create_invite(guest_id, playdate_id)
-    Attendee.new(guest_id: guest_id, playdate_id: playdate_id, response: nil)
-  end
-
   def accept_invite(playdate)
     @attendee = self.attendees.find_by(playdate_id: playdate.id)
     @attendee.update(response: true)
@@ -100,5 +96,20 @@ class User < ActiveRecord::Base
     end
     direct
   end
+
+  def find_unreads
+    unseen = []
+    self.chats.each do |c|
+      c.messages.each do |m|
+        if m.user_id != self.id
+          if m.seen == false
+            unseen << m
+          end
+        end
+      end
+    end
+    unseen
+  end
+
 
 end
