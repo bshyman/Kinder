@@ -52,7 +52,7 @@
             <%= image_tag "kinder-icon-circle.png", :size => "40x40" %>
           <% end %>
         </a>
-        <a href="#" class="white-text name user-name-nav"><%= current_user.full_name %></a>
+        <a href="#" class="white-text name user-name-nav headline"><%= current_user.full_name %></a>
       </div></li>
       <li><%= link_to 'Dashboard', dashboard_path(current_user.id), class: "waves-effect"  %></li>
       <li><%= link_to 'Kinder', kinders_path, class: "waves-effect"  %></li>

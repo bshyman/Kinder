@@ -1,4 +1,4 @@
-<h4 class="center teal-text text-lighten-3"><%= @user.first_name %>'s Dashboard</h4>
+<h4 class="center teal-text text-lighten-3 headline"><%= @user.first_name %>'s Dashboard</h4>
 
 <% if flash[:friending] %>
   <p class="center-align orange-text"><%= flash[:confirm] %></p>
@@ -19,7 +19,7 @@
 <div class="connections">
   <% if !@user.friends.empty? %>
         <ul class="collection with-header">
-          <li class="collection-header white-text teal lighten-3"><h6>Recent Connections</h6></li>
+          <li class="collection-header white-text teal lighten-3 headline"><h6>Recent Connections</h6></li>
           <% @user.friends.take(3).each do |friend| %>
             <li class="collection-item">
               <%= link_to(user_path(friend), class: "recent-connect") do %>
@@ -38,7 +38,7 @@
     <% end %>
     <% if !@user.pending_direct_add.empty? %>
     <ul class="collection with-header">
-      <li class="collection-header white-text teal lighten-3"><h6>Pending Connections</h6></li>
+      <li class="collection-header white-text teal lighten-3 headline"><h6>Pending Connections</h6></li>
       <% @user.pending_direct_add.each do |friend| %>
         <li class="collection-item">
           <%= link_to(user_path(friend), class: "recent-connect") do %>
@@ -60,7 +60,7 @@
   <div class="pending-playdates">
     <% if !@pending.empty? %>
     <ul class="collection with-header">
-      <li class="collection-header white-text teal lighten-3"><h6>Pending Playdates</h6></li>
+      <li class="collection-header white-text teal lighten-3 headline"><h6>Pending Playdates</h6></li>
         <% @pending.each do |pending| %>
           <li class="collection-item" >
             <%= link_to(user_playdate_path(current_user.id, pending.id), class: "collection-item playdate-item") do %>
@@ -75,7 +75,7 @@
   <div class="scheduled-playdates">
   <% if !@attending.empty? %>
     <ul class="collection with-header">
-      <li class="collection-header white-text teal lighten-3"><h6>Scheduled Playdates</h6></li>
+      <li class="collection-header white-text teal lighten-3 headline"><h6>Scheduled Playdates</h6></li>
         <% @attending.each do |attending| %>
         <li class="collection-item">
           <%= link_to(user_playdate_path(current_user.id, attending.id), class: "collection-item playdate-item") do %>
