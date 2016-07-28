@@ -1,6 +1,6 @@
 @font-face {
     font-family: myFirstFont;
-    src: url(kbplanetearth.ttf);
+    src: asset-data-url("kbplanetearth.ttf");
 }
 .headline {
     font-family: myFirstFont;
