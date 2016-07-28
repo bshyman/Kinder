@@ -2,7 +2,7 @@
   <div>
     <span class="card-title center-align teal-text text-lighten-3 center-btn"><%= playdate.title %></span><br />
   </div>
-  <div><span class="bold">Host: </span><%= playdate.host.username %></div>
+  <div><span class="bold">Host: </span><%= playdate.host.first_name %></div>
   <div><span class="bold">Date and Time: </span> <%= playdate.date.strftime("%B, %dth") %>  <%= playdate.time.strftime("%H:%m%P") %></div>
   <div><span class="bold">Description: </span><%= playdate.description %></div>
   <div><span class="bold">Location: </span><%= link_to playdate.location, "http://maps.google.com/?q=#{playdate.location}" %></div>
@@ -11,7 +11,7 @@
   <ul class="collection with-header">
     <li class="collection-header white-text teal lighten-3"><h6>Attending</h6></li>
     <% playdate.attending_guests.each do |g| %>
-      <li class="collection-item"><%= g.username %>
+      <li class="collection-item"><%= g.first_name %>
         <ul>
         <% g.children.each do |c| %>
           <li><%= c.name %>, <%= age(c) %> | Allergies: <%= c.allergies  %></li>
@@ -26,7 +26,7 @@
   <ul class="collection with-header">
     <li class="collection-header white-text orange darken-3"><h6>Pending</h6></li>
     <% playdate.pending_guests.each do |g| %>
-      <li class="collection-item"><%= g.username %>
+      <li class="collection-item"><%= g.first_name %>
         <ul>
         <% g.children.each do |c| %>
           <li><%= c.name %>, <%= age(c) %> | Allergies: <%= c.allergies  %></li>

@@ -21,28 +21,28 @@ class ConnectionsController < ApplicationController
     current_user.friend_request(@other_user)
     current_user.friendships.last.update(direct_add: true)
     @other_user.friendships.last.update(direct_add: true)
-    flash[:friending] = "Your request has been sent to #{@other_user.username}"
+    flash[:friending] = "Your request has been sent to #{@other_user.first_name}"
     redirect_to user_path(@other_user)
   end
 
   def direct_accept
     @other_user = User.find(params[:id])
     current_user.accept_request(@other_user)
-    flash[:friending] = "Your now connected to #{@other_user.username}!"
+    flash[:friending] = "Your now connected to #{@other_user.first_name}!"
     redirect_to user_path(@other_user)
   end
 
   def direct_decline
     @other_user = User.find(params[:id])
     current_user.decline_request(@other_user)
-    flash[:friending] = "You have declined connection with #{@other_user.username}"
+    flash[:friending] = "You have declined connection with #{@other_user.first_name}"
     redirect_to user_path(@other_user)
   end
 
   def disconnect
     # remove friend method has issues on github
     @other_user = User.find(params[:friend])
-    flash[:friending] = "You have disconnect with #{@other_user.username}"
+    flash[:friending] = "You have disconnect with #{@other_user.first_name}"
     current_user.friendships.where(friend_id: @other_user.id).destroy_all
     @other_user.friendships.where(friend_id: current_user.id).destroy_all
     redirect_to dashboard_path(current_user)
