@@ -1,13 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 user1 = User.create!(
-	zipcode: 60616,
+	zipcode: 43201,
 	username:"adnamalin",
 	email: "adnama.lin@devbootcamp.com",
 	password:"1234",
@@ -23,7 +15,8 @@ user1 = User.create!(
 	gender: "Female")
 
 user2 = User.create!(
-	zipcode: 60614,
+	zipcode: 43201,
+	radius: 10,
 	username:"bshy",
 	email: "bshyman@devbootcamp.com",
 	password:"1234",
@@ -42,32 +35,32 @@ user2 = User.create!(
 	)
 
 user3 = User.create!(first_name: "Vivien",
+	zipcode: 43201,
+	radius: 10,
 	last_name: "Kuo",
 	username:"vi",
 	password:"1234",
 	email: "vi@gmail.com",
-	zipcode: 60616,
-	radius: 10,
 	vaccinate: true,
 	gender: "female")
 
 user4 = User.create!(first_name: "Leland",
+	zipcode: 43201,
+	radius: 10,
 	last_name: "Meiners",
 	username:"leland",
 	password:"1234",
 	email: "leland@gmail.com",
-	zipcode: 60616,
-	radius: 10,
 	vaccinate: true,
 	gender: "Male")
 
 user5 = User.create!(first_name: "Test",
+	zipcode: 43201,
+	radius: 10,
 	last_name: "Zip",
 	username:"test_zip",
 	password:"1234",
 	email: "test@gmail.com",
-	zipcode: 60616,
-	radius: 10,
 	vaccinate: true,
 	gender: "Female")
 
@@ -80,14 +73,14 @@ user3.accept_request(user1)
 user4.accept_request(user1)
 user5.accept_request(user1)
 
-Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Brunch at Benjis", description: "Let's eat brunch and drink bloddy mary's while the kids play", location:"123 Main St. Chicago, Il", date:"2016-07-28" ,host_id: 2)
-Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Bubble tea with the kiddos", description: "Get dem bubbles", location:"Kung Fu Tea", date:"2016-07-27" ,host_id: 1)
-Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "beach Day!", description: "Picnic at the beach, bring your pets!", location:"Montrose Beach", date:"2016-08-27" ,host_id: 2)
+Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Brunch at Benjis", description: "Let's eat brunch and drink bloddy mary's while the kids play", location:"Batter and berries", date:"2016-08-01" ,host_id: 2)
+Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Bubble tea with the kiddos", description: "Get dem bubbles", location:"Kung Fu Tea Chinatown", date:"2016-07-29" ,host_id: 1)
+Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Beach Day!", description: "Picnic at the beach, bring your pets!", location:"Montrose Beach", date:"2016-08-27" ,host_id: 2)
 
 5.times {
   Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s,
     date:Faker::Time.backward(23),
-    location:"#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state_abbr}",
+    location:"#{Faker::Address.city}",
     description: Faker::Hipster.paragraph,
     title: Faker::Hipster.sentence,
     host_id: Faker::Number.between(1, 4))
@@ -95,13 +88,15 @@ Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}
 
 Attendee.create!(guest_id:1, playdate_id: 1, response: true)
 Attendee.create!(guest_id:2, playdate_id: 2, response: true)
+Attendee.create!(guest_id:4, playdate_id: 2, response: nil)
 Attendee.create!(guest_id:1, playdate_id: 3, response: nil)
 
-5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:true, first_name:Faker::Name.first_name) }
-5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:false, first_name:Faker::Name.first_name) }
+# 5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60654, gender:"Male", vaccinate:true, first_name:Faker::Name.first_name) }
+# 5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:false, first_name:Faker::Name.first_name) }
 
-duke = User.create(
-	zipcode: 60614,
+duke6 = User.create(
+	zipcode: 60654,
+	radius: 10,
 	username: "gemdropper",
 	email: "duke@devbootcamp.com",
 	password:"1234",
@@ -119,8 +114,9 @@ duke = User.create(
 	marital_status: 'married'
 	)
 
-matt = User.create(
-	zipcode: 60614,
+matt7 = User.create(
+	zipcode: 60654,
+	radius: 10,
 	username: "therealmattbaker",
 	email: "matt@devbootcamp.com",
 	password:"1234",
@@ -138,8 +134,9 @@ matt = User.create(
 	marital_status: 'single'
 	)
 
-alyssa = User.create(
-	zipcode: 60614,
+alyssa8 = User.create(
+	zipcode: 60654,
+	radius: 10,
 	username: "deerlist",
 	email: "alyssa@devbootcamp.com",
 	password:"1234",
@@ -157,8 +154,9 @@ alyssa = User.create(
 	marital_status: 'single'
 	)
 
-mike = User.create(
-	zipcode: 60614,
+mike9 = User.create(
+	zipcode: 60654,
+	radius: 10,
 	username: "bikeliker",
 	email: "mike@devbootcamp.com",
 	password:"1234",
@@ -174,4 +172,35 @@ mike = User.create(
 	first_name: "Mike",
 	last_name: "Busch",
 	marital_status: 'married'
+	)
+
+ellie10 = User.create(
+	zipcode: 60654,
+	radius: 10,
+	username: "elliealsolikesbikes",
+	email: "ellie@devbootcamp.com",
+	password:"1234",
+	vaccinate: true,
+	parenting_style: "Figure It Out As We Go",
+	date_night: "Turn Up At The Club",
+	music: ["Ambient Drone Synth"],
+	first_name: "Ellie",
+	last_name: "Poley",
+	marital_status: 'married'
+	)
+
+avner11 = User.create(
+	zipcode: 60654,
+	radius: 10,
+	username: "bitsandatoms",
+	email: "avner@devbootcamp.com",
+	password:"1234",
+	vaccinate: true,
+	parenting_style: "Figure It Out As We Go",
+	date_night: "Frozen Pizza And Blaze One",
+	music: ["Metal and Hardcore", "Disney Radio"],
+	bio: "I'm interested in how people relate to technology",
+	first_name: "Avner",
+	last_name: "Shanan",
+	marital_status: 'single'
 	)
