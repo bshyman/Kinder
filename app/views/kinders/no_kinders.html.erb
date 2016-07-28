@@ -1,5 +1,5 @@
 <% if flash[:zipcode] %>
-  <h5 class="center-align"><%= flash[:zipcode] %></h5>
+  <h5 class="center-align headline"><%= flash[:zipcode] %></h5>
   <p class="center-align">Go to your <%= link_to 'profile', user_path(current_user) %> to add a zipcode and radius!</p>
 <% elsif flash[:notice] %>
  <p class="center-align"><%= flash[:notice] %></p>

@@ -3,7 +3,7 @@
     <div id='profile-card' class=" card grey lighten-3">
       <div class="card-content black-text">
         <% if current_user.id == @user.id %>
-        <p class="card-title teal-text center-align">Hello, <%= @user.full_name %>!</p>
+        <p class="card-title teal-text center-align headline">Hello, <%= @user.full_name %>!</p>
         <% else %>
         <p class="card-title center-align"><%= @user.first_name %></p>
         <% end %>
@@ -51,7 +51,7 @@
           <span style="margin-right:5px;"><%= image_tag @user.avatar.url, size: '40x40', class: "profile-pic"%></span>
         <% end %>
       <% end %>
-      <h5 class=" center">Parent Profile</h5>
+      <h5 class=" center headline">Parent Profile</h5>
     </div>
     <div id='survey_form' class="row">
       <div class="">
