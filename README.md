@@ -4,7 +4,7 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+### Features
 
 * Kinder (Swiping)
  * Zipcode API
@@ -19,4 +19,13 @@ Things you may want to cover:
  * Sign In with OpenID
  * Calendar 
  * Maps
-* 
+
+### Techstack
+* Rails 5
+* Jquery/JS
+* Materialize 
+
+### Integrations
+* S3
+* Google API (Calendar, Map, Signin)
+* Zipcode API
