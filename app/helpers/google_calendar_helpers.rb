@@ -8,7 +8,6 @@ module GoogleCalendarHelpers
     'start' => {'dateTime' => parse_date_time(playdate).to_s},
     'end' => {'dateTime' => (parse_date_time(playdate) + 1.hours).to_s}
     }
-
     client = Google::APIClient.new
     client.authorization.access_token = current_user.token
     service = client.discovered_api('calendar', 'v3')
@@ -22,6 +21,6 @@ module GoogleCalendarHelpers
   def parse_date_time(playdate)
     d = playdate.date
     t = playdate.time
-    dt = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, t.zone)
+    DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, "-5")
   end
 end
