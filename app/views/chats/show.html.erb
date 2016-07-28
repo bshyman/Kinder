@@ -2,7 +2,7 @@
   <h5 class="teal-text text-lighten-3 center-align"><%= @friend.first_name.capitalize %></h5>
   <% if @chat.messages.any? %>
     <div class="panel-body" id="messages">
-      <%= render partial: 'messages/message', collection: @chat.messages%>
+      <%= render partial: 'messages/message', collection: @chat.messages.order(id: :asc)%>
     </div>
   <%else%>
     <div class="panel-body hidden" id="messages">
