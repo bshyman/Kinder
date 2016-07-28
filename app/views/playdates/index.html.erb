@@ -9,10 +9,10 @@
       <p>No scheduled or pending playdates</p>
     <% end %>
   <% else %>
-    <button class="waves-effect orange darken-3 btn-flat"><%= link_to 'New Playdate', new_user_playdate_path(@user.id), class: "white-text" %></button>
+    <button class="waves-effect orange darken-3 playdate-index-btn"><%= link_to 'New Playdate', new_user_playdate_path(@user.id), class: "white-text " %></button>
   <% end %>
-    <%= link_to 'Start Kinder!', kinders_path, class: "white-text waves-effect orange darken-3 std-btn" %>
-  <%= link_to 'Dashboard', dashboard_path(current_user.id), class: 'waves-effect waves-light std-btn  orange darken-3' %>
+    <%= link_to 'Start Kinder!', kinders_path, class: "white-text waves-effect orange darken-3 playdate-index-btn" %>
+  <%= link_to 'Dashboard', dashboard_path(current_user.id), class: 'waves-effect white-text waves-light playdate-index-btn orange darken-3' %>
 </div>
 
 
