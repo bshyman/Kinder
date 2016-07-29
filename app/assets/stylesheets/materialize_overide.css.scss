@@ -192,6 +192,9 @@ body {
      display: flex;
      justify-content: space-between;
    }
+    .send-btn {
+  display: none;
+ }
  }
 
  @media only screen and (min-width: 768px) {
@@ -239,10 +242,9 @@ body {
  }
 
  .dash-btn {
-  display: flex;
-  width: 160px;
-  margin: auto;
-  text-align: center;
+  display: block;
+  width: 200px;
+  margin: 5px auto;
  }
 
  .delete-profile-button {
@@ -266,3 +268,9 @@ body {
  .noverflow {
   overflow: auto;
  }
+
+ .send-btn {
+  margin: 0px 20% !important;
+  width: 200px;
+ }
+

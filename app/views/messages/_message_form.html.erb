@@ -1,6 +1,6 @@
 <%=form_for message, remote: true,authenticity_token: true do |f|%>
-  <%= f.text_area :content, class: "form-control materialize-textarea", data: {textarea: "message"}%>
+  <%= f.text_field :content, class: "form-control materialize-textarea ", placeholder: 'Press Enter to send', data: {textarea: "message"}%>
 
   <%= f.hidden_field :chat_id, value: chat.id %>
-  <%= f.submit "send", class: "btn btn-primary right", data: {send: "message"}%>
+  <%= f.submit "send", class: "btn orange darken-3 btn-primary send-btn", data: {send: "message"}%>
 <%end%>

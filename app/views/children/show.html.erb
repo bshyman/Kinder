@@ -10,8 +10,8 @@
           </ul>
       </div>
       <div class="card-action">
-        <%= link_to 'Edit Child Info', edit_user_child_path(@child.parent.id, @child.id) %>
-        <%= link_to 'Delete Child', user_child_path(@child.parent.id, @child.id), method: 'DELETE' %>
+        <%= link_to 'Edit Child Info', edit_user_child_path(@child.parent.id, @child.id), class: 'btn orange darken-3 dash-btn' %>
+        <%= link_to 'Delete Child', user_child_path(@child.parent.id, @child.id), method: 'DELETE', class: 'btn orange darken-3 dash-btn' %>
       </div>
     </div>
   </div>

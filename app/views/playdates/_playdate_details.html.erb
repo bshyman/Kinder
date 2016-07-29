@@ -43,7 +43,7 @@
     <%= link_to 'Cancel Playdate', user_playdate_path, method: :delete %>
     <% else %>
       <% if current_user.attending_playdates.include?(playdate) %>
-        <%= link_to 'Can No Longer Attend', decline_invite_path(current_user.id, playdate.id) %>
+        <%= link_to 'Can No Longer Attend', decline_invite_path(current_user.id, playdate.id), class: 'btn orange darken-3 white-text' %>
       <% else %>
         <%= link_to 'Accept', accept_invite_path(current_user.id, playdate.id) %>
         <%= link_to 'Decline', decline_invite_path(current_user.id, playdate.id) %>
