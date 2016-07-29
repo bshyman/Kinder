@@ -64,37 +64,11 @@ user5 = User.create!(first_name: "Test",
 	vaccinate: true,
 	gender: "Female")
 
-user1.friend_request(user2)
-user1.friend_request(user3)
-user1.friend_request(user4)
-user1.friend_request(user5)
-user2.accept_request(user1)
-user3.accept_request(user1)
-user4.accept_request(user1)
-user5.accept_request(user1)
-
 Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Brunch at Benjis", description: "Let's eat brunch and drink bloddy mary's while the kids play", location:"Batter and berries", date:"2016-08-01" ,host_id: 2)
 Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Bubble tea with the kiddos", description: "Get dem bubbles", location:"Kung Fu Tea Chinatown", date:"2016-07-29" ,host_id: 1)
 Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s, title: "Beach Day!", description: "Picnic at the beach, bring your pets!", location:"Montrose Beach", date:"2016-08-27" ,host_id: 2)
 
-5.times {
-  Playdate.create!(time: Faker::Time.forward(23, :morning).to_s.match(/\d{2}:\d{2}:\d{2}/).to_s,
-    date:Faker::Time.backward(23),
-    location:"#{Faker::Address.city}",
-    description: Faker::Hipster.paragraph,
-    title: Faker::Hipster.sentence,
-    host_id: Faker::Number.between(1, 4))
-}
-
-Attendee.create!(guest_id:1, playdate_id: 1, response: true)
-Attendee.create!(guest_id:2, playdate_id: 2, response: true)
-Attendee.create!(guest_id:4, playdate_id: 2, response: nil)
-Attendee.create!(guest_id:1, playdate_id: 3, response: nil)
-
-# 5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60654, gender:"Male", vaccinate:true, first_name:Faker::Name.first_name) }
-# 5.times { User.create!(username:Faker::Internet.user_name, email: "b@g.com", password:"1234", zipcode: 60614, gender:"Male", vaccinate:false, first_name:Faker::Name.first_name) }
-
-duke6 = User.create(
+duke = User.create!(
 	zipcode: 60654,
 	radius: 10,
 	username: "gemdropper",
@@ -114,7 +88,7 @@ duke6 = User.create(
 	marital_status: 'married'
 	)
 
-matt7 = User.create(
+matt = User.create!(
 	zipcode: 60654,
 	radius: 10,
 	username: "therealmattbaker",
@@ -134,7 +108,7 @@ matt7 = User.create(
 	marital_status: 'single'
 	)
 
-alyssa8 = User.create(
+alyssa = User.create!(
 	zipcode: 60654,
 	radius: 10,
 	username: "deerlist",
@@ -154,7 +128,7 @@ alyssa8 = User.create(
 	marital_status: 'single'
 	)
 
-mike9 = User.create(
+mike = User.create!(
 	zipcode: 60654,
 	radius: 10,
 	username: "bikeliker",
@@ -174,7 +148,7 @@ mike9 = User.create(
 	marital_status: 'married'
 	)
 
-ellie10 = User.create(
+ellie = User.create!(
 	zipcode: 60654,
 	radius: 10,
 	username: "elliealsolikesbikes",
@@ -189,7 +163,7 @@ ellie10 = User.create(
 	marital_status: 'married'
 	)
 
-avner11 = User.create(
+avner = User.create!(
 	zipcode: 60654,
 	radius: 10,
 	username: "bitsandatoms",
@@ -204,3 +178,9 @@ avner11 = User.create(
 	last_name: "Shanan",
 	marital_status: 'single'
 	)
+
+
+matt.children.create!(name: "Guccifer", allergies: "Stupidity, smelly code, laziness, inferior password encryption", birthday: "2014-04-20")
+matt.children.create!(name: "Bakerbaby", allergies: "Shrimp, salt", birthday: "2015-04-20")
+
+user2.children.create!(name: "Jackson", allergies:"None", birthday:"2014-09-28")
