@@ -1,8 +1,12 @@
 # ![logo](http://i.imgur.com/4hODIaV.png) Kinder [![Build Status](https://travis-ci.org/adnamalin/Kinder.svg?branch=master)](https://travis-ci.org/adnamalin/Kinder)
 
+## About Kinder 
+Kinder was created to address two problems plauging mom's: an alternative solution to 50 reply-all email threads to manage their playdate & finding other moms they connect with beyond the commality of having children. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Created by: [Amanda Lin](https://github.com/adnamalin), [Benji Shyman](https://github.com/bshyman), [Leland Meiners](https://github.com/LelandAM), [Vivien Kuo](https://github.com/viKuo)
+## Live Demo
+
+[Visit Kinder](kinderplaydate.herokuapp.com)
 
 ### Features
 
