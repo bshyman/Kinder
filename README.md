@@ -8,6 +8,8 @@ Created by: [Amanda Lin](https://github.com/adnamalin), [Benji Shyman](https://g
 
 [Visit Kinder](kinderplaydate.herokuapp.com)
 
+![screenshots kinder](http://i.imgur.com/lirbBEj.png)
+
 ### Features
 
 * Kinder (Swiping)
