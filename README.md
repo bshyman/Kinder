@@ -8,7 +8,7 @@ Created by: [Amanda Lin](https://github.com/adnamalin), [Benji Shyman](https://g
 
 [Visit Kinder](kinderplaydate.herokuapp.com)
 
-![screenshots kinder](http://i.imgur.com/lirbBEj.png)
+![screenshots kinder](http://i.imgur.com/Mx0oK2U.png)
 
 ### Features
 
