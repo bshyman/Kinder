@@ -7,7 +7,7 @@ Created by: [Amanda Lin](https://github.com/adnamalin), [Benji Shyman](https://g
 ## Visit or Watch Demo
 [Demo Video](https://vimeo.com/178823070) | [Visit Kinder](kinderplaydate.herokuapp.com)
 
-**Explore Kinder with demo username & password: Ashley / 1234**
+**Explore Kinder with demo username & password: DemoUsername / 1234**
 
 ![screenshots kinder](http://i.imgur.com/Mx0oK2U.png)
 
