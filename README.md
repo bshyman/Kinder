@@ -5,7 +5,7 @@ Kinder was created to address two problems plaguing mom's: an alternative soluti
 
 Created by: [Amanda Lin](https://github.com/adnamalin), [Benji Shyman](https://github.com/bshyman), [Leland Meiners](https://github.com/LelandAM), [Vivien Kuo](https://github.com/viKuo)
 ## Visit or Watch Demo
-[Demo Video](https://vimeo.com/178823070) | [Visit Kinder](kinderplaydate.herokuapp.com)
+[Demo Video](https://vimeo.com/178823070) | [Visit Kinder](http://kinderplaydate.herokuapp.com/)
 
 **Explore Kinder with demo username & password: DemoUsername / 1234**
 
