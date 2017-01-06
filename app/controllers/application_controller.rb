@@ -8,6 +8,4 @@ class ApplicationController < ActionController::Base
   include PlaydateHelper
   include MessageHelper
 
-  def index
-  end
 end
