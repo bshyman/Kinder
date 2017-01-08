@@ -17,11 +17,11 @@
             <li> <!-- Modal Trigger -->
               <a class="waves-effect waves-light modal-trigger profile-button orange darken-3" href="#modal1">Edit Profile</a>
             </li>
-            <li><a class="waves-effect waves-light modal-trigger profile-button orange darken-3" href="#delete-account">Delete Account</a>
-            </li>
             <li>
               <!-- Modal Trigger -->
               <a class="waves-effect waves-light   modal-trigger profile-button orange darken-3" href="#add_child">Add Child</a>
+            </li>
+            <li><a class="waves-effect waves-light modal-trigger profile-button red darken-3" href="#delete-account">Delete Account</a>
             </li>
             <% elsif logged_in? %>
             <% if @user.friends.include?(current_user) %>
