@@ -14,25 +14,25 @@
 # 	radius: 10,
 # 	gender: "Female")
 
-# user2 = User.create!(
-# 	zipcode: 43201,
-# 	radius: 10,
-# 	username:"bshy",
-# 	email: "bshyman@devbootcamp.com",
-# 	password:"1234",
-# 	vaccinate: true,
-# 	religion: "I'm bad at it",
-# 	parenting_style: "Some Of This, Some Of That",
-# 	date_night: "Hotdogs And Horror Movie",
-# 	shopping_prefs: "Walmart",
-# 	fav_activities: 'Gallavanting, Pitboarding',
-# 	music: ['Hip Hop', "Ska and Punk" ],
-# 	bio: "I don't roll on shabbos",
-# 	gender: "Male",
-# 	first_name: "Benji",
-# 	last_name: "Shyman",
-# 	marital_status: 'married'
-# 	)
+user2 = User.create!(
+	zipcode: "60614",
+	radius: 10,
+	username:"bshy",
+	email: "bshyman@dbc.com",
+	password:"password",
+	vaccinate: true,
+	religion: "I'm bad at it",
+	parenting_style: "Some Of This, Some Of That",
+	date_night: "Hotdogs And Horror Movie",
+	shopping_prefs: "Walmart",
+	fav_activities: 'Gallavanting, Pitboarding',
+	music: ['Hip Hop', "Ska and Punk" ],
+	bio: "I don't roll on shabbos",
+	gender: "Male",
+	first_name: "Benji",
+	last_name: "Shyman",
+	marital_status: 'married'
+	)
 
 # user3 = User.create!(first_name: "Vivien",
 # 	zipcode: 43201,
@@ -185,31 +185,59 @@
 
 # user2.children.create!(name: "Jackson", allergies:"None", birthday:"2014-09-28")
 
-religion_pool = ["Jewish", "Chrsitian", "Catholic", "Muslim", "Atheist", "Agnostic", "Hindu", "Buddhist", "Prefer not to disclose"]
-marriage_status_pool = ['single', 'married', 'divorced', 'widowed','dating', 'polyamorous']
+religion_options = ["Jewish", "Chrsitian", "Catholic", "Muslim", "Atheist", "Agnostic", "Hindu", "Buddhist", "Prefer not to disclose"]
+marriage_status_options = ['single', 'married', 'divorced', 'widowed','dating', 'polyamorous']
+parenting_style_options = ["Figure It Out As We Go", "Carefully Research Everything", "Whatever The Kardashians Are Doing", "I Do What My Mom Tells Me To", "Some Of This, Some Of That"]
+date_night_options = ["Turn Up At The Club",
+"Romantic Dinner And Drama Movie", "Hotdogs And Horror Movie", "Frozen Pizza And Blaze One", "Dive Bar And Shitty Garage Band", "Can't Go Out, We Have Kids", "Netflix And Chill"]
+shopping_prefs_options = ["Jack And Jill", "Carter's", "Walmart", "I Make My Own Clothes", "Target", "Thrift It!"]
+@music_options = ["Hip Hop", "R&B and Soul", "Jam Bands", "House and Techno", "Classical and Jazz", "Ambient Drone Synth", "Metal and Hardcore", "Pop Country", "Disney Radio", "Gospel", "Classic Rock", "Indie Rock", "Ska and Punk"]
 
+def random_music
+	music_selections = []
+	2.times{|genre| music_selections << @music_options.sample}
+	music_selections
+end
 
+def zipcode_formatter
+	suffix = Faker::Number.between(01, 66).to_s
+	suffix.prepend("0") if suffix.length == 1
+	"606" + suffix
+end
 
 100.times do |i|
 	User.create!(
-	zipcode: Faker::Number.number(5),
+	zipcode: zipcode_formatter,
 	radius: [1, 5, 10, 15, 20, 25, 50].sample,
 	username: Faker::Internet.user_name + "#{i}",
 	email: Faker::Internet.email,
 	password: Faker::Internet.password(8, 20),
 	vaccinate: Faker::Boolean.boolean(0.8),
-	religion: religion_pool.sample,
-	parenting_style: "Carefully Research Everything",
-	date_night: "Can't Go Out, We Have Kids",
-	shopping_prefs: "Carter's",
-	fav_activities: "Howling at the moon",
-	music: ["House and Techno", "Gospel" ],
-	bio: "My favorite book is " + Faker::Book.title,
+	religion: religion_options.sample,
+	parenting_style: parenting_style_options.sample,
+	date_night: date_night_options.sample,
+	shopping_prefs: shopping_prefs_options.sample,
+	fav_activities: Faker::Superhero.power,
+	music: random_music,
+	bio: "My favorite book is " + Faker::Book.title + " written by " + Faker::Book.author,
 	gender: "Robot",
-	first_name: Faker::Internet.first_name,
-	last_name: Faker::Internet.last_name,
-	marital_status: marriage_status_pool.sample
+	first_name: Faker::Name.first_name,
+	last_name: Faker::Name.last_name,
+	marital_status: marriage_status_options.sample,
+	avatar: Faker::Avatar.image(Faker::Number.number(10), '50x50')
 	)
+end
+
+300.times do |i|
+	Playdate.create!(
+		title: Faker::Hacker.adjective,
+		description: Faker::Hipster.sentence,
+		location: "Chicago, IL",
+		host_id: 1 + rand(99),
+		date: Faker::Time.forward(23, :all),
+		time: Faker::Time.forward(23, :all) 
+	)
+
 end
 
 
