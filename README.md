@@ -8,7 +8,12 @@ Created by: [Benjamin Shyman (Project Lead)](https://github.com/bshyman), [Amand
 
 [Visit Kinder](http://kinderplaydate.herokuapp.com/login)
 
-![screenshots kinder](http://i.imgur.com/lirbBEj.png)
+## Visit or Watch Demo
+[Demo Video](https://vimeo.com/178823070) | [Visit Kinder](http://kinderplaydate.herokuapp.com/)
+
+**Explore Kinder with demo username & password: DemoUsername / 1234**
+
+![screenshots kinder](http://i.imgur.com/Mx0oK2U.png)
 
 ### Features
 
